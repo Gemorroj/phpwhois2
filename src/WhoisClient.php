@@ -52,6 +52,9 @@ class WhoisClient
     /** @var int Communications timeout */
     public $stimeout = 10;
 
+    /** @var WhoisClient */
+    public $deepWhois;
+
     /** @var string[] List of servers and handlers (loaded from servers.whois) */
     public $DATA = array();
 
