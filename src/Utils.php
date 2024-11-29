@@ -46,21 +46,24 @@ class Utils extends Whois
      * @param int $indent
      * @return string
      */
-    public function debugObject($obj, $indent = 0)
+    public function debugObject($obj, int $indent=0)
     {
-        if (is_array($obj)) {
-            $return = '';
-            foreach ($obj as $k => $v) {
-                $return .= str_repeat('&nbsp;', $indent);
-                if (is_array($v)) {
-                    $return .= $k . "->Array\n";
-                    $return .= $this->debugObject($v, $indent + 1);
-                } else {
-                    $return .= $k . "->$v\n";
-                }
-            }
-            return $return;
-        }
+		$return = '';
+
+        if( !is_array($obj) ){
+			return $return;
+		}
+
+		foreach ($obj as $k => $v) {
+			$return .= str_repeat('&nbsp;', $indent);
+			if (is_array($v)) {
+				$return .= $k . "->Array\n";
+				$return .= $this->debugObject($v, $indent + 1);
+			} else {
+				$return .= $k . "->$v\n";
+			}
+		}
+		return $return;
     }
 
     public function nsRrDefined($query)
