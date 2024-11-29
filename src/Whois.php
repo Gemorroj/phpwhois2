@@ -25,6 +25,8 @@
 
 namespace phpWhois;
 
+use Algo26\IdnaConvert\Exception\AlreadyPunycodeException;
+use Algo26\IdnaConvert\Exception\InvalidCharacterException;
 use Algo26\IdnaConvert\ToIdn;
 
 /**
@@ -79,24 +81,27 @@ class Whois extends WhoisClient
 
     /**
      *  Lookup query
-     *
-     * @param string $query Domain name or other entity
+     * @param string  $query  Domain name or other entity
      * @param boolean $is_utf True if domain name encoding is utf-8 already, otherwise convert it with utf8_encode() first
-     *
+     * @throws InvalidCharacterException
      */
-    public function lookup($query = '', $is_utf = true)
+    public function lookup($query='', $is_utf=true)
     {
         // start clean
-        $this->query = array('status' => '');
+        $this->query = ['status' => ''];
 
         $query = trim($query);
 
         $idn = new ToIdn();
 
-        if ($is_utf) {
-            $query = $idn->convert($query);
-        } else {
-            $query = $idn->convert(utf8_encode($query));
+        try {
+            if ($is_utf) {
+                $query = $idn->convert($query);
+            } else {
+                $query = $idn->convert(utf8_encode($query));
+            }
+        }catch(AlreadyPunycodeException $e){
+//            $query is already a Punycode
         }
 
         // If domain to query was not set
@@ -132,7 +137,6 @@ class Whois extends WhoisClient
                 $this->query['host_name'] = @gethostbyaddr($ip);
 
                 return $this->getData('', $this->deepWhois);
-                break;
 
             case self::QTYPE_IPV6:
                 // IPv6 AS Prepare to do lookup via the 'ip' handler
@@ -148,7 +152,6 @@ class Whois extends WhoisClient
                 $this->query['query'] = $ip;
                 $this->query['tld'] = 'ip';
                 return $this->getData('', $this->deepWhois);
-                break;
 
             case self::QTYPE_AS:
                 // AS Prepare to do lookup via the 'ip' handler
@@ -165,7 +168,6 @@ class Whois extends WhoisClient
                 $this->query['query'] = $ip;
                 $this->query['tld'] = 'as';
                 return $this->getData('', $this->deepWhois);
-                break;
         }
 
         // Build array of all possible tld's for that domain
@@ -266,7 +268,7 @@ class Whois extends WhoisClient
     {
         unset($this->query['server']);
         $this->query['status'] = 'error';
-        $result = array('rawdata' => array());
+        $result = ['rawdata' => []];
         $result['rawdata'][] = $this->query['errstr'][] = $this->query['query'] . ' domain is not supported';
         $this->checkDns($result);
         $this->fixResult($result, $this->query['query']);
