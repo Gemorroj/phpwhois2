@@ -924,7 +924,7 @@ abstract class AbstractHandler implements HandlerInterface
         $rules = [
 
             // 2020-01-01T00:00:00.0Z
-            '/^(?<datetime>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})\.(?<microseconds>\d+)(?<timezone>Z)$/' => 'Y-m-d\TH:i:s.vT',
+            '/^(?<datetime>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})\.(?<microseconds>\d+)(?<timezone>Z)$/' => 'Y-m-d\TH:i:s.uT',
 
             // 2020-01-01T00:00:00Z
             '/^(?<datetime>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})(?<timezone>Z)$/' => 'Y-m-d\TH:i:sT',
@@ -989,6 +989,8 @@ abstract class AbstractHandler implements HandlerInterface
 
         foreach( $rules as $regex => $dateTimeFormat ){
             $matches = [];
+
+			preg_match($regex, $date, $matches);
 
             if( preg_match($regex, $date, $matches) ){
 
