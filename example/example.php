@@ -84,14 +84,13 @@ if (isset($_GET['query'])) {
             if ($allowproxy)
                 exit(serialize($result));
 
-default:
-    if (!empty($result['rawdata']) && is_array($result['rawdata'])) {
-        $winfo .= '<pre>' . implode("\n", $result['rawdata']) . '</pre>';
-    } else {
-        $winfo = implode("\n<br></br>", (array)$whois->query['errstr']);
-    }
-    break;
-
+        default:
+            if (!empty($result['rawdata']) && is_array($result['rawdata'])) {
+                $winfo .= '<pre>' . implode("\n", $result['rawdata']) . '</pre>';
+            } else {
+                $winfo = implode("\n<br></br>", (array)$whois->query['errstr']);
+            }
+            break;
     }
 
 }
