@@ -31,6 +31,8 @@ require_once 'whois.parser.php';
 
 class arin_handler
 {
+	// FIXME. This is a temporary fix :-(
+	public $deepWhois = false;
 
     function parse($data_str, $query)
     {
@@ -53,8 +55,6 @@ class arin_handler
             'Updated:' => 'network.changed',
             'ASHandle:' => 'network.handle',
             'ASName:' => 'network.name',
-            'NetHandle:' => 'network.handle',
-            'NetName:' => 'network.name',
             'TechHandle:' => 'tech.handle',
             'TechName:' => 'tech.name',
             'TechPhone:' => 'tech.phone',
