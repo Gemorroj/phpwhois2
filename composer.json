@@ -1,6 +1,5 @@
 {
     "name": "kevinoo/phpwhois",
-    "version": "v6.3.3",
     "description": "phpWhois - library for querying whois services and parsing results.",
     "keywords": [
         "PHP",
