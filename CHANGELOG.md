@@ -1,3 +1,24 @@
+6.3.4 - 2024-11-29
+------------------
+### Fixes
+* [#14] Fixed UnexpectedValueException - DateTime not parsable
+* Add catch of `AlreadyPunycodeException`
+* Update tests
+* Add PHPUnit v11 in `composer.json`
+* Add `.editorconfig` file
+* Little fixes in `whois.ip.arin.php`
+
+6.3.3 - 2024-11-29
+------------------
+### Fixes
+* [#11] Update WhoisClient.php - avoid dynamic property by @DavidAnderson684
+* [#13] minor bugs: string as array, link ip inside url by @pcastelovigo 
+
+6.3.2 - 2023-10-27
+------------------
+### Fixes
+* [#4] Remove Non-ASCII characters
+
 6.3.1 - 2023-10-17
 ------------------
 ### Added
@@ -18,7 +39,6 @@
 *   [#5] Remove "bootstrap.php" file
 *   [#5] Remove require_once from ParserTest.php
 *   [#5] Remove "print_r" function
-
 
 6.3.0 - 2023-08-11
 ------------------
@@ -114,7 +134,6 @@
 *   Remove obsolete file "handler.template.php"
 *   Remove deprecated "generic_parser_a_blocks" function
 *   Deprecated "get_contact" function
-
 
 6.0.4 - 2023-03-21 (jsmitty12)
 ------------------
