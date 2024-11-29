@@ -66,8 +66,8 @@ class FiHandlerTest extends AbstractHandler
             'domain'     => [
                 'name'    => 'google.fi',
                 'created' => '2006-06-30',
-                'changed' => '2023-06-02',
-                'expires' => '2024-07-04',
+				'expires' => '2025-07-04',
+				'changed' => '2024-06-02',
             ],
             'registered' => 'yes',
         ];
@@ -99,7 +99,7 @@ class FiHandlerTest extends AbstractHandler
                 'name'    => 'ficora.fi',
                 'created' => '2001-06-29',
                 'changed' => '2023-06-09',
-                'expires' => '2027-08-31',
+                'expires' => '2029-08-31',
             ],
             'registered' => 'yes',
         ];

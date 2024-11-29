@@ -10,6 +10,7 @@
 
 domain:                        google.fr
 status:                        ACTIVE
+status:                        renewPeriod
 eppstatus:                     serverUpdateProhibited
 eppstatus:                     serverTransferProhibited
 eppstatus:                     serverDeleteProhibited
@@ -19,9 +20,9 @@ holder-c:                      GIHU100-FRNIC
 admin-c:                       GIHU101-FRNIC
 tech-c:                        MI3669-FRNIC
 registrar:                     MARKMONITOR Inc.
-Expiry Date:                   2023-12-30T17:16:48Z
+Expiry Date:                   2025-12-30T17:16:48Z
 created:                       2000-07-26T22:00:00Z
-last-update:                   2022-12-03T09:40:42.40624Z
+last-update:                   2024-11-28T11:12:28.62146Z
 source:                        FRNIC
 
 nserver:                       ns1.google.com
@@ -42,28 +43,23 @@ anonymous:                     No
 registered:                    2002-01-07T00:00:00Z
 source:                        FRNIC
 
-nic-hdl:                       MI3669-FRNIC
+nic-hdl:                       GIHU100-FRNIC
 type:                          ORGANIZATION
-contact:                       MarkMonitor Inc.
-address:                       2150 S. Bonito Way, Suite 150
-address:                       83642 Meridian
-country:                       US
-phone:                         +1.2083895740
-fax-no:                        +1.2083895771
-e-mail:                        ccops@markmonitor.com
+contact:                       Google Ireland Holdings Unlimited Company
+address:                       Google Ireland Holdings Unlimited Company
+address:                       70 Sir John Rogerson's Quay
+address:                       2 Dublin
+country:                       IE
+phone:                         +353.14361000
+e-mail:                        dns-admin@google.com
 registrar:                     MARKMONITOR Inc.
-changed:                       2023-08-09T21:25:22.173916Z
+changed:                       2024-06-11T20:04:33.772976Z
 anonymous:                     NO
 obsoleted:                     NO
+eppstatus:                     serverUpdateProhibited
 eppstatus:                     associated
-eppstatus:                     active
-eligstatus:                    ok
-eligsource:                    REGISTRAR
-eligdate:                      2021-10-05T00:00:00Z
-reachstatus:                   ok
-reachmedia:                    email
-reachsource:                   REGISTRAR
-reachdate:                     2021-10-05T00:00:00Z
+eligstatus:                    not identified
+reachstatus:                   not identified
 source:                        FRNIC
 
 nic-hdl:                       GIHU101-FRNIC
@@ -86,24 +82,29 @@ reachsource:                   REGISTRAR
 reachdate:                     2018-03-02T00:00:00Z
 source:                        FRNIC
 
-nic-hdl:                       GIHU100-FRNIC
+nic-hdl:                       MI3669-FRNIC
 type:                          ORGANIZATION
-contact:                       Google Ireland Holdings Unlimited Company
-address:                       Google Ireland Holdings Unlimited Company
-address:                       70 Sir John Rogerson's Quay
-address:                       2 Dublin
-country:                       IE
-phone:                         +353.14361000
-e-mail:                        dns-admin@google.com
+contact:                       MarkMonitor Inc.
+address:                       2150 S. Bonito Way, Suite 150
+address:                       83642 Meridian
+country:                       US
+phone:                         +1.2083895740
+fax-no:                        +1.2083895771
+e-mail:                        ccops@markmonitor.com
 registrar:                     MARKMONITOR Inc.
-changed:                       2022-10-15T05:41:14.918179Z
+changed:                       2024-11-27T15:42:59.592845Z
 anonymous:                     NO
 obsoleted:                     NO
-eppstatus:                     serverUpdateProhibited
 eppstatus:                     associated
-eligstatus:                    not identified
-reachstatus:                   not identified
+eppstatus:                     active
+eligstatus:                    ok
+eligsource:                    REGISTRAR
+eligdate:                      2021-10-05T00:00:00Z
+reachstatus:                   ok
+reachmedia:                    email
+reachsource:                   REGISTRAR
+reachdate:                     2021-10-05T00:00:00Z
 source:                        FRNIC
 
->>> WHOIS request date: 2023-08-11T14:44:49.113239Z <<<
+>>> Last update of WHOIS database: 2024-11-29T09:41:50.254524Z <<<
 

@@ -9,11 +9,13 @@ admin-c:      JENS-IS
 tech-c:       ISHM-IS
 zone-c:       ISHM-IS
 billing-c:    ISBC-IS
-nserver:      ht-secondary01.isnic.is
 nserver:      tg-secondary01.isnic.is
+nserver:      ht-secondary01.isnic.is
+nserver:      nsp.dnsnode.net
+nserver:      sec1.rcode0.net
 dnssec:       signed delegation
 created:      September  5 2000
-expires:      September  5 2023
+expires:      September  5 2025
 source:       ISNIC 
 
 role:         Internet a Islandi hf.
@@ -25,13 +27,9 @@ e-mail:       isnic@isnic.is
 created:      September  5 2000
 source:       ISNIC 
 
-role:         Internet a Islandi hf.
-nic-hdl:      ISBC-IS
-address:      Katrinartuni 2
-address:      IS-105 Reykjavik
-phone:        +354 5782030
-e-mail:       innheimta@isnic.is
-created:      November  6 2000
+nic-hdl:      JENS-IS
+address:      IS
+created:      December 15 1999
 source:       ISNIC 
 
 role:         Internet a Islandi hf.
@@ -43,8 +41,12 @@ e-mail:       hostmaster@isnic.is
 created:      May 15 2002
 source:       ISNIC 
 
-nic-hdl:      JENS-IS
-address:      IS
-created:      December 15 1999
+role:         Internet a Islandi hf.
+nic-hdl:      ISBC-IS
+address:      Katrinartuni 2
+address:      IS-105 Reykjavik
+phone:        +354 5782030
+e-mail:       innheimta@isnic.is
+created:      November  6 2000
 source:       ISNIC 
 

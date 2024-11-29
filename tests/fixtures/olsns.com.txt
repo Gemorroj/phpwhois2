@@ -2,9 +2,9 @@
    Registry Domain ID: 63245116_DOMAIN_COM-VRSN
    Registrar WHOIS Server: whois.entorno.com
    Registrar URL: http://www.entorno.es
-   Updated Date: 2023-01-25T19:47:04Z
+   Updated Date: 2024-11-22T23:51:32Z
    Creation Date: 2001-02-21T20:29:51Z
-   Registry Expiry Date: 2024-02-21T20:29:51Z
+   Registry Expiry Date: 2025-02-21T20:29:51Z
    Registrar: Entorno Digital, S.A.
    Registrar IANA ID: 696
    Registrar Abuse Contact Email: abuse@entorno.es
@@ -14,7 +14,7 @@
    Name Server: B.NS.OLSNS.COM
    DNSSEC: unsigned
    URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
->>> Last update of whois database: 2023-08-11T14:46:13Z <<<
+>>> Last update of whois database: 2024-11-29T09:43:19Z <<<
 
 For more information on Whois status codes, please visit https://icann.org/epp
 

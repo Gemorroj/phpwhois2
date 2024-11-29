@@ -2,7 +2,7 @@
    Registry Domain ID: 13313640_DOMAIN_COM-VRSN
    Registrar WHOIS Server: whois.domainpeople.com
    Registrar URL: http://www.domainpeople.com
-   Updated Date: 2020-05-05T17:37:23Z
+   Updated Date: 2024-11-07T12:05:24Z
    Creation Date: 1999-11-16T14:09:52Z
    Registry Expiry Date: 2027-11-16T14:09:52Z
    Registrar: DomainPeople, Inc.
@@ -10,11 +10,11 @@
    Registrar Abuse Contact Email:
    Registrar Abuse Contact Phone:
    Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
-   Name Server: SNS1.GATE.COM
-   Name Server: SNS2.GATE.COM
+   Name Server: NS1.SOLVPS.COM
+   Name Server: NS2.SOLVPS.COM
    DNSSEC: unsigned
    URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
->>> Last update of whois database: 2023-08-11T14:45:57Z <<<
+>>> Last update of whois database: 2024-11-29T09:43:02Z <<<
 
 For more information on Whois status codes, please visit https://icann.org/epp
 

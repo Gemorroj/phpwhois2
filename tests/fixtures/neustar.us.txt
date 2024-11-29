@@ -2,67 +2,67 @@ Domain Name: neustar.us
 Registry Domain ID: D670499-US
 Registrar WHOIS Server:
 Registrar URL: https://www.about.us/
-Updated Date: 2023-06-02T00:00:07Z
+Updated Date: 2024-06-02T00:00:04Z
 Creation Date: 2002-04-18T19:21:57Z
-Registry Expiry Date: 2024-04-17T23:59:59Z
+Registry Expiry Date: 2025-04-17T23:59:59Z
 Registrar: .us Registry Services LLC
 Registrar IANA ID: 1111112
 Registrar Abuse Contact Email: abuse@about.us
 Registrar Abuse Contact Phone:
+Domain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited
 Domain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited
 Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
 Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
 Domain Status: serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited
-Domain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited
 Registry Registrant ID: C37639215-US
 Registrant Name: .US Registration Policy
 Registrant Organization: Registry Services, LLC
-Registrant Street: 2155 E GoDaddy Way
-Registrant Street:
+Registrant Street: 100 S. Mill Ave
+Registrant Street: Suite 1600
 Registrant Street:
 Registrant City: Tempe
 Registrant State/Province: AZ
-Registrant Postal Code: 85284
+Registrant Postal Code: 85281
 Registrant Country: US
 Registrant Phone: +1.4806519999
 Registrant Phone Ext:
 Registrant Fax:
 Registrant Fax Ext:
-Registrant Email: support@about.us
+Registrant Email: help@about.us
 Registrant Application Purpose: P5
 Registrant Nexus Category: C21
 Registry Admin ID: C37639215-US
 Admin Name: .US Registration Policy
 Admin Organization: Registry Services, LLC
-Admin Street: 2155 E GoDaddy Way
-Admin Street:
+Admin Street: 100 S. Mill Ave
+Admin Street: Suite 1600
 Admin Street:
 Admin City: Tempe
 Admin State/Province: AZ
-Admin Postal Code: 85284
+Admin Postal Code: 85281
 Admin Country: US
 Admin Phone: +1.4806519999
 Admin Phone Ext:
 Admin Fax:
 Admin Fax Ext:
-Admin Email: support@about.us
+Admin Email: help@about.us
 Admin Application Purpose: P5
 Admin Nexus Category: C21
 Registry Tech ID: C37639215-US
 Tech Name: .US Registration Policy
 Tech Organization: Registry Services, LLC
-Tech Street: 2155 E GoDaddy Way
-Tech Street:
+Tech Street: 100 S. Mill Ave
+Tech Street: Suite 1600
 Tech Street:
 Tech City: Tempe
 Tech State/Province: AZ
-Tech Postal Code: 85284
+Tech Postal Code: 85281
 Tech Country: US
 Tech Phone: +1.4806519999
 Tech Phone Ext:
 Tech Fax:
 Tech Fax Ext:
-Tech Email: support@about.us
+Tech Email: help@about.us
 Tech Application Purpose: P5
 Tech Nexus Category: C21
 Name Server: pdns4.ultradns.org
@@ -73,7 +73,7 @@ Name Server: pdns3.ultradns.org
 Name Server: pdns2.ultradns.net
 DNSSEC: unsigned
 URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
->>> Last update of WHOIS database: 2023-08-11T14:45:34Z <<<
+>>> Last update of WHOIS database: 2024-11-29T09:42:45Z <<<
 
 For more information on Whois status codes, please visit https://icann.org/epp
 

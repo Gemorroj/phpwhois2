@@ -5,7 +5,7 @@
    Updated Date: 2020-10-12T14:39:27Z
    Creation Date: 1997-06-24T04:00:00Z
    Registry Expiry Date: 2027-11-30T15:37:55Z
-   Registrar: Nominalia Internet S.L.
+   Registrar: Nominalia Internet SL
    Registrar IANA ID: 76
    Registrar Abuse Contact Email: abuse@nominalia.com
    Registrar Abuse Contact Phone: +39.05520021555
@@ -16,7 +16,7 @@
    Name Server: DNS2.NOMINALIA.COM
    DNSSEC: unsigned
    URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
->>> Last update of whois database: 2023-08-11T14:45:57Z <<<
+>>> Last update of whois database: 2024-11-29T09:43:02Z <<<
 
 For more information on Whois status codes, please visit https://icann.org/epp
 

@@ -2,8 +2,8 @@
 domain.............: ficora.fi
 status.............: Registered
 created............: 29.6.2001 09:25:00
-expires............: 31.8.2027 00:00:00
-available..........: 30.9.2027 00:00:00
+expires............: 31.8.2029 00:00:00
+available..........: 30.9.2029 00:00:00
 modified...........: 9.6.2023 09:54:30
 RegistryLock.......: no
 
@@ -33,9 +33,9 @@ holder email.......:
 
 Registrar
 
-registrar..........: Liikenne- ja viestintävirasto
+registrar..........: Liikenne- ja viestintävirasto Traficom
 
->>> Last update of WHOIS database: 11.8.2023 17:00:11 (EET) <<<
+>>> Last update of WHOIS database: 29.11.2024 11:30:14 (EET) <<<
 
 
 Copyright (c) Finnish Transport and Communications Agency Traficom

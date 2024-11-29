@@ -2,10 +2,10 @@
    Registry Domain ID: 104784662_DOMAIN_COM-VRSN
    Registrar WHOIS Server: whois.namejuice.com
    Registrar URL: http://www.namejuice.com
-   Updated Date: 2022-10-10T07:31:43Z
+   Updated Date: 2024-10-10T07:25:49Z
    Creation Date: 2003-10-09T16:27:20Z
-   Registry Expiry Date: 2023-10-09T16:27:20Z
-   Registrar: BRANDON GRAY INTERNET SERVICES INC. (dba NameJuice.com)
+   Registry Expiry Date: 2025-10-09T16:27:20Z
+   Registrar: BRANDON GRAY INTERNET SERVICES INC. (dba "NameJuice.com")
    Registrar IANA ID: 636
    Registrar Abuse Contact Email: abuse@namejuice.com
    Registrar Abuse Contact Phone: +1.9054152681
@@ -17,7 +17,7 @@
    Name Server: DNS4.NAMERESOLVERS.COM
    DNSSEC: unsigned
    URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
->>> Last update of whois database: 2023-08-11T14:45:57Z <<<
+>>> Last update of whois database: 2024-11-29T09:43:02Z <<<
 
 For more information on Whois status codes, please visit https://icann.org/epp
 

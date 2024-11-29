@@ -15,8 +15,8 @@
 % See also a search service at http://www.nic.cz/whois/
 % 
 % 
-% Whoisd Server Version: 3.12.2
-% Timestamp: Fri Aug 11 14:44:32 2023
+% Whoisd Server Version: 3.15.0
+% Timestamp: Fri Nov 29 10:41:28 2024
 
 domain:       nic.cz
 registrant:   CZ-NIC
@@ -66,13 +66,13 @@ contact:      JTALIR
 name:         Jaromír Talíř
 registrar:    REG-MOJEID
 created:      26.10.2010 10:53:34
-changed:      19.07.2023 15:14:27
+changed:      06.09.2023 13:55:31
 
 keyset:       AUTO-ZHHWRIDCGH9F46ZDG2K2VC284
-dnskey:       257 3 13 EFI2IS1sAi0dcpizK/H/MZAB2N16tQNK9EWHL/p+QrShjC4EUfoo/fhJLunjVtk28Cnmz1EB8oTinOpWApEpSg==
+dnskey:       257 3 13 tdr7F+UrI+L7C0GX6m/23XD8NNvhd+MdkaXsnbG6rr2Nyzpr28p1QfqIGsvEt+3rK9TgrG8dmGxXGNIxhOtF8g==
 tech-c:       CZ-NIC
 registrar:    REG-CZNIC
 created:      17.11.2020 14:25:52
-changed:      13.07.2023 16:37:31
+changed:      04.11.2024 16:39:31
 
 

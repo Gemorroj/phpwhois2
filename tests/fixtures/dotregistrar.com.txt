@@ -2,9 +2,9 @@
    Registry Domain ID: 3555161_DOMAIN_COM-VRSN
    Registrar WHOIS Server: whois.domain.com
    Registrar URL: http://www.domain.com
-   Updated Date: 2023-01-12T04:47:28Z
+   Updated Date: 2024-01-12T04:47:23Z
    Creation Date: 1999-02-10T05:00:00Z
-   Registry Expiry Date: 2024-02-10T05:00:00Z
+   Registry Expiry Date: 2025-02-10T05:00:00Z
    Registrar: Domain.com, LLC
    Registrar IANA ID: 886
    Registrar Abuse Contact Email: compliance@domain-inc.net
@@ -16,7 +16,7 @@
    Name Server: NS2.DOTREGISTRAR.NET
    DNSSEC: unsigned
    URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
->>> Last update of whois database: 2023-08-11T14:45:57Z <<<
+>>> Last update of whois database: 2024-11-29T09:43:02Z <<<
 
 For more information on Whois status codes, please visit https://icann.org/epp
 

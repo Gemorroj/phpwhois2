@@ -1,28 +1,31 @@
 Domain Name: ostap.dev
 Registry Domain ID: 332EC9F7F-DEV
-Registrar WHOIS Server: whois.google.com
-Registrar URL: domains.google
-Updated Date: 2023-04-14T22:12:37Z
+Registrar WHOIS Server: whois.squarespace.domains
+Registrar URL: domains.squarespace.com
+Updated Date: 2024-06-07T06:11:11Z
 Creation Date: 2019-02-28T22:12:37Z
-Registry Expiry Date: 2024-02-28T22:12:37Z
-Registrar: Google LLC.
+Registry Expiry Date: 2025-02-28T22:12:37Z
+Registrar: Squarespace Domains II LLC.
 Registrar IANA ID: 895
-Registrar Abuse Contact Email: registrar-abuse@google.com
-Registrar Abuse Contact Phone: +1.8772376466
+Registrar Abuse Contact Email: abuse-complaints@squarespace.com
+Registrar Abuse Contact Phone: +1.6466935324
+Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
 Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
 Registry Registrant ID: REDACTED FOR PRIVACY
 Registrant Name: REDACTED FOR PRIVACY
-Registrant Organization: Contact Privacy Inc. Customer 7151571251
+Registrant Street: REDACTED FOR PRIVACY
+Registrant Street: REDACTED FOR PRIVACY
 Registrant Street: REDACTED FOR PRIVACY
 Registrant City: REDACTED FOR PRIVACY
-Registrant State/Province: ON
+Registrant State/Province: NA
 Registrant Postal Code: REDACTED FOR PRIVACY
-Registrant Country: CA
+Registrant Country: IT
 Registrant Phone: REDACTED FOR PRIVACY
 Registrant Email: Please query the WHOIS server of the owning registrar identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name. 
 Registry Admin ID: REDACTED FOR PRIVACY
 Admin Name: REDACTED FOR PRIVACY
-Admin Organization: REDACTED FOR PRIVACY
+Admin Street: REDACTED FOR PRIVACY
+Admin Street: REDACTED FOR PRIVACY
 Admin Street: REDACTED FOR PRIVACY
 Admin City: REDACTED FOR PRIVACY
 Admin State/Province: REDACTED FOR PRIVACY
@@ -32,7 +35,8 @@ Admin Phone: REDACTED FOR PRIVACY
 Admin Email: Please query the WHOIS server of the owning registrar identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name. 
 Registry Tech ID: REDACTED FOR PRIVACY
 Tech Name: REDACTED FOR PRIVACY
-Tech Organization: REDACTED FOR PRIVACY
+Tech Street: REDACTED FOR PRIVACY
+Tech Street: REDACTED FOR PRIVACY
 Tech Street: REDACTED FOR PRIVACY
 Tech City: REDACTED FOR PRIVACY
 Tech State/Province: REDACTED FOR PRIVACY
@@ -42,7 +46,8 @@ Tech Phone: REDACTED FOR PRIVACY
 Tech Email: Please query the WHOIS server of the owning registrar identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name. 
 Registry Billing ID: REDACTED FOR PRIVACY
 Billing Name: REDACTED FOR PRIVACY
-Billing Organization: REDACTED FOR PRIVACY
+Billing Street: REDACTED FOR PRIVACY
+Billing Street: REDACTED FOR PRIVACY
 Billing Street: REDACTED FOR PRIVACY
 Billing City: REDACTED FOR PRIVACY
 Billing State/Province: REDACTED FOR PRIVACY
@@ -54,13 +59,16 @@ Name Server: candy.ns.cloudflare.com
 Name Server: gerald.ns.cloudflare.com
 DNSSEC: unsigned
 URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
->>> Last update of WHOIS database: 2023-08-11T14:46:08Z <<<
+>>> Last update of WHOIS database: 2024-11-29T09:43:06Z <<<
 
 For more information on Whois status codes, please visit https://icann.org/epp
 
 Please query the WHOIS server of the owning registrar identified in this
 output for information on how to contact the Registrant, Admin, or Tech
 contact of the queried domain name.
+
+You may also request underlying Registrant data via ICANN's RDRS service
+(https://rdrs.icann.org/).
 
 WHOIS information is provided by Charleston Road Registry Inc. (CRR) solely
 for query-based, informational purposes. By querying our WHOIS database, you

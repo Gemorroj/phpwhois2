@@ -17,18 +17,16 @@ state:            active
 domain:           nunames.nu
 holder:           qi9c3zbvhr
 created:          1997-05-30
-modified:         2020-08-03
+modified:         2024-06-05
 expires:          2097-05-30
 nserver:          lns3.nudomain.nu 185.136.99.88 2A06:FB00:1:0:0:0:4:88
 nserver:          lns2.nudomain.nu 185.136.98.88 2A06:FB00:1:0:0:0:3:88
 nserver:          lns1.nudomain.nu 185.136.97.88 2A06:FB00:1:0:0:0:2:88
 nserver:          lns0.nudomain.nu 185.136.96.88 2A06:FB00:1:0:0:0:1:88
-nserver:          ndl3.nudomain.nu 65.61.139.19
-nserver:          ndl2.nudomain.nu 92.52.92.100
-nserver:          ndl1.nudomain.nu 207.97.208.110
+nserver:          ns1.worldwidedns.net
+nserver:          ns2.worldwidedns.net
+nserver:          ns3.worldwidedns.net
 dnssec:           unsigned delegation
-registry-lock:    locked
-status:           serverUpdateProhibited
-status:           serverDeleteProhibited
-status:           serverTransferProhibited
+registry-lock:    unlocked
+status:           ok
 registrar:        NuNames.NU

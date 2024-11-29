@@ -2,9 +2,9 @@
    Registry Domain ID: 91958491_DOMAIN_COM-VRSN
    Registrar WHOIS Server: whois.fastdomain.com
    Registrar URL: http://www.fastdomain.com
-   Updated Date: 2021-12-17T16:25:12Z
+   Updated Date: 2024-10-09T18:55:15Z
    Creation Date: 2002-11-07T05:49:33Z
-   Registry Expiry Date: 2029-11-07T05:49:33Z
+   Registry Expiry Date: 2033-11-07T05:49:33Z
    Registrar: FastDomain Inc.
    Registrar IANA ID: 1154
    Registrar Abuse Contact Email:
@@ -14,7 +14,7 @@
    Name Server: ERIN.NS.CLOUDFLARE.COM
    DNSSEC: unsigned
    URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
->>> Last update of whois database: 2023-08-11T14:45:57Z <<<
+>>> Last update of whois database: 2024-11-29T09:43:02Z <<<
 
 For more information on Whois status codes, please visit https://icann.org/epp
 

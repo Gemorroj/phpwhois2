@@ -2,7 +2,6 @@
 [ restricted to network administration purposes. For further information,     ]
 [ use 'whois -h whois.jprs.jp help'. To suppress Japanese output, add'/e'     ]
 [ at the end of command, e.g. 'whois -h whois.jprs.jp xxx/e'.                 ]
-
 Domain Information: [ドメイン情報]
 a. [ドメイン名]                 GOOGLE.CO.JP
 e. [そしきめい]                 ぐーぐるごうどうかいしゃ
@@ -17,8 +16,9 @@ p. [ネームサーバ]               ns2.google.com
 p. [ネームサーバ]               ns3.google.com
 p. [ネームサーバ]               ns4.google.com
 s. [署名鍵]                     
-[状態]                          Connected (2024/03/31)
+[状態]                          Connected (2025/03/31)
+[ロック状態]                    AgentChangeLocked
 [登録年月日]                    2001/03/22
 [接続年月日]                    2001/03/22
-[最終更新]                      2023/04/01 01:05:57 (JST)
+[最終更新]                      2024/04/01 01:02:39 (JST)
 

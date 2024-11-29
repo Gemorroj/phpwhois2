@@ -2,7 +2,7 @@
    Registry Domain ID: 729927_DOMAIN_COM-VRSN
    Registrar WHOIS Server: whois.name.com
    Registrar URL: http://www.name.com
-   Updated Date: 2022-11-07T18:19:31Z
+   Updated Date: 2023-08-29T19:30:58Z
    Creation Date: 1995-01-03T05:00:00Z
    Registry Expiry Date: 2032-11-04T13:56:30Z
    Registrar: Name.com, Inc.
@@ -13,18 +13,11 @@
    Domain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited
    Domain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited
    Domain Status: serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited
-   Name Server: ASIA3.AKAM.NET
-   Name Server: AUS1.AKAM.NET
-   Name Server: EUR2.AKAM.NET
-   Name Server: EUR4.AKAM.NET
-   Name Server: NS1-242.AKAM.NET
-   Name Server: NS1-35.AKAM.NET
-   Name Server: USE4.AKAM.NET
-   Name Server: USW1.AKAM.NET
-   Name Server: USW5.AKAM.NET
+   Name Server: MARGARET.NS.CLOUDFLARE.COM
+   Name Server: WOZ.NS.CLOUDFLARE.COM
    DNSSEC: unsigned
    URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
->>> Last update of whois database: 2023-08-11T14:45:57Z <<<
+>>> Last update of whois database: 2024-11-29T09:43:02Z <<<
 
 For more information on Whois status codes, please visit https://icann.org/epp
 

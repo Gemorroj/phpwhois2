@@ -1,20 +1,22 @@
    Domain Name: NICLINE.COM
    Registry Domain ID: 22280656_DOMAIN_COM-VRSN
-   Registrar WHOIS Server: https://www.arsys.es/dominios/whois
+   Registrar WHOIS Server: whois.nicline.com
    Registrar URL: http://www.arsys.es
-   Updated Date: 2023-03-03T07:20:09Z
+   Updated Date: 2024-04-10T11:11:31Z
    Creation Date: 2000-03-13T12:29:12Z
-   Registry Expiry Date: 2024-03-13T11:29:12Z
+   Registry Expiry Date: 2025-03-13T11:29:12Z
    Registrar: Arsys Internet, S.L. dba NICLINE.COM
    Registrar IANA ID: 379
    Registrar Abuse Contact Email: abuse@nicline.com
    Registrar Abuse Contact Phone: +34 941 620 100
    Domain Status: ok https://icann.org/epp#ok
-   Name Server: DNS1.NICLINE.COM
-   Name Server: DNS2.NICLINE.COM
+   Name Server: NS-ARSYS.UI-DNS.BIZ
+   Name Server: NS-ARSYS.UI-DNS.COM
+   Name Server: NS-ARSYS.UI-DNS.ES
+   Name Server: NS-ARSYS.UI-DNS.ORG
    DNSSEC: unsigned
    URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
->>> Last update of whois database: 2023-08-11T14:45:57Z <<<
+>>> Last update of whois database: 2024-11-29T09:43:02Z <<<
 
 For more information on Whois status codes, please visit https://icann.org/epp
 

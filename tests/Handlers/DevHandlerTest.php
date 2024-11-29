@@ -63,9 +63,9 @@ class DevHandlerTest extends AbstractHandler
         $actual = $this->handler->parse($data, $query);
 
         $this->assertEquals('ostap.dev', $actual['regrinfo']['domain']['name']);
-        $this->assertEquals('2023-04-14', $actual['regrinfo']['domain']['changed']);
+        $this->assertEquals('2024-06-07', $actual['regrinfo']['domain']['changed']);
         $this->assertEquals('2019-02-28', $actual['regrinfo']['domain']['created']);
-        $this->assertEquals('2024-02-28', $actual['regrinfo']['domain']['expires']);
+        $this->assertEquals('2025-02-28', $actual['regrinfo']['domain']['expires']);
         $this->assertEquals('yes', $actual['regrinfo']['registered']);
 
         $this->assertArrayHasKey('rawdata', $actual);

@@ -49,8 +49,8 @@ class AuHandlerTest extends AbstractHandler
 
         $expected = [
             'domain'     => [
-                'name'    => 'TELSTRA.COM.AU',
-                'changed' => '2023-08-01',
+				'name' => 'telstra.com.au',
+				'changed' => '2024-09-12',
             ],
             'registered' => 'yes',
         ];

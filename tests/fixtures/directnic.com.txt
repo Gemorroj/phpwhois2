@@ -2,7 +2,7 @@
    Registry Domain ID: 19525357_DOMAIN_COM-VRSN
    Registrar WHOIS Server: whois.directnic.com
    Registrar URL: http://www.directnic.com
-   Updated Date: 2022-09-16T00:45:24Z
+   Updated Date: 2024-11-15T23:28:48Z
    Creation Date: 2000-02-09T23:22:12Z
    Registry Expiry Date: 2027-02-09T23:22:12Z
    Registrar: DNC Holdings, Inc.
@@ -15,12 +15,12 @@
    Domain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited
    Domain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited
    Name Server: NS1.DNSIMPLE.COM
-   Name Server: NS2.DNSIMPLE.COM
+   Name Server: NS2.DNSIMPLE-EDGE.NET
    Name Server: NS3.DNSIMPLE.COM
-   Name Server: NS4.DNSIMPLE.COM
+   Name Server: NS4.DNSIMPLE-EDGE.ORG
    DNSSEC: unsigned
    URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
->>> Last update of whois database: 2023-08-11T14:45:57Z <<<
+>>> Last update of whois database: 2024-11-29T09:42:46Z <<<
 
 For more information on Whois status codes, please visit https://icann.org/epp
 

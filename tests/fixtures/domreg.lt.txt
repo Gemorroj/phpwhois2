@@ -17,7 +17,7 @@
 Domain:			domreg.lt
 Status:			registered
 Registered:		1999-10-17
-Expires:		2024-10-17
+Expires:		2025-10-17
 %
 Registrar:		Kauno technologijos universitetas
 Registrar website:	https://www.domains.lt
@@ -29,6 +29,8 @@ Contact email:		hostmaster@domreg.lt
 Contact organization:	Kauno technologijos universitetas Informacinių technologijų departamentas
 Contact email:		tomas@domreg.lt
 %
-Nameserver:		ns1.domreg.lt	[195.8.218.44 2001:67c:218:0:195:8:218:44]
+Nameserver:		ns1.domreg.lt	[185.150.40.44 2a07:ab40::44]
 Nameserver:		ns2.domreg.lt	[83.171.8.8 2001:778:0:8::8]
 Nameserver:		nsa.domreg.lt	[185.150.42.1 2a07:ab42::1]
+%
+DS:			16058	13 2 394180ADA8735B74D6D08679CC961DA41559D311F9BC1D704E1714B2C4B5EC1B

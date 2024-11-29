@@ -2,9 +2,9 @@
    Registry Domain ID: 1938925_DOMAIN_COM-VRSN
    Registrar WHOIS Server: whois.ovh.com
    Registrar URL: http://www.ovh.com
-   Updated Date: 2016-01-11T16:45:19Z
+   Updated Date: 2024-11-25T14:32:20Z
    Creation Date: 1997-02-07T05:00:00Z
-   Registry Expiry Date: 2025-02-08T05:00:00Z
+   Registry Expiry Date: 2033-02-08T05:00:00Z
    Registrar: OVH sas
    Registrar IANA ID: 433
    Registrar Abuse Contact Email: abuse@ovh.net
@@ -19,7 +19,7 @@
    Name Server: NS200.ANYCAST.ME
    DNSSEC: unsigned
    URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
->>> Last update of whois database: 2023-08-11T14:46:13Z <<<
+>>> Last update of whois database: 2024-11-29T09:43:02Z <<<
 
 For more information on Whois status codes, please visit https://icann.org/epp
 

@@ -53,10 +53,10 @@ class DeHandlerTest extends AbstractHandler
                     'name' => '4ever.de',
                     'nserver' =>
                         [
-                            0 => 'ns2.4ever.de 104.156.233.7 2001:19f0:5800:8101:0:0:0:235',
-                            1 => 'ns3.4ever.de 107.170.225.117 2604:a880:1:20:0:0:26:3001',
-                            2 => 'ns.4ever.de 213.239.225.238 2a01:4f8:222:1b01:0:0:eb:238',
-                            3 => 'ns.does.not-exist.de',
+							0 => 'ns1.detebe.org',
+							1 => 'ns2.detebe.org',
+							2 => 'ns.4ever.de 193.200.137.137',
+							3 => 'ns.does.not-exist.de',
                         ],
                     'status' => 'connect',
                 ],
@@ -161,8 +161,8 @@ class DeHandlerTest extends AbstractHandler
             'domain' => [
                 'name' => 'humblebundle.de',
                 'nserver' => [
-                    0 => 'ns1.sedoparking.com',
-                    1 => 'ns2.sedoparking.com',
+                    0 => 'ns1.redirectdom.com',
+                    1 => 'ns2.redirectdom.com',
                 ],
                 'status' => 'connect',
             ],

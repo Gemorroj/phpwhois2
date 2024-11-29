@@ -2,14 +2,16 @@ Domain Name: nic.ag
 Registry Domain ID: c2b093f371074887947a171e221e00e7-DONUTS
 Registrar WHOIS Server: 
 Registrar URL: 
-Updated Date: 2022-07-08T23:31:39Z
+Updated Date: 2024-09-23T15:56:28Z
 Creation Date: 1998-05-02T04:00:00Z
 Registry Expiry Date: 2025-05-02T04:00:00Z
 Registrar: NicAg Registrar
 Registrar IANA ID: 800117
 Registrar Abuse Contact Email: 
 Registrar Abuse Contact Phone: 
-Domain Status: ok https://icann.org/epp#ok
+Domain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited
+Domain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited
+Domain Status: serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited
 Registry Registrant ID: REDACTED FOR PRIVACY
 Registrant Name: REDACTED FOR PRIVACY
 Registrant Organization: Nic AG LLC
@@ -53,7 +55,7 @@ Name Server: ns01.nic.ag
 Name Server: ns02.nic.ag
 DNSSEC: unsigned
 URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
->>> Last update of WHOIS database: 2023-08-11T14:44:25Z <<<
+>>> Last update of WHOIS database: 2024-11-29T09:41:18Z <<<
 
 For more information on Whois status codes, please visit https://icann.org/epp
 

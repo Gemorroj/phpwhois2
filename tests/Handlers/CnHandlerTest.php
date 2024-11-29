@@ -67,7 +67,7 @@ class CnHandlerTest extends AbstractHandler
                 'name'    => 'google.cn',
                 // 'changed' => '2020-01-13',
                 'created' => '2003-03-17',
-                'expires' => '2024-03-17',
+                'expires' => '2026-03-17',
             ],
             'registered' => 'yes',
         ];

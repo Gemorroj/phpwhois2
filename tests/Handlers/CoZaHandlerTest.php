@@ -62,13 +62,7 @@ class CoZaHandlerTest extends AbstractHandler
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'domain'     => [
-                'name'    => 'google.co.za',
-                // 'changed' => '2020-01-23',
-                'created' => '2001-06-25',
-                // 'expires' => '2021-02-24',
-            ],
-            'registered' => 'yes',
+            'registered' => 'no',
         ];
 
         Assert::assertArraySubset($expected, $actual['regrinfo'], 'Whois data may have changed');
@@ -94,13 +88,7 @@ class CoZaHandlerTest extends AbstractHandler
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'domain'     => [
-                'name'    => 'sex.co.za',
-                // 'changed' => '2020-06-07',
-                'created' => '1994-12-31',
-                // 'expires' => '2021-04-22',
-            ],
-            'registered' => 'yes',
+            'registered' => 'no',
         ];
 
         Assert::assertArraySubset($expected, $actual['regrinfo'], 'Whois data may have changed');

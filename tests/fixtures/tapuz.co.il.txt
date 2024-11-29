@@ -30,11 +30,14 @@ tech-c:       DT-SR6267-IL
 zone-c:       DT-SR6267-IL
 nserver:      danica.ns.cloudflare.com 
 nserver:      jake.ns.cloudflare.com 
-validity:     13-09-2023
+assigned:     13-09-2021
+validity:     13-09-2026
 DNSSEC:       unsigned
 status:       Transfer Locked
 changed:      domain-registrar AT isoc.org.il 20210913 (Assigned)
 changed:      domain-registrar AT isoc.org.il 20220829 (Changed)
+changed:      domain-registrar AT isoc.org.il 20230914 (Changed)
+changed:      domain-registrar AT isoc.org.il 20240908 (Changed)
 
 person:       Avishai Ovadia
 address      Tapuz Media ltd.

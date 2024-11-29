@@ -65,9 +65,9 @@ class CoHandlerTest extends AbstractHandler
         $expected = [
             'domain'     => [
                 'name'    => 'google.co',
-                'changed' => '2023-01-28',
-                'created' => '2010-02-25',
-                'expires' => '2024-02-24',
+				'changed' => '2024-01-28',
+				'created' => '2010-02-25',
+				'expires' => '2025-02-24',
             ],
             'registered' => 'yes',
         ];
@@ -97,9 +97,9 @@ class CoHandlerTest extends AbstractHandler
         $expected = [
             'domain'     => [
                 'name'    => 'nic.co',
-                'changed' => '2023-06-07',
-                'created' => '2010-04-23',
-                'expires' => '2024-04-22',
+				'changed' => '2024-06-07',
+				'created' => '2010-04-23',
+				'expires' => '2025-04-22',
             ],
             'registered' => 'yes',
         ];

@@ -2,8 +2,8 @@
 Domain Name:       nic.mx
 
 Created On:        1997-01-15
-Expiration Date:   2024-01-14
-Last Updated On:   2023-03-02
+Expiration Date:   2025-01-14
+Last Updated On:   2024-03-01
 Registrar:         Registry .MX
 URL:               http://www.registry.mx
 
@@ -34,9 +34,7 @@ Billing Contact:
 Name Servers:
    DNS:            a.nic.mx       2001:1250:a000:0:0:0:0:1, 207.248.65.1
    DNS:            b.nic.mx       2001:1250:b000:0:0:0:0:1, 201.131.250.1
-   DNS:            m.mx-ns.mx       200.94.176.1
-   DNS:            c.mx-ns.mx       192.100.224.1, 2001:1258:0:0:0:0:0:1
-   DNS:            o.mx-ns.mx       200.23.1.1
+   DNS:            c.nic.mx       2001:1250:c000:0:0:0:0:1, 201.131.248.1
 
 DNSSEC DS Records:
 

@@ -65,9 +65,9 @@ class UsHandlerTest extends AbstractHandler
         $expected = [
             'domain'     => [
                 'name'    => 'google.us',
-                'changed' => '2023-03-22',
-                'created' => '2002-04-19',
-                'expires' => '2024-04-18',
+				'changed' => '2024-10-23',
+				'created' => '2002-04-19',
+				'expires' => '2025-04-18',
             ],
             'registered' => 'yes',
         ];
@@ -97,9 +97,9 @@ class UsHandlerTest extends AbstractHandler
         $expected = [
             'domain'     => [
                 'name'    => 'neustar.us',
-                'changed' => '2023-06-02',
-                'created' => '2002-04-18',
-                'expires' => '2024-04-17',
+				'changed' => '2024-06-02',
+				'created' => '2002-04-18',
+				'expires' => '2025-04-17',
             ],
             'registered' => 'yes',
         ];

@@ -98,7 +98,7 @@ class RuHandlerTest extends AbstractHandler
             'domain'     => [
                 'name'    => 'XN--C1AD6A.XN--P1AI',
                 'created' => '2009-12-11',
-                'expires' => '2023-12-11',
+                'expires' => '2025-12-11',
             ],
             'registered' => 'yes',
         ];

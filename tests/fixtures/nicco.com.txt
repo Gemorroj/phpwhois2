@@ -2,9 +2,9 @@
    Registry Domain ID: 39551198_DOMAIN_COM-VRSN
    Registrar WHOIS Server: whois.nicco.com
    Registrar URL: http://www.nicco.com
-   Updated Date: 2022-11-02T07:13:36Z
+   Updated Date: 2024-11-02T07:10:21Z
    Creation Date: 2000-11-01T11:42:51Z
-   Registry Expiry Date: 2023-11-01T10:42:51Z
+   Registry Expiry Date: 2025-11-01T10:42:51Z
    Registrar: Nicco Ltd.
    Registrar IANA ID: 840
    Registrar Abuse Contact Email: accreditation@nicco.com
@@ -16,7 +16,7 @@
    Name Server: NS2.NICCO.COM
    DNSSEC: unsigned
    URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
->>> Last update of whois database: 2023-08-11T14:45:57Z <<<
+>>> Last update of whois database: 2024-11-29T09:43:02Z <<<
 
 For more information on Whois status codes, please visit https://icann.org/epp
 

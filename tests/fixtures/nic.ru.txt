@@ -12,8 +12,8 @@ taxpayer-id:   7733573894
 registrar:     RU-CENTER-RU
 admin-contact: https://www.nic.ru/whois
 created:       1997-11-28T06:15:56Z
-paid-till:     2023-11-30T21:00:00Z
-free-date:     2024-01-01
+paid-till:     2025-11-30T21:00:00Z
+free-date:     2026-01-01
 source:        TCI
 
-Last updated on 2023-08-11T14:41:30Z
+Last updated on 2024-11-29T09:38:01Z

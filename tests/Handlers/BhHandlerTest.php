@@ -50,7 +50,7 @@ class BhHandlerTest extends AbstractHandler
         $expected = [
             'domain'     => [
                 'name'    => 'NIC.BH',
-                'changed' => '2021-06-22',
+				'changed' => '2023-08-31',
                 'created' => '2019-04-24',
                 'expires' => '2029-04-24',
             ],

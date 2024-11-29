@@ -16,9 +16,9 @@
 % 
 
 Domain: 4ever.de
-Nserver: ns2.4ever.de 104.156.233.7 2001:19f0:5800:8101:0:0:0:235
-Nserver: ns3.4ever.de 107.170.225.117 2604:a880:1:20:0:0:26:3001
-Nserver: ns.4ever.de 213.239.225.238 2a01:4f8:222:1b01:0:0:eb:238
+Nserver: ns1.detebe.org
+Nserver: ns2.detebe.org
+Nserver: ns.4ever.de 193.200.137.137
 Nserver: ns.does.not-exist.de
 Status: connect
-Changed: 2018-01-24T18:03:55+01:00
+Changed: 2023-11-28T21:48:22+01:00
