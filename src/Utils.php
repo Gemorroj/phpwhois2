@@ -132,7 +132,6 @@ class Utils extends Whois
                 $out = preg_replace($ip_regex, '<a href="' . $link . '">$0</a>', $out);
             }
 
-
             if (isset($result['regrinfo']['domain']['nserver'])) {
                 $nserver = $result['regrinfo']['domain']['nserver'];
             } else {
