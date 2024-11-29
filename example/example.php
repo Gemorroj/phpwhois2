@@ -85,11 +85,12 @@ if (isset($_GET['query'])) {
                 exit(serialize($result));
 
         default:
-            if (!empty($result['rawdata'])) {
-                $winfo .= '<pre>' . implode($result['rawdata'], "\n") . '</pre>';
+            if (!empty($result['rawdata']) && is_array($result['rawdata'])) {
+                $winfo .= '<pre>' . implode("\n", $result['rawdata']) . '</pre>';
             } else {
-                $winfo = implode($whois->query['errstr'], "\n<br></br>");
+                $winfo = implode("\n<br></br>", (array)$whois->query['errstr']);
             }
+            break;
     }
 
 }

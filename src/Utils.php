@@ -128,7 +128,10 @@ class Utils extends Whois
                 $link = $_SERVER['PHP_SELF'] . '?' . $params;
             }
 
-            $out = preg_replace($ip_regex, '<a href="' . $link . '">$0</a>', $out);
+            if (strpos($out, '<a href=') === false) {
+                $out = preg_replace($ip_regex, '<a href="' . $link . '">$0</a>', $out);
+            }
+
 
             if (isset($result['regrinfo']['domain']['nserver'])) {
                 $nserver = $result['regrinfo']['domain']['nserver'];
