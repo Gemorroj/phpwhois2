@@ -42,9 +42,6 @@ class CzHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotCz(): void
     {
         $query = 'google.cz';
@@ -72,9 +69,6 @@ class CzHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseNicDotCz(): void
     {
         $query = 'nic.cz';

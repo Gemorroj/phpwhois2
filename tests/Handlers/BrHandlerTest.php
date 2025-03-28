@@ -28,9 +28,6 @@ class BrHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseRegistroDotBr(): void
     {
         $query = 'registro.br';

@@ -42,9 +42,6 @@ class UsHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotUs(): void
     {
         $query = 'google.us';
@@ -72,9 +69,6 @@ class UsHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseNeustarDotUs(): void
     {
         $query = 'neustar.us';

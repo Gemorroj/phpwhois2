@@ -41,9 +41,6 @@ class GtldHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotCom(): void
     {
         $query = 'google.com';

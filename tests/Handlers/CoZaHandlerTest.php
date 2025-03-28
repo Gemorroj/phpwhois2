@@ -41,9 +41,6 @@ class CoZaHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotCoDotZa(): void
     {
         $query = 'google.co.za';
@@ -65,9 +62,6 @@ class CoZaHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseSexDotCoDotZa(): void
     {
         $query = 'sex.co.za';

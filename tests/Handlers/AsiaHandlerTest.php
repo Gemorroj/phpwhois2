@@ -28,9 +28,6 @@ class AsiaHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseNicDotAsia(): void
     {
         $query = 'nic.asia';

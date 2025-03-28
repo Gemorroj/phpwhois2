@@ -28,9 +28,6 @@ class KiwiHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseHelloDotKiwi(): void
     {
         $query = 'hello.kiwi';
@@ -59,9 +56,6 @@ class KiwiHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotKiwi(): void
     {
         $query = 'google.kiwi';

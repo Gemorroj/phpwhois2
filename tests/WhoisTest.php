@@ -22,7 +22,7 @@ class WhoisTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($type, $whois->getQueryType($domain));
     }
 
-    public function domainsProvider()
+    public static function domainsProvider()
     {
         return [
             [Whois::QTYPE_DOMAIN,  'www.google.com'],

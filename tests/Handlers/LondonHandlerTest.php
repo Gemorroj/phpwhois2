@@ -41,9 +41,6 @@ class LondonHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseNicDotLondon(): void
     {
         $query = 'nic.london';
@@ -66,9 +63,6 @@ class LondonHandlerTest extends AbstractHandler
         $this->assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseDomainsDotLondon(): void
     {
         $query = 'domains.london';

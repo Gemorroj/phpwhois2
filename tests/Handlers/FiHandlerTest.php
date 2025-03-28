@@ -42,9 +42,6 @@ class FiHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotFi(): void
     {
         $query = 'google.fi';
@@ -72,9 +69,6 @@ class FiHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseFicoraDotFi(): void
     {
         $query = 'ficora.fi';

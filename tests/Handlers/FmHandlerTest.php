@@ -42,9 +42,6 @@ class FmHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotFm(): void
     {
         $query = 'google.fm';
@@ -72,9 +69,6 @@ class FmHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseDotDotFm(): void
     {
         $query = 'dot.fm';

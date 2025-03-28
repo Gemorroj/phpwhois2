@@ -42,9 +42,6 @@ class CoHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotCo(): void
     {
         $query = 'google.co';
@@ -72,9 +69,6 @@ class CoHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseNicDotCo(): void
     {
         $query = 'nic.co';

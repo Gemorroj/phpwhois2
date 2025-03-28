@@ -22,7 +22,7 @@ class ParserTest extends BaseTestCase
         "Registrant Name: \${k}\n",
     ];
 
-    public function get_dateProvider(): array
+    public static function get_dateProvider(): array
     {
         return [
             'nic.ag' => [

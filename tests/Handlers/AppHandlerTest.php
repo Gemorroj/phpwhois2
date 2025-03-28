@@ -30,8 +30,6 @@ class AppHandlerTest extends AbstractHandler
 
     /**
      * @throws \Exception
-     *
-     * @return void
      */
     public function testParseGoogleDotApp(): void
     {
@@ -62,8 +60,6 @@ class AppHandlerTest extends AbstractHandler
 
     /**
      * @throws \Exception
-     *
-     * @return void
      */
     public function testParseGodaddyDotApp(): void
     {

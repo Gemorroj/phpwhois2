@@ -14,6 +14,6 @@ class ip_handlerTest extends \PHPUnit\Framework\TestCase
     {
         $ipHandler = new \phpWhois\Whois();
         $result = $ipHandler->lookup('216.58.209.195');
-        self::assertTrue(\is_array($result));
+        self::assertIsArray($result);
     }
 }

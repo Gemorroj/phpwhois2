@@ -41,9 +41,6 @@ class TodayHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseModxDotToday(): void
     {
         $query = 'modx.today';

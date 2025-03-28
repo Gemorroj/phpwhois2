@@ -47,9 +47,6 @@ class ChHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotCh(): void
     {
         $query = 'google.ch';
@@ -77,9 +74,6 @@ class ChHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseCreartDotCh(): void
     {
         $query = 'creart.ch';
@@ -107,9 +101,6 @@ class ChHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseBlaueskreuzDotCh(): void
     {
         $query = 'blaueskreuz.ch';

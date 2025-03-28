@@ -36,12 +36,12 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
-        "algo26-matthias/idna-convert": "^3.1 || ^4.0"
+        "php": ">=8.2",
+        "algo26-matthias/idna-convert": "^4.2"
     },
     "require-dev": {
         "dms/phpunit-arraysubset-asserts": "^0.5",
-        "phpunit/phpunit": "^9.6 || ^10.0 || ^11.0",
+        "phpunit/phpunit": "^10.5.45",
         "friendsofphp/php-cs-fixer": "^3.74.0"
     },
     "suggest": {
@@ -62,6 +62,6 @@
         ]
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": false
     }
 }

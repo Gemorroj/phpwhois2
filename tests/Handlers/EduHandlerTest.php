@@ -42,9 +42,6 @@ class EduHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseBerkeleyDotEdu(): void
     {
         $query = 'berkeley.edu';

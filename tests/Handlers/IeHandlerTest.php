@@ -42,9 +42,6 @@ class IeHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotIe(): void
     {
         $query = 'google.ie';
@@ -66,9 +63,6 @@ class IeHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseDomainregistryDotIe(): void
     {
         $query = 'domainregistry.ie';

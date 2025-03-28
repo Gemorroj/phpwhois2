@@ -28,9 +28,6 @@ class BizHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseNeulevelDotBiz(): void
     {
         $query = 'neulevel.biz';

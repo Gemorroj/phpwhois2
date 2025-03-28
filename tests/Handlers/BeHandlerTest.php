@@ -28,9 +28,6 @@ class BeHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseNicDotBe(): void
     {
         $query = 'nic.be';

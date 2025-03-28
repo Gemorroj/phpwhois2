@@ -2,14 +2,15 @@
 
 $finder = PhpCsFixer\Finder::create()
     ->exclude('fixtures')
-    ->in(['src', 'tests', 'example']);
+    ->in(['src', 'tests']);
 
 return (new PhpCsFixer\Config())
     ->setRules([
         '@Symfony' => true,
         '@Symfony:risky' => true,
-        '@PHP74Migration:risky' => true,
-        '@PHP74Migration' => true,
+        '@PHP82Migration:risky' => true,
+        '@PHP82Migration' => true,
+        '@PHPUnit100Migration:risky' => true,
 
         'combine_consecutive_issets' => true,
         'combine_consecutive_unsets' => true,

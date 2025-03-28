@@ -15,7 +15,7 @@ class IpToolsTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($ipTools->validIp($ip));
     }
 
-    public function validIpsProvider()
+    public static function validIpsProvider()
     {
         return [
             ['123.123.123.123'],
@@ -32,7 +32,7 @@ class IpToolsTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($ipTools->validIp($ip));
     }
 
-    public function invalidIpsProvider()
+    public static function invalidIpsProvider()
     {
         return [
             [''],

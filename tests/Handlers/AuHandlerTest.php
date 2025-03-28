@@ -28,9 +28,6 @@ class AuHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseTelstraDotComDotAu(): void
     {
         $query = 'telstra.com.au';

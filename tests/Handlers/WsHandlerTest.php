@@ -42,9 +42,6 @@ class WsHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotWs(): void
     {
         $query = 'google.ws';
@@ -72,9 +69,6 @@ class WsHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseSamoanicDotWs(): void
     {
         $query = 'samoanic.ws';

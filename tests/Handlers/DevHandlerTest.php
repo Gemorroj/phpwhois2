@@ -41,9 +41,6 @@ class DevHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseOstapDotDev(): void
     {
         $query = 'ostap.dev';

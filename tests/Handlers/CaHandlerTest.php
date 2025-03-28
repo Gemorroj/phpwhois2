@@ -41,9 +41,6 @@ class CaHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotCa(): void
     {
         $query = 'google.ca';
@@ -66,9 +63,6 @@ class CaHandlerTest extends AbstractHandler
         $this->assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseCiraDotCa(): void
     {
         $query = 'cira.ca';

@@ -28,9 +28,6 @@ class AmHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseIsocDotAm(): void
     {
         $query = 'isoc.am';

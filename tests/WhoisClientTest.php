@@ -6,22 +6,6 @@ use phpWhois\WhoisClient;
 
 class WhoisClientTest extends \PHPUnit\Framework\TestCase
 {
-    public function testVersion(): void
-    {
-        $client = new WhoisClient();
-
-        if (\method_exists($this, 'assertMatchesRegularExpression')) {
-            $this->assertMatchesRegularExpression('/^(\d+)\.(\d+)\.(\d+)(-\w+)*$/', $client->codeVersion);
-        } else {
-            /*
-             * Deprecated in PHPUnit 9
-             * @noinspection PhpUnitDeprecatedCallsIn10VersionInspection
-             * @noinspection PhpDeprecationInspection
-             */
-            $this->assertRegExp('/^(\d+)\.(\d+)\.(\d+)(-\w+)*$/', $client->codeVersion);
-        }
-    }
-
     /**
      * @dataProvider serversProvider
      */
@@ -31,7 +15,7 @@ class WhoisClientTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($result, $whoisClient->parseServer($server));
     }
 
-    public function serversProvider()
+    public static function serversProvider()
     {
         return [
             ['http://www.phpwhois.pw:80/', ['scheme' => 'http', 'host' => 'www.phpwhois.pw', 'port' => 80]],

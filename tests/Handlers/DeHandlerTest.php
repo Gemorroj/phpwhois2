@@ -28,9 +28,6 @@ class DeHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParse4EverDotDe(): void
     {
         $query = '4ever.de';
@@ -62,9 +59,6 @@ class DeHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotDe(): void
     {
         $query = 'google.de';
@@ -96,9 +90,6 @@ class DeHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseDenicDotDe(): void
     {
         $query = 'denic.de';
@@ -130,9 +121,6 @@ class DeHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseDomainInConnectStatus(): void
     {
         $query = 'humblebundle.de';
@@ -162,9 +150,6 @@ class DeHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseDomainInFreeStatus(): void
     {
         $query = 'a2ba91bff88c6983f6af010c41236206df64001d.de';

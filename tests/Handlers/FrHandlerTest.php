@@ -42,9 +42,6 @@ class FrHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotFr(): void
     {
         $query = 'google.fr';
@@ -72,9 +69,6 @@ class FrHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseLemonadeDotFr(): void
     {
         $query = 'lemonade.fr';
@@ -102,9 +96,6 @@ class FrHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseNicDotFr(): void
     {
         $query = 'nic.fr';

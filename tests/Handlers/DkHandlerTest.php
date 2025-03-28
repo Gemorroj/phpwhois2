@@ -42,9 +42,6 @@ class DkHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotDk(): void
     {
         $query = 'google.dk';

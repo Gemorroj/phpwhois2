@@ -42,9 +42,6 @@ class RuHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotRu(): void
     {
         $query = 'google.ru';

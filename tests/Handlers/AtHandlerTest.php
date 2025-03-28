@@ -28,9 +28,6 @@ class AtHandlerTest extends AbstractHandler
         $this->handler->atepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testNicDotAt(): void
     {
         $query = 'nic.at';

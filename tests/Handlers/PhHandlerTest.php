@@ -41,9 +41,6 @@ class PhHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseCityEscapeDotPh(): void
     {
         $query = 'cityescape.ph';

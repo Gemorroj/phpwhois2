@@ -42,9 +42,6 @@ class NoHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotNo(): void
     {
         $query = 'google.no';
@@ -71,9 +68,6 @@ class NoHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseNoridDotNo(): void
     {
         $query = 'norid.no';

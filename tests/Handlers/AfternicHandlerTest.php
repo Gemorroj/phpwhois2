@@ -42,9 +42,6 @@ class AfternicHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseBuydomainsDotCom(): void
     {
         $query = 'buydomains.com';

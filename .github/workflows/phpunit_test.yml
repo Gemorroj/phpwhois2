@@ -8,14 +8,14 @@ on:
 
 permissions:
   contents: read
-  
+
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
@@ -31,6 +31,6 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
-      
+
     - name: PHPUnit Test
       run: XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover=coverage.clover

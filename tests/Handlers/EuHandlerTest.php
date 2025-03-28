@@ -42,9 +42,6 @@ class EuHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotEu(): void
     {
         $query = 'google.eu';
@@ -72,9 +69,6 @@ class EuHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseEuridDotEu(): void
     {
         $query = 'eurid.eu';

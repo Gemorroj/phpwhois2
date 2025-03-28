@@ -42,9 +42,6 @@ class AeHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotAe(): void
     {
         $query = 'google.ae';
@@ -77,9 +74,6 @@ class AeHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseNicDotAe(): void
     {
         $query = 'nic.ae';
@@ -112,9 +106,6 @@ class AeHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseAedaDotAe(): void
     {
         $query = 'aeda.ae';

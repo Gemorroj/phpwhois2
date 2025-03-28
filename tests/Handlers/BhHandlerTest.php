@@ -28,9 +28,6 @@ class BhHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseNicDotBh(): void
     {
         $query = 'nic.bh';

@@ -28,9 +28,6 @@ class AeroHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseNicDotAero(): void
     {
         $query = 'nic.aero';

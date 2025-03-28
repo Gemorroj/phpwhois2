@@ -42,9 +42,6 @@ class IlHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseTapuzDotCoDotIl(): void
     {
         $query = 'tapuz.co.il';
@@ -72,9 +69,6 @@ class IlHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseVenetaCucineCoIl(): void
     {
         $query = 'venetacucine.co.il';

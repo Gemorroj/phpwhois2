@@ -42,9 +42,6 @@ class CnHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotCn(): void
     {
         $query = 'google.cn';
@@ -72,9 +69,6 @@ class CnHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseChinaDotCn(): void
     {
         $query = 'china.cn';

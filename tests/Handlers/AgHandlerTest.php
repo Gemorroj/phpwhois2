@@ -28,9 +28,6 @@ class AgHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseNicDotAg(): void
     {
         $query = 'nic.ag';

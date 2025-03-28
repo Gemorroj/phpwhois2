@@ -42,9 +42,6 @@ class OrgHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotOrg(): void
     {
         $query = 'google.org';
@@ -72,9 +69,6 @@ class OrgHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseDatesProperly(): void
     {
         $query = 'scottishrecoveryconsortium.org';

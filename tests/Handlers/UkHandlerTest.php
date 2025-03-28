@@ -42,9 +42,6 @@ class UkHandlerTest extends AbstractHandler
         $this->handler->deepWhois = false;
     }
 
-    /**
-     * @return void
-     */
     public function testParseVibrantDigitalFutureDotUk(): void
     {
         $query = 'vibrantdigitalfuture.uk';
@@ -70,9 +67,6 @@ class UkHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseGoogleDotCoDotUk(): void
     {
         $query = 'google.co.uk';
@@ -99,9 +93,6 @@ class UkHandlerTest extends AbstractHandler
         Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
-    /**
-     * @return void
-     */
     public function testParseOlsnsDotCoDotUk(): void
     {
         $query = 'olsns.co.uk';
