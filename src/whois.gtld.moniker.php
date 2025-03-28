@@ -27,8 +27,6 @@ if (!\defined('__MONIKER_HANDLER__')) {
     \define('__MONIKER_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class moniker_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -48,6 +46,6 @@ class moniker_handler
             'domain.changed' => 'Database last updated on: ',
         ];
 
-        return \easy_parser($data_str, $items, 'ymd');
+        return phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'ymd');
     }
 }

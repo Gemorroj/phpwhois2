@@ -29,8 +29,6 @@ if (!\defined('__GTLD_HANDLER__')) {
 
 use phpWhois\WhoisClient;
 
-require_once 'whois.parser.php';
-
 class gtld_handler extends WhoisClient
 {
     /**
@@ -58,7 +56,7 @@ class gtld_handler extends WhoisClient
     public function parse(array $data, string $query): array
     {
         $this->query = [];
-        $this->result = \generic_parser_b($data['rawdata'], self::REG_FIELDS, 'dmy');
+        $this->result = phpWhois\Handlers\AbstractHandler::generic_parser_b($data['rawdata'], self::REG_FIELDS, 'dmy');
 
         unset($this->result['registered']);
 

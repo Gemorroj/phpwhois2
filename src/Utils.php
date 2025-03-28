@@ -29,14 +29,14 @@ namespace phpWhois;
 /**
  * Additional utils.
  */
-class Utils extends Whois
+final class Utils extends Whois
 {
     /**
      * Wrap result in <pre></pre> tags.
      */
-    public function showObject(&$obj): string
+    public static function showObject(&$obj): string
     {
-        $r = $this->debugObject($obj);
+        $r = self::debugObject($obj);
 
         return "<pre>$r</pre>\n";
     }
@@ -44,7 +44,7 @@ class Utils extends Whois
     /**
      * Return object or array as formatted string.
      */
-    public function debugObject($obj, int $indent = 0): string
+    public static function debugObject($obj, int $indent = 0): string
     {
         $return = '';
 
@@ -56,7 +56,7 @@ class Utils extends Whois
             $return .= \str_repeat('&nbsp;', $indent);
             if (\is_array($v)) {
                 $return .= $k."->Array\n";
-                $return .= $this->debugObject($v, $indent + 1);
+                $return .= self::debugObject($v, $indent + 1);
             } else {
                 $return .= $k."->$v\n";
             }
@@ -65,7 +65,7 @@ class Utils extends Whois
         return $return;
     }
 
-    public function nsRrDefined(string $query): bool
+    public static function nsRrDefined(string $query): bool
     {
         return \checkdnsrr($query, 'NS');
     }
@@ -73,13 +73,13 @@ class Utils extends Whois
     /**
      * Get nice HTML output.
      */
-    public function showHTML(array $result, bool $link_myself = true, string $params = 'query=$0&amp;output=nice'): string
+    public static function showHTML(array $result, ?string $useLink = null, string $params = 'query=$0'): string
     {
         // adds links for HTML output
 
-        $email_regex = "/([-_\w\.]+)(@)([-_\w\.]+)\b/i";
-        $html_regex = "/(?:^|\b)((((http|https|ftp):\/\/)|(www\.))([\w\.]+)([,:%#&\/?~=\w+\.-]+))(?:\b|$)/is";
-        $ip_regex = "/\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/i";
+        $email_regex = '/([-_\w\.]+)(@)([-_\w\.]+)\b/i';
+        $html_regex = '/(?:^|\b)((((http|https|ftp):\/\/)|(www\.))([\w\.]+)([,:%#&\/?~=\w+\.-]+))(?:\b|$)/is';
+        $ip_regex = '/\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/i';
 
         $out = '';
         $lempty = true;
@@ -87,7 +87,7 @@ class Utils extends Whois
         foreach ($result['rawdata'] as $line) {
             $line = \trim($line);
 
-            if ('' == $line) {
+            if ('' === $line) {
                 if ($lempty) {
                     continue;
                 }
@@ -105,28 +105,19 @@ class Utils extends Whois
 
         $out = \strip_tags($out);
         $out = \preg_replace($email_regex, '<a href="mailto:$0">$0</a>', $out);
-        $out = \preg_replace_callback(
-            $html_regex,
-            static function ($matches) {
-                if (\str_starts_with($matches[0], 'www.')) {
-                    $web = $matches[0];
-                    $url = 'http://'.$web;
-                } else {
-                    $web = $matches[0];
-                    $url = $web;
-                }
-
-                return '<a href="'.$url.'" target="_blank">'.$web.'</a>';
-            },
-            $out
-        );
-
-        if ($link_myself) {
-            if ('/' === $params[0]) {
-                $link = $params;
+        $out = \preg_replace_callback($html_regex, static function (array $matches): string {
+            $web = $matches[0];
+            if (\str_starts_with($matches[0], 'www.')) {
+                $url = 'http://'.$web;
             } else {
-                $link = $_SERVER['PHP_SELF'].'?'.$params;
+                $url = $web;
             }
+
+            return '<a href="'.$url.'" target="_blank">'.$web.'</a>';
+        }, $out);
+
+        if ($useLink) {
+            $link = $useLink.'?'.$params;
 
             if (!\str_contains($out, '<a href=')) {
                 $out = \preg_replace($ip_regex, '<a href="'.$link.'">$0</a>', $out);
@@ -144,9 +135,8 @@ class Utils extends Whois
 
             if (\is_array($nserver)) {
                 foreach ($nserver as $host => $ip) {
-                    $url = '<a href="'.\str_replace('$0', $ip, $link)."\">$host</a>";
-                    $out = \str_replace($host, $url, $out);
-                    $out = \str_replace(\strtoupper($host), $url, $out);
+                    $url = '<a href="'.\str_replace('$0', $ip, $link).'">'.$host.'</a>';
+                    $out = \str_ireplace($host, $url, $out);
                 }
             }
         }
@@ -157,6 +147,6 @@ class Utils extends Whois
         // Add italics for disclaimer
         $out = \preg_replace('/(?m)^(%.*)/', '<i>$0</i>', $out);
 
-        return \str_replace("\n", "<br/>\n", $out);
+        return \trim(\nl2br($out));
     }
 }

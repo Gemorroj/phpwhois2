@@ -35,7 +35,7 @@ class AtHandler extends AbstractHandler
             'zone-c' => 'zone',
         ];
 
-        $reg = $this->generic_parser_a($data_str['rawdata'], $translate, $contacts, 'domain', 'Ymd');
+        $reg = static::generic_parser_a($data_str['rawdata'], $translate, $contacts, 'domain', 'Ymd');
 
         if (isset($reg['domain']['remarks'])) {
             unset($reg['domain']['remarks']);
@@ -44,19 +44,19 @@ class AtHandler extends AbstractHandler
         if (isset($reg['domain']['descr'])) {
             foreach ($reg['domain']['descr'] as $key => $val) {
                 $v = \trim(\substr(\strstr($val, ':'), 1));
-                if (\strstr($val, '[organization]:')) {
+                if (\str_contains($val, '[organization]:')) {
                     $reg['owner']['organization'] = $v;
                     continue;
                 }
-                if (\strstr($val, '[phone]:')) {
+                if (\str_contains($val, '[phone]:')) {
                     $reg['owner']['phone'] = $v;
                     continue;
                 }
-                if (\strstr($val, '[fax-no]:')) {
+                if (\str_contains($val, '[fax-no]:')) {
                     $reg['owner']['fax'] = $v;
                     continue;
                 }
-                if (\strstr($val, '[e-mail]:')) {
+                if (\str_contains($val, '[e-mail]:')) {
                     $reg['owner']['email'] = $v;
                     continue;
                 }

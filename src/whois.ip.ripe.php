@@ -23,9 +23,6 @@
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
  */
-
-require_once 'whois.parser.php';
-
 if (!\defined('__RIPE_HANDLER__')) {
     \define('__RIPE_HANDLER__', 1);
 }
@@ -55,7 +52,7 @@ class ripe_handler
             $data_str = $data_str['rawdata'];
         }
 
-        $r = \generic_parser_a($data_str, $translate, $contacts, 'network');
+        $r = phpWhois\Handlers\AbstractHandler::generic_parser_a($data_str, $translate, $contacts, 'network');
 
         if (isset($r['network']['desc'])) {
             $r['owner']['organization'] = $r['network']['desc'];

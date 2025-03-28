@@ -27,8 +27,6 @@ if (!\defined('__ASCIO_HANDLER__')) {
     \define('__ASCIO_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class ascio_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -47,6 +45,6 @@ class ascio_handler
             'domain.changed' => 'Record last updated:',
         ];
 
-        return \easy_parser($data_str, $items, 'ymd', [], false, true);
+        return phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'ymd', [], false, true);
     }
 }

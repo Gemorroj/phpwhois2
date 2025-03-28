@@ -27,8 +27,6 @@ if (!\defined('__NETWORKSOLUTIONS_HANDLER__')) {
     \define('__NETWORKSOLUTIONS_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class networksolutions_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -46,6 +44,6 @@ class networksolutions_handler
             'domain.expires' => 'Record expires on',
         ];
 
-        return \easy_parser($data_str, $items, 'dmy', [], true, true);
+        return phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'dmy', [], true, true);
     }
 }

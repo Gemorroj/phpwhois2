@@ -27,8 +27,6 @@ if (!\defined('__TMAGNIC_HANDLER__')) {
     \define('__TMAGNIC_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class tmagnic_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -48,6 +46,6 @@ class tmagnic_handler
             '#' => 'Punycode Name:',
         ];
 
-        return \easy_parser($data_str, $items, 'ymd', [], false, true);
+        return phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'ymd', [], false, true);
     }
 }

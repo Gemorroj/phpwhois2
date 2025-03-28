@@ -27,8 +27,6 @@ if (!\defined('__SCHLUND_HANDLER__')) {
     \define('__SCHLUND_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class schlund_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -82,6 +80,6 @@ class schlund_handler
             'bill-c-email:' => 'billing.email',
         ];
 
-        return \generic_parser_b($data_str, $items);
+        return phpWhois\Handlers\AbstractHandler::generic_parser_b($data_str, $items);
     }
 }

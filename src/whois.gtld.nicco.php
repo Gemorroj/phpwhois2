@@ -27,8 +27,6 @@ if (!\defined('__NICCO_HANDLER__')) {
     \define('__NICCO_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class nicco_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -54,11 +52,11 @@ class nicco_handler
             'postal code:' => 'address.zip',
         ];
 
-        $r = \get_blocks($data_str, $items, true);
-        $r['owner'] = \get_contact($r['owner'], $translate);
-        $r['admin'] = \get_contact($r['admin'], $translate, true);
-        $r['tech'] = \get_contact($r['tech'], $translate, true);
+        $r = phpWhois\Handlers\AbstractHandler::getBlocks($data_str, $items, true);
+        $r['owner'] = phpWhois\Handlers\AbstractHandler::getContact($r['owner'], $translate);
+        $r['admin'] = phpWhois\Handlers\AbstractHandler::getContact($r['admin'], $translate, true);
+        $r['tech'] = phpWhois\Handlers\AbstractHandler::getContact($r['tech'], $translate, true);
 
-        return \format_dates($r, 'dmy');
+        return phpWhois\Handlers\AbstractHandler::formatDates($r, 'dmy');
     }
 }

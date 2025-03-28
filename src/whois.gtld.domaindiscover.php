@@ -27,8 +27,6 @@ if (!\defined('__DOMAINDISCOVER_HANDLER__')) {
     \define('__DOMAINDISCOVER_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class domaindiscover_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -47,6 +45,6 @@ class domaindiscover_handler
             'domain.expires' => 'Domain expires on',
         ];
 
-        return \easy_parser($data_str, $items, 'dmy', [], false, true);
+        return phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'dmy', [], false, true);
     }
 }

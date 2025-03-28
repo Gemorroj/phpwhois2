@@ -27,8 +27,6 @@ if (!\defined('__ARIN_HANDLER__')) {
     \define('__ARIN_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class arin_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -66,7 +64,7 @@ class arin_handler
             'ReferralServer:' => 'rwhois',
         ];
 
-        $r = \generic_parser_b($data_str, $items, 'ymd', false, true);
+        $r = phpWhois\Handlers\AbstractHandler::generic_parser_b($data_str, $items, 'ymd', false, true);
 
         if (@isset($r['abuse']['email'])) {
             $r['abuse']['email'] = \implode(',', $r['abuse']['email']);

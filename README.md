@@ -1,8 +1,3 @@
-[![PHPUnit Test](https://img.shields.io/badge/PHPUnit%20Test-passing-green?style=for-the-badge)](https://packagist.org/packages/kevinoo/phpwhois)
-[![Codacy branch grade](https://img.shields.io/codacy/grade/4bab08f5469a4d0bb5c792dd1117db5d/main?style=for-the-badge)](https://app.codacy.com/gh/kevinoo/phpWhois/dashboard)
-[![Packagist Downloads](https://img.shields.io/packagist/dt/kevinoo/phpwhois?style=for-the-badge)](https://packagist.org/packages/kevinoo/phpwhois)
-[![Packagist PHP Version](https://img.shields.io/packagist/dependency-v/kevinoo/phpwhois/php?style=for-the-badge)](https://packagist.org/packages/kevinoo/phpwhois)
-
 Introduction
 ------------
 
@@ -40,10 +35,14 @@ Installation
 ### Via composer
 
 #### Stable version
-`composer require "kevinoo/phpwhois":"^6.3"`
+```shell
+composer require "kevinoo/phpwhois":"^6.3"
+```
 
 #### Latest development version
-`composer require "kevinoo/phpwhois":"dev-master"`
+```shell
+composer require "kevinoo/phpwhois":"dev-master"
+```
 
 
 Example usage
@@ -58,10 +57,8 @@ use phpWhois\Whois;
 
 $whois = new Whois();
 $query = 'example.com';
-$result = $whois->lookup($query,false);
-echo "<pre>";
+$result = $whois->lookup($query, false);
 print_r($result);
-echo "</pre>";
 ```
 If you provide the domain name to query in UTF8, then you must use:
 ```php

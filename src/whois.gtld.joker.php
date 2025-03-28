@@ -27,8 +27,6 @@ if (!\defined('__JOKER_HANDLER__')) {
     \define('__JOKER_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class joker_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -63,7 +61,7 @@ class joker_handler
             'address' => 'address',
         ];
 
-        $r = \generic_parser_a($data_str, $translate, $contacts, 'domain', 'Ymd');
+        $r = phpWhois\Handlers\AbstractHandler::generic_parser_a($data_str, $translate, $contacts, 'domain', 'Ymd');
 
         foreach ($items as $tag => $convert) {
             if (isset($r['domain'][$tag])) {

@@ -27,8 +27,6 @@ if (!\defined('__PUBLICDOMAINREGISTRY_HANDLER__')) {
     \define('__PUBLICDOMAINREGISTRY_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class publicdomainregistry_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -53,6 +51,6 @@ class publicdomainregistry_handler
             'domain.status' => 'Status:',
         ];
 
-        return \easy_parser($data_str, $items, 'mdy', [], true, true);
+        return phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'mdy', [], true, true);
     }
 }

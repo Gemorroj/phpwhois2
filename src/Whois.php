@@ -310,7 +310,7 @@ class Whois extends WhoisClient
 
         // Check if nameservers exist
         if (!isset($result['regrinfo']['registered'])) {
-            if (\function_exists('checkdnsrr') && \checkdnsrr($domain, 'NS')) {
+            if (\checkdnsrr($domain, 'NS')) {
                 $result['regrinfo']['registered'] = 'yes';
             } else {
                 $result['regrinfo']['registered'] = 'unknown';

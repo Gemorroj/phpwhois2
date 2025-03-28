@@ -23,9 +23,6 @@
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
  */
-
-require_once 'whois.parser.php';
-
 if (!\defined('__MELBOURNEIT_HANDLER__')) {
     \define('__MELBOURNEIT_HANDLER__', 1);
 }
@@ -56,6 +53,6 @@ class melbourneit_handler
             'Name Server..........' => 'domain.nserver.',
         ];
 
-        return \generic_parser_b($data_str, $items, 'ymd');
+        return phpWhois\Handlers\AbstractHandler::generic_parser_b($data_str, $items, 'ymd');
     }
 }

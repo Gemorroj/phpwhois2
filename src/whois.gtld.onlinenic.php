@@ -27,8 +27,6 @@ if (!\defined('__ONLINENIC_HANDLER__')) {
     \define('__ONLINENIC_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class onlinenic_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -67,7 +65,7 @@ class onlinenic_handler
             ',country:' => 'address.country',
         ];
 
-        $r = \easy_parser($data_str, $items, 'mdy', $extra, false, true);
+        $r = phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'mdy', $extra, false, true);
 
         foreach ($r as $key => $part) {
             if (isset($part['email'])) {

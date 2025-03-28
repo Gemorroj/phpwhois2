@@ -27,8 +27,6 @@ if (!\defined('__ENOM_HANDLER__')) {
     \define('__ENOM_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class enom_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -58,6 +56,6 @@ class enom_handler
             'domain.expires#2' => 'Registered through-',
         ];
 
-        return \easy_parser($data_str, $items, 'dmy', [], false, true);
+        return phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'dmy', [], false, true);
     }
 }

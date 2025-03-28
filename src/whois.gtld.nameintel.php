@@ -27,8 +27,6 @@ if (!\defined('__NAMEINTEL_HANDLER__')) {
     \define('__NAMEINTEL_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class nameintel_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -47,7 +45,7 @@ class nameintel_handler
             'domain.expires' => 'Expiration Date:',
         ];
 
-        $r = \easy_parser($data_str, $items, 'dmy', [], false, true);
+        $r = phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'dmy', [], false, true);
 
         if (isset($r['domain']['sponsor']) && \is_array($r['domain']['sponsor'])) {
             $r['domain']['sponsor'] = $r['domain']['sponsor'][0];

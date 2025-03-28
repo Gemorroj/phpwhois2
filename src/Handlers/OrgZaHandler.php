@@ -26,12 +26,12 @@ class OrgZaHandler extends AbstractHandler
         ];
 
         $r = [];
-        $r['regrinfo'] = \get_blocks($data_str['rawdata'], $items);
+        $r['regrinfo'] = AbstractHandler::getBlocks($data_str['rawdata'], $items);
 
         if (isset($r['regrinfo']['domain']['status'])) {
             $r['regrinfo']['registered'] = 'yes';
             $r['regrinfo']['domain']['handler'] = \strtok(\array_shift($r['regrinfo']['owner']), ' ');
-            $r['regrinfo'] = \get_contacts($r['regrinfo']);
+            $r['regrinfo'] = AbstractHandler::getContacts($r['regrinfo']);
         } else {
             $r['regrinfo']['registered'] = 'no';
         }

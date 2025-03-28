@@ -27,8 +27,6 @@ if (!\defined('__NAME_HANDLER__')) {
     \define('__NAME_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class name_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -52,6 +50,6 @@ class name_handler
             'email address:' => 'email',
         ];
 
-        return \easy_parser($data_str, $items, 'y-m-d', $extra, false, true);
+        return phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'y-m-d', $extra, false, true);
     }
 }

@@ -23,9 +23,6 @@
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
  */
-
-require_once 'whois.parser.php';
-
 if (!\defined('__AFRINIC_HANDLER__')) {
     \define('__AFRINIC_HANDLER__', 1);
 }
@@ -54,7 +51,7 @@ class afrinic_handler
             'org' => 'owner',
         ];
 
-        $r = \generic_parser_a($data_str, $translate, $contacts, 'network', 'Ymd');
+        $r = phpWhois\Handlers\AbstractHandler::generic_parser_a($data_str, $translate, $contacts, 'network', 'Ymd');
 
         if (isset($r['network']['descr'])) {
             $r['owner']['organization'] = $r['network']['descr'];

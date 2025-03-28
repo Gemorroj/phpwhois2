@@ -48,7 +48,7 @@ class CoZaHandler extends AbstractHandler
             'rawdata' => $data_str['rawdata'],
         ];
 
-        $r['regrinfo'] = \generic_parser_b($data_str['rawdata'], $items);
+        $r['regrinfo'] = AbstractHandler::generic_parser_b($data_str['rawdata'], $items);
 
         $r['regyinfo']['referrer'] = 'https://www.co.za';
         $r['regyinfo']['registrar'] = 'UniForum Association';

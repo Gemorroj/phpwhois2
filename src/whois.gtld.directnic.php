@@ -27,8 +27,6 @@ if (!\defined('__DIRECTNIC_HANDLER__')) {
     \define('__DIRECTNIC_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class directnic_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -49,6 +47,6 @@ class directnic_handler
             '' => 'By submitting a WHOIS query',
         ];
 
-        return \easy_parser($data_str, $items, 'mdy', [], false, true);
+        return phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'mdy', [], false, true);
     }
 }

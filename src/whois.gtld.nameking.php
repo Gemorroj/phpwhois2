@@ -27,8 +27,6 @@ if (!\defined('__NAMEKING_HANDLER__')) {
     \define('__NAMEKING_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class nameking_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -66,6 +64,6 @@ class nameking_handler
             'city, province, post code:' => 'address.city',
         ];
 
-        return \easy_parser($data_str, $items, 'mdy', $extra, false, true);
+        return phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'mdy', $extra, false, true);
     }
 }

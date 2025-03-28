@@ -29,7 +29,7 @@ namespace phpWhois;
 /**
  * Utilities for parsing ip addresses.
  */
-class IpTools
+final class IpTools
 {
     /**
      * Check if ip address is valid.
@@ -126,13 +126,9 @@ class IpTools
      *
      * @TODO provide example
      *
-     * @param string $net
-     *
-     * @return string
-     *
      * @noinspection TypeUnsafeComparisonInspection
      */
-    public function cidrConv($net)
+    public function cidrConv(string $net): string
     {
         $start = \strtok($net, '/');
         $n = 3 - \substr_count($net, '.');

@@ -27,8 +27,6 @@ if (!\defined('__GANDI_HANDLER__')) {
     \define('__GANDI_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class gandi_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -52,6 +50,6 @@ class gandi_handler
             'owner-name:' => '',
         ];
 
-        return \easy_parser($data_str, $items, 'dmy', $trans);
+        return phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'dmy', $trans);
     }
 }

@@ -84,7 +84,7 @@ class WhoisClient
     public function __construct()
     {
         // Load DATA array
-        $servers = require 'whois.servers.php';
+        $servers = require __DIR__.'/whois.servers.php';
 
         $this->DATA = $servers['DATA'];
         $this->NON_UTF8 = $servers['NON_UTF8'];

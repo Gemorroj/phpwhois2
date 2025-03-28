@@ -27,8 +27,6 @@ if (!\defined('__WILDWESTDOMAINS_HANDLER__')) {
     \define('__WILDWESTDOMAINS_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class wildwestdomains_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -48,6 +46,6 @@ class wildwestdomains_handler
             'domain.changed' => 'Last Updated on:',
         ];
 
-        return \easy_parser($data_str, $items, 'mdy');
+        return phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'mdy');
     }
 }

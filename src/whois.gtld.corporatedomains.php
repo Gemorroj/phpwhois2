@@ -27,8 +27,6 @@ if (!\defined('__CORPORATEDOMAINS_HANDLER__')) {
     \define('__CORPORATEDOMAINS_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class corporatedomains_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -49,6 +47,6 @@ class corporatedomains_handler
             'domain.nserver' => 'DNS Servers:',
         ];
 
-        return \easy_parser($data_str, $items, 'dmy', [], false, true);
+        return phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'dmy', [], false, true);
     }
 }

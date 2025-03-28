@@ -23,9 +23,6 @@
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
  */
-
-require_once 'whois.parser.php';
-
 if (!\defined('__LACNIC_HANDLER__')) {
     \define('__LACNIC_HANDLER__', 1);
 }
@@ -55,7 +52,7 @@ class lacnic_handler
             'admin-c' => 'admin',
         ];
 
-        $r = \generic_parser_a($data_str, $translate, $contacts, 'network');
+        $r = phpWhois\Handlers\AbstractHandler::generic_parser_a($data_str, $translate, $contacts, 'network');
 
         unset($r['network']['owner'], $r['network']['ownerid'], $r['network']['responsible'], $r['network']['address'], $r['network']['phone'], $r['network']['aut-num'], $r['network']['nsstat'], $r['network']['nslastaa'], $r['network']['inetrev']);
 

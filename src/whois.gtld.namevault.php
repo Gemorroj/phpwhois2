@@ -27,8 +27,6 @@ if (!\defined('__NAMEVAULT_HANDLER__')) {
     \define('__NAMEVAULT_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class namevault_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -48,6 +46,6 @@ class namevault_handler
             'domain.status' => 'Status:',
         ];
 
-        return \easy_parser($data_str, $items, 'dmy', [], true, true);
+        return phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'dmy', [], true, true);
     }
 }

@@ -27,8 +27,6 @@ if (!\defined('__PSIUSA_HANDLER__')) {
     \define('__PSIUSA_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class psiusa_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -86,6 +84,6 @@ class psiusa_handler
             '[zone-c] email:' => 'zone.email',
         ];
 
-        return \generic_parser_b($data_str, $items);
+        return phpWhois\Handlers\AbstractHandler::generic_parser_b($data_str, $items);
     }
 }

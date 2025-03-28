@@ -27,8 +27,6 @@ if (!\defined('__INTERDOMAIN_HANDLER__')) {
     \define('__INTERDOMAIN_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class interdomain_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -76,6 +74,6 @@ class interdomain_handler
             'Technical Fax............' => 'tech.fax',
         ];
 
-        return \generic_parser_b($data_str, $items, 'dmy');
+        return phpWhois\Handlers\AbstractHandler::generic_parser_b($data_str, $items, 'dmy');
     }
 }

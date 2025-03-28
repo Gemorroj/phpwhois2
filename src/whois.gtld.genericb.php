@@ -27,8 +27,6 @@ if (!\defined('__GENERICB_HANDLER__')) {
     \define('__GENERICB_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class genericb_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -36,6 +34,6 @@ class genericb_handler
 
     public function parse($data_str, $query)
     {
-        return \generic_parser_b($data_str);
+        return phpWhois\Handlers\AbstractHandler::generic_parser_b($data_str);
     }
 }

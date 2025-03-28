@@ -27,8 +27,6 @@ if (!\defined('__NICLINE_HANDLER__')) {
     \define('__NICLINE_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class nicline_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -47,6 +45,6 @@ class nicline_handler
             'domain.changed' => 'Last updated:',
         ];
 
-        return \easy_parser($data_str, $items, 'dmy');
+        return phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'dmy');
     }
 }

@@ -27,8 +27,6 @@ if (!\defined('__IANA_HANDLER__')) {
     \define('__IANA_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class iana_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -47,6 +45,6 @@ class iana_handler
             'disclaimer.' => '% ',
         ];
 
-        return \easy_parser($data_str, $items, 'Ymd', [], false, false, 'owner');
+        return phpWhois\Handlers\AbstractHandler::easyParser($data_str, $items, 'Ymd', [], false, false, 'owner');
     }
 }

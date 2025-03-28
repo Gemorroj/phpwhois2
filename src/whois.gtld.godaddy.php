@@ -27,8 +27,6 @@ if (!\defined('__GODADDY_HANDLER__')) {
     \define('__GODADDY_HANDLER__', 1);
 }
 
-require_once 'whois.parser.php';
-
 class godaddy_handler
 {
     // FIXME. This is a temporary fix :-(
@@ -48,11 +46,11 @@ class godaddy_handler
             'domain.sponsor' => 'Registered through:',
         ];
 
-        $r = \get_blocks($data_str, $items);
-        $r['owner'] = \get_contact($r['owner']);
-        $r['admin'] = \get_contact($r['admin'], [], true);
-        $r['tech'] = \get_contact($r['tech'], [], true);
+        $r = phpWhois\Handlers\AbstractHandler::getBlocks($data_str, $items);
+        $r['owner'] = phpWhois\Handlers\AbstractHandler::getContact($r['owner']);
+        $r['admin'] = phpWhois\Handlers\AbstractHandler::getContact($r['admin'], [], true);
+        $r['tech'] = phpWhois\Handlers\AbstractHandler::getContact($r['tech'], [], true);
 
-        return \format_dates($r, 'dmy');
+        return phpWhois\Handlers\AbstractHandler::formatDates($r, 'dmy');
     }
 }

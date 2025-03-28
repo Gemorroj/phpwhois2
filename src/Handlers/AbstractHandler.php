@@ -7,10 +7,6 @@
 
 namespace phpWhois\Handlers;
 
-use DateTime;
-
-require_once __DIR__.'/../whois.parser.php';
-
 /**
  * AbstractHandler.
  */
@@ -154,7 +150,7 @@ abstract class AbstractHandler implements HandlerInterface
                     continue;
                 }
                 if (\str_contains($k, '.')) {
-                    $block = \assign($block, $k, $v);
+                    $block = self::assign($block, $k, $v);
                     continue;
                 }
             } else {
@@ -400,7 +396,7 @@ abstract class AbstractHandler implements HandlerInterface
                             $itm = \trim(\substr($val, $pos + \strlen($match)));
 
                             if ('' !== $itm) {
-                                $r = \assign($r, $field, \str_replace('"', '\"', $itm));
+                                $r = self::assign($r, $field, \str_replace('"', '\"', $itm));
                             }
                         }
 
@@ -464,7 +460,7 @@ abstract class AbstractHandler implements HandlerInterface
                         $line = $val;
                     } else {
                         $var = \strtok($field, '#');
-                        $r = \assign($r, $var, \trim(\substr($val, $pos + \strlen($match))));
+                        $r = self::assign($r, $var, \trim(\substr($val, $pos + \strlen($match))));
                     }
 
                     break;
@@ -528,7 +524,7 @@ abstract class AbstractHandler implements HandlerInterface
                 if (false !== $pos) {
                     $var = \strtok($field, '#');
                     if ('[]' !== $var) {
-                        $r = \assign($r, $var, $block);
+                        $r = self::assign($r, $var, $block);
                     }
                 }
             }
@@ -631,7 +627,7 @@ abstract class AbstractHandler implements HandlerInterface
                     $itm = \trim(\substr($val, $pos + \strlen($match)));
 
                     if ('' !== $field && '' !== $itm) {
-                        $r = \assign($r, $field, $itm);
+                        $r = self::assign($r, $field, $itm);
                     }
 
                     $val = \trim(\substr($val, 0, $pos));
@@ -949,5 +945,48 @@ abstract class AbstractHandler implements HandlerInterface
         }
 
         return null;
+    }
+
+    /**
+     * @param array    $array The array to populate
+     * @param string[] $parts
+     * @param mixed    $value The value to be assigned to the $vDef key
+     *
+     * @return array The updated array
+     *
+     * @see https://github.com/sparc/phpWhois.org/compare/18849d1a98b992190612cdb2561e7b4492c505f5...8c6a18686775b25f05592dd67d7706e47167a498#diff-b8adbe1292f8abca1f943aa844db52aa Original fix by David Saez PAdros sparc
+     */
+    private static function assignRecursive(array $array, array $parts, $value): array
+    {
+        $key = \array_shift($parts);
+
+        if (0 === \count($parts)) {
+            if (!$key) {
+                $array[] = $value;
+            } else {
+                $array[$key] = $value;
+            }
+        } else {
+            if (!isset($array[$key])) {
+                $array[$key] = [];
+            }
+            $array[$key] = self::assignRecursive($array[$key], $parts, $value);
+        }
+
+        return $array;
+    }
+
+    /**
+     * @param array  $array The array to populate
+     * @param string $vDef  A period-separated string of nested array keys
+     * @param mixed  $value The value to be assigned to the $vDef key
+     *
+     * @return array The updated array
+     *
+     * @see https://github.com/sparc/phpWhois.org/compare/18849d1a98b992190612cdb2561e7b4492c505f5...8c6a18686775b25f05592dd67d7706e47167a498#diff-b8adbe1292f8abca1f943aa844db52aa Original fix by David Saez PAdros sparc
+     */
+    private static function assign(array $array, string $vDef, $value): array
+    {
+        return self::assignRecursive($array, \explode('.', $vDef), $value);
     }
 }
