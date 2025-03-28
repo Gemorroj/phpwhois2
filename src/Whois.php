@@ -91,17 +91,13 @@ class Whois extends WhoisClient
         $this->query = ['status' => ''];
 
         $query = \trim($query);
-
-        $idn = new ToIdn();
-
+        if (!$is_utf) {
+            $query = \mb_convert_encoding($query, 'UTF-8', 'ISO-8859-1');
+        }
         try {
-            if ($is_utf) {
-                $query = $idn->convert($query);
-            } else {
-                $query = $idn->convert(@\utf8_encode($query));
-            }
+            $query = (new ToIdn())->convert($query);
         } catch (AlreadyPunycodeException $e) {
-            //            $query is already a Punycode
+            // $query is already a Punycode
         }
 
         // If domain to query was not set
