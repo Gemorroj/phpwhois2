@@ -62,10 +62,10 @@ foreach ($rows as $key => $domains) {
             if (false === $write) {
                 throw new \RuntimeException("Can't write to file {$fixturePath}/{$safeDomain}.txt. Check permissions.");
             }
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
             echo "  Exception: {$exception->getMessage()}\n";
-        } catch (Error $error) {
-            echo "  Err: {$error->getMessage()}\n";
+        } catch (\Error $error) {
+            echo "  Error: {$error->getMessage()}\n";
         }
     }
 }
