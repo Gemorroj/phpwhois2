@@ -159,7 +159,7 @@ class IpHandler extends WhoisClient
 
     // -----------------------------------------------------------------
 
-    public function parse_results($result, $rwdata, $query, $reset)
+    public function parse_results(array $result, array $rwdata, string $query, bool $reset): array
     {
         $rwres = $this->process($rwdata);
 
@@ -209,7 +209,7 @@ class IpHandler extends WhoisClient
 
     // -----------------------------------------------------------------
 
-    public function handle_rwhois($server, $query): void
+    public function handle_rwhois(string $server, string $query): void
     {
         // Avoid querying the same server twice
 
@@ -246,7 +246,7 @@ class IpHandler extends WhoisClient
 
     // -----------------------------------------------------------------
 
-    public function join_result($result, $key, $newres)
+    public function join_result(array $result, string $key, array $newres): array
     {
         if (isset($result['regrinfo'][$key]) && !\array_key_exists(0, $result['regrinfo'][$key])) {
             $r = $result['regrinfo'][$key];
