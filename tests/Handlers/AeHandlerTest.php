@@ -21,7 +21,6 @@
 
 namespace Tests\Handlers;
 
-use DMS\PHPUnitExtensions\ArraySubset\Assert;
 use phpWhois\Handlers\AeHandler;
 
 /**
@@ -69,9 +68,12 @@ class AeHandlerTest extends AbstractHandler
             'registered' => 'yes',
         ];
 
-        Assert::assertArraySubset($expected, $actual['regrinfo'], 'Whois data may have changed');
-        $this->assertArrayHasKey('rawdata', $actual);
-        Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($expected['domain'], $actual['regrinfo']['domain'], $expected['domain'], 'Whois data may have changed');
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($expected['owner'], $actual['regrinfo']['owner'], $expected['owner'], 'Whois data may have changed');
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($expected['tech'], $actual['regrinfo']['tech'], $expected['tech'], 'Whois data may have changed');
+        self::assertEquals($expected['registered'], $actual['regrinfo']['registered'], 'Whois data may have changed');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($fixture, $actual['rawdata'], $fixture, 'Fixture data may be out of date');
     }
 
     public function testParseNicDotAe(): void
@@ -101,9 +103,12 @@ class AeHandlerTest extends AbstractHandler
             'registered' => 'yes',
         ];
 
-        Assert::assertArraySubset($expected, $actual['regrinfo'], 'Whois data may have changed');
-        $this->assertArrayHasKey('rawdata', $actual);
-        Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($expected['domain'], $actual['regrinfo']['domain'], $expected['domain'], 'Whois data may have changed');
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($expected['owner'], $actual['regrinfo']['owner'], $expected['owner'], 'Whois data may have changed');
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($expected['tech'], $actual['regrinfo']['tech'], $expected['tech'], 'Whois data may have changed');
+        self::assertEquals($expected['registered'], $actual['regrinfo']['registered'], 'Whois data may have changed');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($fixture, $actual['rawdata'], $fixture, 'Fixture data may be out of date');
     }
 
     public function testParseAedaDotAe(): void
@@ -133,8 +138,11 @@ class AeHandlerTest extends AbstractHandler
             'registered' => 'yes',
         ];
 
-        Assert::assertArraySubset($expected, $actual['regrinfo'], 'Whois data may have changed');
-        $this->assertArrayHasKey('rawdata', $actual);
-        Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($expected['domain'], $actual['regrinfo']['domain'], $expected['domain'], 'Whois data may have changed');
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($expected['owner'], $actual['regrinfo']['owner'], $expected['owner'], 'Whois data may have changed');
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($expected['tech'], $actual['regrinfo']['tech'], $expected['tech'], 'Whois data may have changed');
+        self::assertEquals($expected['registered'], $actual['regrinfo']['registered'], 'Whois data may have changed');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($fixture, $actual['rawdata'], $fixture, 'Fixture data may be out of date');
     }
 }

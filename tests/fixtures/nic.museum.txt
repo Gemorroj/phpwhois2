@@ -1,78 +1,72 @@
-
-Domain Name:                   nic.museum
-Registry Domain ID:            DOM000000000002-MUSEUM
-Registrar URL:                 
-Registrar WHOIS server:        whois.nic.museum
-Creation Date:                 2005-02-04T19:19:09Z
-Updated Date:                  2023-03-21T19:25:59.334258Z
-Registry Expiry Date:          2024-02-04T19:19:09Z
-Registrar:                     Registry Operations
-Registrar IANA ID:             9999
-Domain Status:                 active https://icann.org/epp#active
-
-Registry Billing ID:           REDACTED_FOR_PRIVACY
-Billing Name:                  REDACTED_FOR_PRIVACY
-Billing Organization:          Afnic Backend Registry Operator
-Billing Contact Status:        associated https://icann.org/epp#associated
-Billing Contact Status:        active https://icann.org/epp#active
-Billing Street:                REDACTED_FOR_PRIVACY, REDACTED_FOR_PRIVACY, REDACTED_FOR_PRIVACY
-Billing City:                  REDACTED_FOR_PRIVACY
-Billing Postal Code:           REDACTED_FOR_PRIVACY
-Billing State/Province:        REDACTED_FOR_PRIVACY
-Billing Country:               REDACTED_FOR_PRIVACY
-Billing Phone:                 REDACTED_FOR_PRIVACY
-Billing Fax:                   REDACTED_FOR_PRIVACY
-Billing Email:                 REDACTED_FOR_PRIVACY
-
-Registry Registrant ID:        REDACTED_FOR_PRIVACY
-Registrant Name:               REDACTED_FOR_PRIVACY
-Registrant Organization:       Afnic Backend Registry Operator
-Registrant Contact Status:     associated https://icann.org/epp#associated
-Registrant Contact Status:     active https://icann.org/epp#active
-Registrant Street:             REDACTED_FOR_PRIVACY, REDACTED_FOR_PRIVACY, REDACTED_FOR_PRIVACY
-Registrant City:               REDACTED_FOR_PRIVACY
-Registrant Postal Code:        REDACTED_FOR_PRIVACY
-Registrant State/Province:     REDACTED_FOR_PRIVACY
-Registrant Country:            REDACTED_FOR_PRIVACY
-Registrant Phone:              REDACTED_FOR_PRIVACY
-Registrant Fax:                REDACTED_FOR_PRIVACY
-Registrant Email:              REDACTED_FOR_PRIVACY
-
-Registry Tech ID:              REDACTED_FOR_PRIVACY
-Tech Name:                     REDACTED_FOR_PRIVACY
-Tech Organization:             Afnic Backend Registry Operator
-Tech Contact Status:           associated https://icann.org/epp#associated
-Tech Contact Status:           active https://icann.org/epp#active
-Tech Street:                   REDACTED_FOR_PRIVACY, REDACTED_FOR_PRIVACY, REDACTED_FOR_PRIVACY
-Tech City:                     REDACTED_FOR_PRIVACY
-Tech Postal Code:              REDACTED_FOR_PRIVACY
-Tech State/Province:           REDACTED_FOR_PRIVACY
-Tech Country:                  REDACTED_FOR_PRIVACY
-Tech Phone:                    REDACTED_FOR_PRIVACY
-Tech Fax:                      REDACTED_FOR_PRIVACY
-Tech Email:                    REDACTED_FOR_PRIVACY
-
-Registry Admin ID:             REDACTED_FOR_PRIVACY
-Admin Name:                    REDACTED_FOR_PRIVACY
-Admin Organization:            Afnic Backend Registry Operator
-Admin Contact Status:          associated https://icann.org/epp#associated
-Admin Contact Status:          active https://icann.org/epp#active
-Admin Street:                  REDACTED_FOR_PRIVACY, REDACTED_FOR_PRIVACY, REDACTED_FOR_PRIVACY
-Admin City:                    REDACTED_FOR_PRIVACY
-Admin Postal Code:             REDACTED_FOR_PRIVACY
-Admin State/Province:          REDACTED_FOR_PRIVACY
-Admin Country:                 REDACTED_FOR_PRIVACY
-Admin Phone:                   REDACTED_FOR_PRIVACY
-Admin Fax:                     REDACTED_FOR_PRIVACY
-Admin Email:                   REDACTED_FOR_PRIVACY
-
-Name Server:                   ns3.nic.fr
-Name Server:                   ns1.nic.fr
-Name Server:                   ns2.nic.fr
-
-DNSSEC:                        signedDelegation
-
->>> WHOIS request date: 2023-08-11T10:04:19.02107Z <<<
+Domain Name:                   nic.museum
+Registry Domain ID:            DOM000000000002-MUSEUM
+Registrar WHOIS Server:        whois.nic.museum
+Registrar URL:                 
+Updated Date:                  2025-03-21T19:23:26.151795Z
+Creation Date:                 2005-02-04T19:19:09Z
+Registry Expiry Date:          2026-02-04T19:19:09Z
+Registrar:                     Registry Operations
+Registrar IANA ID:             9999
+Domain Status:                 active https://icann.org/epp#active
+Registry Registrant ID:        REDACTED_FOR_PRIVACY
+Registrant Name:               REDACTED_FOR_PRIVACY
+Registrant Organization:       Afnic Backend Registry Operator
+Registrant Contact Status:     associated
+Registrant Contact Status:     active
+Registrant Street:             REDACTED_FOR_PRIVACY, REDACTED_FOR_PRIVACY, REDACTED_FOR_PRIVACY
+Registrant City:               REDACTED_FOR_PRIVACY
+Registrant Postal Code:        REDACTED_FOR_PRIVACY
+Registrant State/Province:     REDACTED_FOR_PRIVACY
+Registrant Country:            REDACTED_FOR_PRIVACY
+Registrant Phone:              REDACTED_FOR_PRIVACY
+Registrant Fax:                REDACTED_FOR_PRIVACY
+Registrant Email:              REDACTED_FOR_PRIVACY
+Registry Admin ID:             REDACTED_FOR_PRIVACY
+Admin Name:                    REDACTED_FOR_PRIVACY
+Admin Organization:            Afnic Backend Registry Operator
+Admin Contact Status:          associated
+Admin Contact Status:          active
+Admin Street:                  REDACTED_FOR_PRIVACY, REDACTED_FOR_PRIVACY, REDACTED_FOR_PRIVACY
+Admin City:                    REDACTED_FOR_PRIVACY
+Admin Postal Code:             REDACTED_FOR_PRIVACY
+Admin State/Province:          REDACTED_FOR_PRIVACY
+Admin Country:                 REDACTED_FOR_PRIVACY
+Admin Phone:                   REDACTED_FOR_PRIVACY
+Admin Fax:                     REDACTED_FOR_PRIVACY
+Admin Email:                   REDACTED_FOR_PRIVACY
+Registry Tech ID:              REDACTED_FOR_PRIVACY
+Tech Name:                     REDACTED_FOR_PRIVACY
+Tech Organization:             Afnic Backend Registry Operator
+Tech Contact Status:           associated
+Tech Contact Status:           active
+Tech Street:                   REDACTED_FOR_PRIVACY, REDACTED_FOR_PRIVACY, REDACTED_FOR_PRIVACY
+Tech City:                     REDACTED_FOR_PRIVACY
+Tech Postal Code:              REDACTED_FOR_PRIVACY
+Tech State/Province:           REDACTED_FOR_PRIVACY
+Tech Country:                  REDACTED_FOR_PRIVACY
+Tech Phone:                    REDACTED_FOR_PRIVACY
+Tech Fax:                      REDACTED_FOR_PRIVACY
+Tech Email:                    REDACTED_FOR_PRIVACY
+Registry Billing ID:           REDACTED_FOR_PRIVACY
+Billing Name:                  REDACTED_FOR_PRIVACY
+Billing Organization:          Afnic Backend Registry Operator
+Billing Contact Status:        associated
+Billing Contact Status:        active
+Billing Street:                REDACTED_FOR_PRIVACY, REDACTED_FOR_PRIVACY, REDACTED_FOR_PRIVACY
+Billing City:                  REDACTED_FOR_PRIVACY
+Billing Postal Code:           REDACTED_FOR_PRIVACY
+Billing State/Province:        REDACTED_FOR_PRIVACY
+Billing Country:               REDACTED_FOR_PRIVACY
+Billing Phone:                 REDACTED_FOR_PRIVACY
+Billing Fax:                   REDACTED_FOR_PRIVACY
+Billing Email:                 REDACTED_FOR_PRIVACY
+Name Server:                   g.ext.nic.fr
+Name Server:                   ns1.nic.fr
+Name Server:                   ns2.nic.fr
+Name Server:                   ns3.nic.fr
+DNSSEC:                        signedDelegation
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2025-03-28T16:53:21.503892Z <<<
 For more information on Whois status codes, please visit https://icann.org/epp
 
 Rights restricted by copyright.

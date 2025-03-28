@@ -32,6 +32,9 @@ if (!\defined('__RIPE_HANDLER__')) {
 
 class ripe_handler
 {
+    // FIXME. This is a temporary fix :-(
+    public $deepWhois = false;
+
     public function parse($data_str, $query)
     {
         $translate = [

@@ -55,13 +55,7 @@ class gtld_handler extends WhoisClient
         'No match for ' => 'nodomain',
     ];
 
-    /**
-     * @param array  $data
-     * @param string $query
-     *
-     * @return array
-     */
-    public function parse($data, $query)
+    public function parse(array $data, string $query): array
     {
         $this->query = [];
         $this->result = \generic_parser_b($data['rawdata'], self::REG_FIELDS, 'dmy');

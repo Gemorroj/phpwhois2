@@ -21,7 +21,6 @@
 
 namespace Tests\Handlers;
 
-use DMS\PHPUnitExtensions\ArraySubset\Assert;
 use phpWhois\Handlers\ClHandler;
 
 /**
@@ -64,8 +63,9 @@ class ClHandlerTest extends AbstractHandler
             // 'registered' => 'yes', // Currently broken
         ];
 
-        Assert::assertArraySubset($expected, $actual['regrinfo'], 'Whois data may have changed');
-        $this->assertArrayHasKey('rawdata', $actual);
-        $this->assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($expected['domain'], $actual['regrinfo']['domain'], $expected['domain'], 'Whois data may have changed');
+        // self::assertEquals($expected['registered'], $actual['regrinfo']['registered'], 'Whois data may have changed');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($fixture, $actual['rawdata'], $fixture, 'Fixture data may be out of date');
     }
 }

@@ -2,20 +2,19 @@
 
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use phpWhois\WhoisClient;
 
 class WhoisClientTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @dataProvider serversProvider
-     */
+    #[DataProvider('serversProvider')]
     public function testParseServer($server, $result): void
     {
         $whoisClient = new WhoisClient();
         $this->assertEquals($result, $whoisClient->parseServer($server));
     }
 
-    public static function serversProvider()
+    public static function serversProvider(): array
     {
         return [
             ['http://www.phpwhois.pw:80/', ['scheme' => 'http', 'host' => 'www.phpwhois.pw', 'port' => 80]],

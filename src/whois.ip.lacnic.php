@@ -32,6 +32,9 @@ if (!\defined('__LACNIC_HANDLER__')) {
 
 class lacnic_handler
 {
+    // FIXME. This is a temporary fix :-(
+    public $deepWhois = false;
+
     public function parse($data_str, $query)
     {
         $translate = [

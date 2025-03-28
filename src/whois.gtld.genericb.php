@@ -31,6 +31,9 @@ require_once 'whois.parser.php';
 
 class genericb_handler
 {
+    // FIXME. This is a temporary fix :-(
+    public $deepWhois = false;
+
     public function parse($data_str, $query)
     {
         return \generic_parser_b($data_str);

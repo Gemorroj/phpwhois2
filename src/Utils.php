@@ -33,10 +33,8 @@ class Utils extends Whois
 {
     /**
      * Wrap result in <pre></pre> tags.
-     *
-     * @return string
      */
-    public function showObject(&$obj)
+    public function showObject(&$obj): string
     {
         $r = $this->debugObject($obj);
 
@@ -45,10 +43,8 @@ class Utils extends Whois
 
     /**
      * Return object or array as formatted string.
-     *
-     * @return string
      */
-    public function debugObject($obj, int $indent = 0)
+    public function debugObject($obj, int $indent = 0): string
     {
         $return = '';
 
@@ -69,7 +65,7 @@ class Utils extends Whois
         return $return;
     }
 
-    public function nsRrDefined($query)
+    public function nsRrDefined(string $query): bool
     {
         return \checkdnsrr($query, 'NS');
     }
@@ -77,7 +73,7 @@ class Utils extends Whois
     /**
      * Get nice HTML output.
      */
-    public function showHTML($result, $link_myself = true, $params = 'query=$0&amp;output=nice')
+    public function showHTML(array $result, bool $link_myself = true, string $params = 'query=$0&amp;output=nice'): string
     {
         // adds links for HTML output
 
@@ -111,8 +107,8 @@ class Utils extends Whois
         $out = \preg_replace($email_regex, '<a href="mailto:$0">$0</a>', $out);
         $out = \preg_replace_callback(
             $html_regex,
-            function ($matches) {
-                if ('www.' == \substr($matches[0], 0, 4)) {
+            static function ($matches) {
+                if (\str_starts_with($matches[0], 'www.')) {
                     $web = $matches[0];
                     $url = 'http://'.$web;
                 } else {
@@ -126,7 +122,7 @@ class Utils extends Whois
         );
 
         if ($link_myself) {
-            if ('/' == $params[0]) {
+            if ('/' === $params[0]) {
                 $link = $params;
             } else {
                 $link = $_SERVER['PHP_SELF'].'?'.$params;

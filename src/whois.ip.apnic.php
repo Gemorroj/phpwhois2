@@ -34,6 +34,9 @@ if (!\defined('__APNIC_HANDLER__')) {
 
 class apnic_handler
 {
+    // FIXME. This is a temporary fix :-(
+    public $deepWhois = false;
+
     public function parse($data_str, $query)
     {
         $translate = [

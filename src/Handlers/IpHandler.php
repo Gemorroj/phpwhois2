@@ -19,9 +19,9 @@ class IpHandler extends WhoisClient
      *           Lukashin: whois?
      *           Lucich: I ask me the same question... :-D
      */
-    public $deepWhois = true;
+    public bool $deepWhois = true;
 
-    public $REGISTRARS = [
+    public array $REGISTRARS = [
         'European Regional Internet Registry/RIPE NCC' => 'whois.ripe.net',
         'RIPE Network Coordination Centre' => 'whois.ripe.net',
         'Asia Pacific Network Information	Center' => 'whois.apnic.net',
@@ -30,7 +30,7 @@ class IpHandler extends WhoisClient
         'African Network Information Center' => 'whois.afrinic.net',
     ];
 
-    public $HANDLERS = [
+    public array $HANDLERS = [
         'whois.krnic.net' => 'krnic',
         'whois.apnic.net' => 'apnic',
         'whois.ripe.net' => 'ripe',
@@ -39,10 +39,10 @@ class IpHandler extends WhoisClient
         'whois.afrinic.net' => 'afrinic',
     ];
 
-    public $more_data = []; // More queries to get more accurated data
-    public $done = [];
+    public array $more_data = []; // More queries to get more accurated data
+    public array $done = [];
 
-    public function parse($data, $query)
+    public function parse(array $data, string $query): array
     {
         $result = [
             'regrinfo' => [],
@@ -58,7 +58,7 @@ class IpHandler extends WhoisClient
         }
 
         if (!$this->deepWhois) {
-            return null;
+            return [];
         }
 
         $this->query = [];

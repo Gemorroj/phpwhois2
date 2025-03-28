@@ -2,20 +2,19 @@
 
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use phpWhois\IpTools;
 
 class IpToolsTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @dataProvider validIpsProvider
-     */
+    #[DataProvider('validIpsProvider')]
     public function testValidIp($ip): void
     {
         $ipTools = new IpTools();
         $this->assertTrue($ipTools->validIp($ip));
     }
 
-    public static function validIpsProvider()
+    public static function validIpsProvider(): array
     {
         return [
             ['123.123.123.123'],
@@ -23,16 +22,14 @@ class IpToolsTest extends \PHPUnit\Framework\TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidIpsProvider
-     */
+    #[DataProvider('invalidIpsProvider')]
     public function testInvalidIp($ip): void
     {
         $ipTools = new IpTools();
         $this->assertFalse($ipTools->validIp($ip));
     }
 
-    public static function invalidIpsProvider()
+    public static function invalidIpsProvider(): array
     {
         return [
             [''],

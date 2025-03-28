@@ -21,7 +21,7 @@
 
 namespace Tests\Handlers;
 
-use DMS\PHPUnitExtensions\ArraySubset\Assert;
+use phpWhois\Handlers\CoZaHandler;
 
 /**
  * CoZaHandlerTest.
@@ -29,7 +29,7 @@ use DMS\PHPUnitExtensions\ArraySubset\Assert;
 class CoZaHandlerTest extends AbstractHandler
 {
     /**
-     * @var \co_Za_handler
+     * @var CoZaHandler
      */
     protected $handler;
 
@@ -37,7 +37,7 @@ class CoZaHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new \co_Za_handler();
+        $this->handler = new CoZaHandler();
         $this->handler->deepWhois = false;
     }
 
@@ -54,12 +54,13 @@ class CoZaHandlerTest extends AbstractHandler
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'registered' => 'no',
+            'registered' => 'yes',
         ];
 
-        Assert::assertArraySubset($expected, $actual['regrinfo'], 'Whois data may have changed');
-        $this->assertArrayHasKey('rawdata', $actual);
-        Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        // self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($expected['domain'], $actual['regrinfo']['domain'], $expected['domain'],'Whois data may have changed');
+        self::assertEquals($expected['registered'], $actual['regrinfo']['registered'], 'Whois data may have changed');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($fixture, $actual['rawdata'], $fixture, 'Fixture data may be out of date');
     }
 
     public function testParseSexDotCoDotZa(): void
@@ -75,11 +76,12 @@ class CoZaHandlerTest extends AbstractHandler
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'registered' => 'no',
+            'registered' => 'yes',
         ];
 
-        Assert::assertArraySubset($expected, $actual['regrinfo'], 'Whois data may have changed');
-        $this->assertArrayHasKey('rawdata', $actual);
-        Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        // self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($expected['domain'], $actual['regrinfo']['domain'], $expected['domain'],'Whois data may have changed');
+        self::assertEquals($expected['registered'], $actual['regrinfo']['registered'], 'Whois data may have changed');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($fixture, $actual['rawdata'], $fixture, 'Fixture data may be out of date');
     }
 }

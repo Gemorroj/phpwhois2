@@ -7,6 +7,8 @@
 
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use phpWhois\Handlers\AbstractHandler;
 
 /**
@@ -118,18 +120,14 @@ class ParserTest extends BaseTestCase
         ];
     }
 
-    /**
-     * @dataProvider get_dateProvider
-     */
+    #[DataProvider('get_dateProvider')]
     public function testGetDate(string $date, string $format, string $expected): void
     {
         $actual = AbstractHandler::getDate($date, $format);
         $this->assertEquals($expected, $actual);
     }
 
-    /**
-     * @group CVE-2015-5243
-     */
+    #[Group('CVE-2015-5243')]
     public function testGenericParserABlocks(): void
     {
         $translate = [
@@ -141,18 +139,14 @@ class ParserTest extends BaseTestCase
         $this->assertEquals('${k}', $output['main']['owner']['name']);
     }
 
-    /**
-     * @group CVE-2015-5243
-     */
+    #[Group('CVE-2015-5243')]
     public function testGenericParserB(): void
     {
         $output = AbstractHandler::generic_parser_b(static::RAW_DATA);
         $this->assertEquals('${k}', $output['owner']['name']);
     }
 
-    /**
-     * @group CVE-2015-5243
-     */
+    #[Group('CVE-2015-5243')]
     public function testGetBlocksOne(): void
     {
         $items = [
@@ -163,9 +157,7 @@ class ParserTest extends BaseTestCase
         $this->assertEquals('${field}', $output['domain']['name']);
     }
 
-    /**
-     * @group CVE-2015-5243
-     */
+    #[Group('CVE-2015-5243')]
     public function testGetBlocksTwo(): void
     {
         $items = [
@@ -176,9 +168,7 @@ class ParserTest extends BaseTestCase
         $this->assertEquals("Name:\t \${field}", $output['agent'][0]);
     }
 
-    /**
-     * @group CVE-2015-5243
-     */
+    #[Group('CVE-2015-5243')]
     public function testGetContact(): void
     {
         $output = AbstractHandler::getContact(static::RAW_DATA);

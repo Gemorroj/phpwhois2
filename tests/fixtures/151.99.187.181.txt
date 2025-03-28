@@ -2,7 +2,7 @@
 % The objects are in RPSL format.
 %
 % The RIPE Database is subject to Terms and Conditions.
-% See http://www.ripe.net/db/support/db-terms-conditions.pdf
+% See https://docs.db.ripe.net/terms-conditions.html
 
 % Note: this output has been filtered.
 %       To receive output for a database update, use the "-B" flag.
@@ -32,14 +32,12 @@ address:        Italy
 admin-c:        ESB35-RIPE
 tech-c:         ESB35-RIPE
 tech-c:         ASB144-RIPE
-tech-c:         SSB86-RIPE
-tech-c:         DSB58-RIPE
 tech-c:         ABT49-RIPE
 nic-hdl:        INAS1-RIPE
 abuse-mailbox:  abuse@business.telecomitalia.it
 mnt-by:         INTERB-MNT
 created:        2002-08-01T12:20:54Z
-last-modified:  2018-05-24T06:06:48Z
+last-modified:  2024-01-16T08:51:36Z
 source:         RIPE # Filtered
 
 % Information related to '151.99.0.0/16AS3269'
@@ -59,5 +57,5 @@ created:        2001-10-09T13:12:03Z
 last-modified:  2017-07-14T11:19:47Z
 source:         RIPE # Filtered
 
-% This query was served by the RIPE Database Query Service version 1.107 (BUSA)
+% This query was served by the RIPE Database Query Service version 1.116 (ABERDEEN)
 

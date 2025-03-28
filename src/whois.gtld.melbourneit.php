@@ -32,6 +32,9 @@ if (!\defined('__MELBOURNEIT_HANDLER__')) {
 
 class melbourneit_handler
 {
+    // FIXME. This is a temporary fix :-(
+    public $deepWhois = false;
+
     public function parse($data_str, $query)
     {
         $items = [

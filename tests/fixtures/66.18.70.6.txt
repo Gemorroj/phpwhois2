@@ -56,6 +56,7 @@ mnt-by:         GENERATED-G0QILFYRMJQLPF34S1ZBPXAPNWXFZJL8-MNT
 source:         AFRINIC # Filtered
 
 person:         Wynand Swanepoel
+nic-hdl:        WS5-AFRINIC
 address:        Private Bag X06
 address:        Honeydew
 address:        2040
@@ -63,8 +64,7 @@ address:        South Africa
 address:        Johannesburg 2040
 address:        South Africa
 phone:          tel:+27-11-471-4487
-phone:          tel:+27-11-471-4646
-nic-hdl:        WS5-AFRINIC
+phone:          tel:+27-82-920-7930
 mnt-by:         GENERATED-WFSUCCJSZROW9TRIYQALA9KTOO4VTDUZ-MNT
 source:         AFRINIC # Filtered
 

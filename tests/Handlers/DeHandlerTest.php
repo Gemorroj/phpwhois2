@@ -7,7 +7,6 @@
 
 namespace Tests\Handlers;
 
-use DMS\PHPUnitExtensions\ArraySubset\Assert;
 use phpWhois\Handlers\DeHandler;
 
 /**
@@ -54,9 +53,12 @@ class DeHandlerTest extends AbstractHandler
             'registered' => 'yes',
         ];
 
-        Assert::assertArraySubset($expected, $actual['regrinfo'], 'Whois data may have changed');
-        $this->assertArrayHasKey('rawdata', $actual);
-        Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($expected['domain']['nserver'], $actual['regrinfo']['domain']['nserver'], $expected['domain']['nserver'], 'Whois data may have changed');
+        self::assertEquals($expected['domain']['name'], $actual['regrinfo']['domain']['name'], 'Whois data may have changed');
+        self::assertEquals($expected['domain']['status'], $actual['regrinfo']['domain']['status'], 'Whois data may have changed');
+        self::assertEquals($expected['registered'], $actual['regrinfo']['registered'], 'Whois data may have changed');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($fixture, $actual['rawdata'], $fixture, 'Fixture data may be out of date');
     }
 
     public function testParseGoogleDotDe(): void
@@ -85,9 +87,12 @@ class DeHandlerTest extends AbstractHandler
             'registered' => 'yes',
         ];
 
-        Assert::assertArraySubset($expected, $actual['regrinfo'], 'Whois data may have changed');
-        $this->assertArrayHasKey('rawdata', $actual);
-        Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($expected['domain']['nserver'], $actual['regrinfo']['domain']['nserver'], $expected['domain']['nserver'], 'Whois data may have changed');
+        self::assertEquals($expected['domain']['name'], $actual['regrinfo']['domain']['name'], 'Whois data may have changed');
+        self::assertEquals($expected['domain']['status'], $actual['regrinfo']['domain']['status'], 'Whois data may have changed');
+        self::assertEquals($expected['registered'], $actual['regrinfo']['registered'], 'Whois data may have changed');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($fixture, $actual['rawdata'], $fixture, 'Fixture data may be out of date');
     }
 
     public function testParseDenicDotDe(): void
@@ -116,9 +121,12 @@ class DeHandlerTest extends AbstractHandler
             'registered' => 'yes',
         ];
 
-        Assert::assertArraySubset($expected, $actual['regrinfo'], 'Whois data may have changed');
-        $this->assertArrayHasKey('rawdata', $actual);
-        Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($expected['domain']['nserver'], $actual['regrinfo']['domain']['nserver'], $expected['domain']['nserver'], 'Whois data may have changed');
+        self::assertEquals($expected['domain']['name'], $actual['regrinfo']['domain']['name'], 'Whois data may have changed');
+        self::assertEquals($expected['domain']['status'], $actual['regrinfo']['domain']['status'], 'Whois data may have changed');
+        self::assertEquals($expected['registered'], $actual['regrinfo']['registered'], 'Whois data may have changed');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($fixture, $actual['rawdata'], $fixture, 'Fixture data may be out of date');
     }
 
     public function testParseDomainInConnectStatus(): void
@@ -145,9 +153,12 @@ class DeHandlerTest extends AbstractHandler
             'registered' => 'yes',
         ];
 
-        Assert::assertArraySubset($expected, $actual['regrinfo'], 'Whois data may have changed');
-        $this->assertArrayHasKey('rawdata', $actual);
-        Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($expected['domain']['nserver'], $actual['regrinfo']['domain']['nserver'], $expected['domain']['nserver'], 'Whois data may have changed');
+        self::assertEquals($expected['domain']['name'], $actual['regrinfo']['domain']['name'], 'Whois data may have changed');
+        self::assertEquals($expected['domain']['status'], $actual['regrinfo']['domain']['status'], 'Whois data may have changed');
+        self::assertEquals($expected['registered'], $actual['regrinfo']['registered'], 'Whois data may have changed');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($fixture, $actual['rawdata'], $fixture, 'Fixture data may be out of date');
     }
 
     public function testParseDomainInFreeStatus(): void
@@ -169,8 +180,9 @@ class DeHandlerTest extends AbstractHandler
             'registered' => 'no',
         ];
 
-        Assert::assertArraySubset($expected, $actual['regrinfo'], 'Whois data may have changed');
-        $this->assertArrayHasKey('rawdata', $actual);
-        Assert::assertArraySubset($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($expected['domain'], $actual['regrinfo']['domain'], $expected['domain'], 'Whois data may have changed');
+        self::assertEquals($expected['registered'], $actual['regrinfo']['registered'], 'Whois data may have changed');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($fixture, $actual['rawdata'], $fixture, 'Fixture data may be out of date');
     }
 }

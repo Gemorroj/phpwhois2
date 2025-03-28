@@ -12,6 +12,9 @@ use phpWhois\Handlers\AbstractHandler;
 
 class afternic_handler extends AbstractHandler
 {
+    // FIXME. This is a temporary fix :-(
+    public $deepWhois = false;
+
     public function parse(array $data_str, string $query): array
     {
         $items = [

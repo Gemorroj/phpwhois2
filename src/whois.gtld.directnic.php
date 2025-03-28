@@ -31,6 +31,9 @@ require_once 'whois.parser.php';
 
 class directnic_handler
 {
+    // FIXME. This is a temporary fix :-(
+    public $deepWhois = false;
+
     public function parse($data_str, $query)
     {
         $items = [

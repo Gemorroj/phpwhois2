@@ -16,7 +16,7 @@ require_once __DIR__.'/../whois.parser.php';
  */
 abstract class AbstractHandler implements HandlerInterface
 {
-    public $deepWhois;
+    public bool $deepWhois;
 
     /**
      * @param string[] $lines
@@ -110,9 +110,6 @@ abstract class AbstractHandler implements HandlerInterface
         return $ret;
     }
 
-    /**
-     * @param array|null $disclaimer
-     */
     public static function generic_parser_a_blocks(array $rawdata, array $translate, array &$disclaimer = []): array
     {
         $newblock = false;
@@ -736,10 +733,7 @@ abstract class AbstractHandler implements HandlerInterface
         return $registryInfo;
     }
 
-    /**
-     * @return string|array
-     */
-    public static function getDate($date, $format)
+    public static function getDate(string $date, string $format): string
     {
         $parsedDate = static::parseStandardDate($date);
         if ($parsedDate instanceof \DateTime) {
@@ -848,10 +842,7 @@ abstract class AbstractHandler implements HandlerInterface
         return \sprintf('%.4d-%02d-%02d', $res['y'], $res['m'], $res['d']);
     }
 
-    /**
-     * @return false|\DateTime
-     */
-    public static function parseStandardDate(string $date)
+    public static function parseStandardDate(string $date): ?\DateTime
     {
         $date = \trim($date);
         $UTC = new \DateTimeZone('UTC');
@@ -934,19 +925,19 @@ abstract class AbstractHandler implements HandlerInterface
                 }
 
                 $parsedDate = \DateTime::createFromFormat($dateTimeFormat, $date, $UTC);
-                if ($parsedDate instanceof \DateTime) {
+                if ($parsedDate) {
                     return $parsedDate;
                 }
 
                 $parsedDate = \DateTime::createFromFormat($dateTimeFormat, $matches['datetime'] ?? $matches[0], $UTC);
-                if ($parsedDate instanceof \DateTime) {
+                if ($parsedDate) {
                     return $parsedDate;
                 }
 
                 if (!empty($matches[1])) {
                     // Fallback, try ignoring the TimeZone
                     $parsedDate = \DateTime::createFromFormat('Y-m-d H:i:s', $matches[1], $UTC);
-                    if ($parsedDate instanceof \DateTime) {
+                    if ($parsedDate) {
                         return $parsedDate;
                     }
                 }
@@ -957,6 +948,6 @@ abstract class AbstractHandler implements HandlerInterface
             throw new \UnexpectedValueException("DateTime not parsable, value: \"{$date}\" ");
         }
 
-        return false;
+        return null;
     }
 }

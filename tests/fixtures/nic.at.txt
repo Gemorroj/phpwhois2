@@ -1,4 +1,4 @@
-% Copyright (c)2024 by NIC.AT (1)                                       
+% Copyright (c)2025 by NIC.AT (1)                                       
 %
 % Restricted rights.
 %

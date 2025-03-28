@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use phpWhois\Whois;
 
 class WhoisTest extends \PHPUnit\Framework\TestCase
@@ -13,16 +14,14 @@ class WhoisTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('yes', $result['regrinfo']['registered']);
     }
 
-    /**
-     * @dataProvider domainsProvider
-     */
-    public function testQtype($type, $domain): void
+    #[DataProvider('domainsProvider')]
+    public function testQueryType($type, $domain): void
     {
         $whois = new Whois();
         $this->assertEquals($type, $whois->getQueryType($domain));
     }
 
-    public static function domainsProvider()
+    public static function domainsProvider(): array
     {
         return [
             [Whois::QTYPE_DOMAIN,  'www.google.com'],

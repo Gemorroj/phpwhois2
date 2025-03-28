@@ -1,0 +1,3 @@
+Domain not found.
+
+>>> Please update your code or tell your system administrator to use whois.nic.pro, the authoritative WHOIS server for this domain. <<<

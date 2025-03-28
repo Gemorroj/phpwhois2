@@ -55,5 +55,5 @@ Name Servers:
 	ADNS1.BERKELEY.EDU
 
 Domain record activated:    24-Apr-1985
-Domain record last updated: 31-Jan-2023
-Domain expires:             31-Jul-2024
+Domain record last updated: 16-Sep-2024
+Domain expires:             31-Jul-2027

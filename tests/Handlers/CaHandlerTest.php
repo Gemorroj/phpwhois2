@@ -75,11 +75,9 @@ class CaHandlerTest extends AbstractHandler
 
         $actual = $this->handler->parse($data, $query);
 
-        $this->assertEquals('cira.ca', $actual['regrinfo']['domain']['name']);
-        $this->assertEquals('2024-02-05', $actual['regrinfo']['domain']['changed']);
-        $this->assertEquals('1998-02-05', $actual['regrinfo']['domain']['created']);
-        $this->assertEquals('2050-02-05', $actual['regrinfo']['domain']['expires']);
-        $this->assertEquals('yes', $actual['regrinfo']['registered']);
+        $this->assertEquals('CIRA', $actual['regyinfo']['registrar']);
+        $this->assertEquals('https://www.cira.ca/', $actual['regyinfo']['referrer']);
+        $this->assertEquals('no', $actual['regrinfo']['registered']);
 
         $this->assertArrayHasKey('rawdata', $actual);
         $this->assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');

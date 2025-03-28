@@ -1,7 +1,10 @@
-composer.lock
-/vendor
-nbproject
 .idea
-/.phpunit.cache
+composer.phar
+composer.lock
+vendor/
+
+phpunit.xml
+.phpunit.result.cache
+
 /.php-cs-fixer.php
 /.php-cs-fixer.cache

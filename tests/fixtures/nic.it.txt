@@ -11,8 +11,8 @@ Domain:             nic.it
 Status:             ok
 Signed:             yes
 Created:            1997-08-27 00:00:00
-Last Update:        2024-09-23 15:11:16
-Expire Date:        2024-12-31
+Last Update:        2025-01-28 11:24:42
+Expire Date:        2025-12-31
 
 Registrant
   Organization:     ccTLD '.it' Registry - IIT/CNR
@@ -55,8 +55,8 @@ Registrar
 
 Nameservers
   dns.nic.it
-  d.dns.it
+  a.dns.it
+  v.dns.it
   nameserver.cnr.it
   m.dns.it
-  ns2.nic.it
   r.dns.it
