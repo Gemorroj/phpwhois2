@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2
  * @license
@@ -15,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- *
  * @copyright Copyright (c) 2020 Joshua Smith
  */
 
@@ -25,46 +25,41 @@ use DMS\PHPUnitExtensions\ArraySubset\Assert;
 use phpWhois\Handlers\CzHandler;
 
 /**
- * CzHandlerTest
+ * CzHandlerTest.
  */
 class CzHandlerTest extends AbstractHandler
 {
     /**
-     * @var CzHandler $handler
+     * @var CzHandler
      */
     protected $handler;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler            = new CzHandler();
+        $this->handler = new CzHandler();
         $this->handler->deepWhois = false;
     }
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseGoogleDotCz()
+    public function testParseGoogleDotCz(): void
     {
         $query = 'google.cz';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'domain'     => [
-                'name'    => 'google.cz',
+            'domain' => [
+                'name' => 'google.cz',
                 'changed' => '2018-04-23',
                 'created' => '2000-07-21',
                 'expires' => '2025-07-22',
@@ -79,24 +74,22 @@ class CzHandlerTest extends AbstractHandler
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseNicDotCz()
+    public function testParseNicDotCz(): void
     {
         $query = 'nic.cz';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'domain'     => [
-                'name'    => 'nic.cz',
+            'domain' => [
+                'name' => 'nic.cz',
                 'changed' => '2020-11-17',
                 'created' => '1997-10-30',
                 'expires' => '2027-03-15',

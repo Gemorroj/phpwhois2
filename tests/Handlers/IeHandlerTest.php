@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2
  * @license
@@ -15,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- *
  * @copyright Copyright (c) 2020 Joshua Smith
  */
 
@@ -25,38 +25,33 @@ use DMS\PHPUnitExtensions\ArraySubset\Assert;
 use phpWhois\Handlers\IeHandler;
 
 /**
- * IeHandlerTest
+ * IeHandlerTest.
  */
 class IeHandlerTest extends AbstractHandler
 {
     /**
-     * @var IeHandler $handler
+     * @var IeHandler
      */
     protected $handler;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler            = new IeHandler();
+        $this->handler = new IeHandler();
         $this->handler->deepWhois = false;
     }
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseGoogleDotIe()
+    public function testParseGoogleDotIe(): void
     {
         $query = 'google.ie';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
@@ -73,16 +68,14 @@ class IeHandlerTest extends AbstractHandler
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseDomainregistryDotIe()
+    public function testParseDomainregistryDotIe(): void
     {
         $query = 'domainregistry.ie';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 

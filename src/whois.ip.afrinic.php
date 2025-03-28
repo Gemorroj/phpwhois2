@@ -17,7 +17,8 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
- * @link http://phpwhois.pw
+ * @see http://phpwhois.pw
+ *
  * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
@@ -25,16 +26,15 @@
 
 require_once 'whois.parser.php';
 
-if (!defined('__AFRINIC_HANDLER__')) {
-    define('__AFRINIC_HANDLER__', 1);
+if (!\defined('__AFRINIC_HANDLER__')) {
+    \define('__AFRINIC_HANDLER__', 1);
 }
 
 class afrinic_handler
 {
-
-    function parse($data_str, $query)
+    public function parse($data_str, $query)
     {
-        $translate = array(
+        $translate = [
             'fax-no' => 'fax',
             'e-mail' => 'email',
             'nic-hdl' => 'handle',
@@ -42,35 +42,36 @@ class afrinic_handler
             'netname' => 'name',
             'organisation' => 'handle',
             'org-name' => 'organization',
-            'org-type' => 'type'
-        );
+            'org-type' => 'type',
+        ];
 
-        $contacts = array(
+        $contacts = [
             'admin-c' => 'admin',
             'tech-c' => 'tech',
-            'org' => 'owner'
-        );
+            'org' => 'owner',
+        ];
 
-        $r = generic_parser_a($data_str, $translate, $contacts, 'network', 'Ymd');
+        $r = \generic_parser_a($data_str, $translate, $contacts, 'network', 'Ymd');
 
         if (isset($r['network']['descr'])) {
             $r['owner']['organization'] = $r['network']['descr'];
             unset($r['network']['descr']);
         }
 
-        if (isset($r['owner']['remarks']) && is_array($r['owner']['remarks'])) {
+        if (isset($r['owner']['remarks']) && \is_array($r['owner']['remarks'])) {
             foreach ($r['owner']['remarks'] as $val) {
-                $pos = strpos($val, 'rwhois://');
+                $pos = \strpos($val, 'rwhois://');
 
-                if ($pos !== false) {
-                    $r['rwhois'] = strtok(substr($val, $pos), ' ');
+                if (false !== $pos) {
+                    $r['rwhois'] = \strtok(\substr($val, $pos), ' ');
                 }
             }
         }
 
-        $r = array('regrinfo' => $r);
+        $r = ['regrinfo' => $r];
         $r['regyinfo']['type'] = 'ip';
         $r['regyinfo']['registrar'] = 'African Network Information Center';
+
         return $r;
     }
 }

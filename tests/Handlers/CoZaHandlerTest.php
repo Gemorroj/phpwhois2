@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2
  * @license
@@ -15,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- *
  * @copyright Copyright (c) 2020 Joshua Smith
  */
 
@@ -24,38 +24,33 @@ namespace Tests\Handlers;
 use DMS\PHPUnitExtensions\ArraySubset\Assert;
 
 /**
- * CoZaHandlerTest
+ * CoZaHandlerTest.
  */
 class CoZaHandlerTest extends AbstractHandler
 {
     /**
-     * @var \co_Za_handler $handler
+     * @var \co_Za_handler
      */
     protected $handler;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler            = new \co_Za_handler();
+        $this->handler = new \co_Za_handler();
         $this->handler->deepWhois = false;
     }
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseGoogleDotCoDotZa()
+    public function testParseGoogleDotCoDotZa(): void
     {
         $query = 'google.co.za';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
@@ -72,16 +67,14 @@ class CoZaHandlerTest extends AbstractHandler
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseSexDotCoDotZa()
+    public function testParseSexDotCoDotZa(): void
     {
         $query = 'sex.co.za';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 

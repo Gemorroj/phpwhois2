@@ -1,14 +1,14 @@
 <?php
+
 /** @noinspection PhpIllegalPsrClassPathInspection */
 
 namespace phpWhois\Handlers;
-
 
 class NzHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
     {
-        $items = array(
+        $items = [
             'domain_name:' => 'domain.name',
             'query_status:' => 'domain.status',
             'ns_name_01:' => 'domain.nserver.0',
@@ -48,56 +48,55 @@ class NzHandler extends AbstractHandler
             'technical_contact_country:' => 'tech.address.country',
             'technical_contact_phone:' => 'tech.phone',
             'technical_contact_fax:' => 'tech.fax',
-            'technical_contact_email:' => 'tech.email'
-        );
+            'technical_contact_email:' => 'tech.email',
+        ];
 
         $r = [];
         $r['regrinfo'] = static::generic_parser_b($data_str['rawdata'], $items);
 
         $domain_status = '';
-        if (!empty($r['regrinfo']['domain']['status'])){
-            $domain_status = substr( $r['regrinfo']['domain']['status'], 0, 3 );
+        if (!empty($r['regrinfo']['domain']['status'])) {
+            $domain_status = \substr($r['regrinfo']['domain']['status'], 0, 3);
         }
 
-        if ($domain_status === '200'){
-            $r['regrinfo']['registered']='yes';
-        }elseif ($domain_status === '220'){
-            $r['regrinfo']['registered']='no';
-        }else{
-            $r['regrinfo']['registered']='unknown';
+        if ('200' === $domain_status) {
+            $r['regrinfo']['registered'] = 'yes';
+        } elseif ('220' === $domain_status) {
+            $r['regrinfo']['registered'] = 'no';
+        } else {
+            $r['regrinfo']['registered'] = 'unknown';
         }
 
-        if (!strncmp($data_str['rawdata'][0], 'WHOIS LIMIT EXCEEDED', 20)){
-            $r['regrinfo']['registered']='unknown';
+        if (!\strncmp($data_str['rawdata'][0], 'WHOIS LIMIT EXCEEDED', 20)) {
+            $r['regrinfo']['registered'] = 'unknown';
         }
 
         $r['regyinfo'] = $this->parseRegistryInfo($data_str['rawdata']) ?? [
             'referrer' => 'https://www.dnc.org.nz',
-            'registrar' => 'New Zealand Domain Name Registry Limited'
+            'registrar' => 'New Zealand Domain Name Registry Limited',
         ];
 
         return $r;
     }
 
-    public static function generic_parser_a_blocks(array $rawdata, array $translate, array &$disclaimer=[]): array
+    public static function generic_parser_a_blocks(array $rawdata, array $translate, array &$disclaimer = []): array
     {
         $blocks = parent::generic_parser_a_blocks($rawdata, $translate, $disclaimer);
 
-        array_walk_recursive($blocks, static function (&$v, $key){
-            if (!in_array($key, ['expires', 'created', 'changed'])) {
+        \array_walk_recursive($blocks, static function (&$v, $key): void {
+            if (!\in_array($key, ['expires', 'created', 'changed'])) {
                 return;
             }
 
             $matches = [];
             $pattern = '/(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[-+])(\d{2}):(\d{2})/';
-            preg_match($pattern, $v, $matches);
+            \preg_match($pattern, $v, $matches);
 
             if (!empty($matches)) {
-                $v = $matches[1] . $matches[2] . $matches[3];
+                $v = $matches[1].$matches[2].$matches[3];
             }
         });
 
         return $blocks;
     }
-
 }

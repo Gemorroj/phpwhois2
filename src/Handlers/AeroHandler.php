@@ -17,10 +17,10 @@ class AeroHandler extends AbstractHandler
         $r = [
             'regrinfo' => static::generic_parser_b($data_str['rawdata'], [], 'ymd'),
             'regyinfo' => [
-                'referrer'  => 'http://www.nic.aero',
+                'referrer' => 'http://www.nic.aero',
                 'registrar' => 'Societe Internationale de Telecommunications Aeronautiques SC',
             ],
-            'rawdata'  => $data_str['rawdata'],
+            'rawdata' => $data_str['rawdata'],
         ];
 
         return $r;

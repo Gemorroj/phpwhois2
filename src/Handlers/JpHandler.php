@@ -12,12 +12,11 @@ namespace phpWhois\Handlers;
 
 use phpWhois\WhoisClient;
 
-
 class JpHandler extends WhoisClient
 {
-    function parse($data_str, $query)
+    public function parse($data_str, $query)
     {
-        $items = array(
+        $items = [
             '[State]' => 'domain.status',
             '[Status]' => 'domain.status',
             '[Registered Date]' => 'domain.created',
@@ -34,16 +33,16 @@ class JpHandler extends WhoisClient
             '[Fax]' => 'owner.fax',
             '[Administrative Contact]' => 'admin.handle',
             '[Technical Contact]' => 'tech.handle',
-            '[Name Server]' => 'domain.nserver.'
-        );
+            '[Name Server]' => 'domain.nserver.',
+        ];
 
-        $r = array();
-        $r['regrinfo'] = generic_parser_b($data_str['rawdata'], $items, 'ymd');
+        $r = [];
+        $r['regrinfo'] = \generic_parser_b($data_str['rawdata'], $items, 'ymd');
 
-        $r['regyinfo'] = array(
+        $r['regyinfo'] = [
             'referrer' => 'http://www.jprs.jp',
-            'registrar' => 'Japan Registry Services'
-        );
+            'registrar' => 'Japan Registry Services',
+        ];
 
         if (!$this->deepWhois) {
             return $r;
@@ -51,39 +50,39 @@ class JpHandler extends WhoisClient
 
         $r['rawdata'] = $data_str['rawdata'];
 
-        $items = array(
+        $items = [
             'a. [JPNIC Handle]' => 'handle',
             'c. [Last, First]' => 'name',
             'd. [E-Mail]' => 'email',
             'g. [Organization]' => 'organization',
             'o. [TEL]' => 'phone',
             'p. [FAX]' => 'fax',
-            '[Last Update]' => 'changed'
-        );
+            '[Last Update]' => 'changed',
+        ];
 
         $this->query['server'] = 'jp.whois-servers.net';
 
         if (!empty($r['regrinfo']['admin']['handle'])) {
-            $rwdata = $this->getRawData('CONTACT ' . $r['regrinfo']['admin']['handle'] . '/e');
+            $rwdata = $this->getRawData('CONTACT '.$r['regrinfo']['admin']['handle'].'/e');
             $r['rawdata'][] = '';
-            $r['rawdata'] = array_merge($r['rawdata'], $rwdata);
-            $r['regrinfo']['admin'] = generic_parser_b($rwdata, $items, 'ymd', false);
+            $r['rawdata'] = \array_merge($r['rawdata'], $rwdata);
+            $r['regrinfo']['admin'] = \generic_parser_b($rwdata, $items, 'ymd', false);
             $r = $this->setWhoisInfo($r);
         }
 
         if (!empty($r['regrinfo']['tech']['handle'])) {
             if (
-                !empty($r['regrinfo']['admin']['handle']) &&
-                    $r['regrinfo']['admin']['handle'] == $r['regrinfo']['tech']['handle']
+                !empty($r['regrinfo']['admin']['handle'])
+                    && $r['regrinfo']['admin']['handle'] == $r['regrinfo']['tech']['handle']
             ) {
                 $r['regrinfo']['tech'] = $r['regrinfo']['admin'];
             } else {
                 unset($this->query);
                 $this->query['server'] = 'jp.whois-servers.net';
-                $rwdata = $this->getRawData('CONTACT ' . $r['regrinfo']['tech']['handle'] . '/e');
+                $rwdata = $this->getRawData('CONTACT '.$r['regrinfo']['tech']['handle'].'/e');
                 $r['rawdata'][] = '';
-                $r['rawdata'] = array_merge($r['rawdata'], $rwdata);
-                $r['regrinfo']['tech'] = generic_parser_b($rwdata, $items, 'ymd', false);
+                $r['rawdata'] = \array_merge($r['rawdata'], $rwdata);
+                $r['regrinfo']['tech'] = \generic_parser_b($rwdata, $items, 'ymd', false);
                 $r = $this->setWhoisInfo($r);
             }
         }

@@ -17,24 +17,23 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
- * @link http://phpwhois.pw
+ * @see http://phpwhois.pw
+ *
  * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
  */
-
-if (!defined('__PSIUSA_HANDLER__')) {
-    define('__PSIUSA_HANDLER__', 1);
+if (!\defined('__PSIUSA_HANDLER__')) {
+    \define('__PSIUSA_HANDLER__', 1);
 }
 
 require_once 'whois.parser.php';
 
 class psiusa_handler
 {
-
-    function parse($data_str, $query)
+    public function parse($data_str, $query)
     {
-        $items = array(
+        $items = [
             'created:' => 'domain.created',
             'last-changed:' => 'domain.changed',
             'status:' => 'domain.status',
@@ -82,8 +81,8 @@ class psiusa_handler
             '[zone-c] phone:' => 'zone.phone',
             '[zone-c] fax:' => 'zone.fax',
             '[zone-c] email:' => 'zone.email',
-        );
+        ];
 
-        return generic_parser_b($data_str, $items);
+        return \generic_parser_b($data_str, $items);
     }
 }

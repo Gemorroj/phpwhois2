@@ -15,8 +15,8 @@ class ClHandler extends AbstractHandler
     public function parse(array $data_str, string $query): array
     {
         $items = [
-            'admin'          => '(Administrative Contact)',
-            'tech'           => 'Contacto Técnico (Technical Contact):',
+            'admin' => '(Administrative Contact)',
+            'tech' => 'Contacto Técnico (Technical Contact):',
             // 'domain.nserver' => 'Servidores de nombre (Domain servers):',
             'domain.nserver' => 'Name server:',
             'domain.changed' => '(Database last updated on):',
@@ -30,8 +30,8 @@ class ClHandler extends AbstractHandler
         ];
 
         $rawData = $this->removeBlankLines($data_str['rawdata']);
-        $r       = [
-            'rawdata'  => $data_str['rawdata'],
+        $r = [
+            'rawdata' => $data_str['rawdata'],
             'regrinfo' => $this->easyParser($rawData, $items, 'd-m-y', $trans),
         ];
 
@@ -40,7 +40,7 @@ class ClHandler extends AbstractHandler
         }
 
         $r['regyinfo'] = [
-            'referrer'  => 'http://www.nic.cl',
+            'referrer' => 'http://www.nic.cl',
             'registrar' => 'NIC Chile',
         ];
 

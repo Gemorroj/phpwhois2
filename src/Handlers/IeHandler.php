@@ -10,19 +10,18 @@
 
 namespace phpWhois\Handlers;
 
-
 class IeHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
     {
         $items = [
-            'Domain:'            => 'domain.name',
+            'Domain:' => 'domain.name',
             'Registration Date:' => 'domain.created',
-            'Renewal Date:'      => 'domain.expires',
-            'Nserver:'           => 'domain.nserver.',
-            'Admin-c:'           => 'admin.handle',
-            'Tech-c:'            => 'tech.handle',
-            'Domain Holder:'     => 'owner.name',
+            'Renewal Date:' => 'domain.expires',
+            'Nserver:' => 'domain.nserver.',
+            'Admin-c:' => 'admin.handle',
+            'Tech-c:' => 'tech.handle',
+            'Domain Holder:' => 'owner.name',
         ];
 
         $reg = static::generic_parser_b($data_str['rawdata'], $items);
@@ -38,7 +37,7 @@ class IeHandler extends AbstractHandler
 
         $r['regrinfo'] = $reg;
         $r['regyinfo'] = [
-            'referrer'  => 'http://www.domainregistry.ie',
+            'referrer' => 'http://www.domainregistry.ie',
             'registrar' => 'IE Domain Registry',
         ];
 

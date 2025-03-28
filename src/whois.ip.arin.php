@@ -17,26 +17,26 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
- * @link http://phpwhois.pw
+ * @see http://phpwhois.pw
+ *
  * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
  */
-
-if (!defined('__ARIN_HANDLER__')) {
-    define('__ARIN_HANDLER__', 1);
+if (!\defined('__ARIN_HANDLER__')) {
+    \define('__ARIN_HANDLER__', 1);
 }
 
 require_once 'whois.parser.php';
 
 class arin_handler
 {
-	// FIXME. This is a temporary fix :-(
-	public $deepWhois = false;
+    // FIXME. This is a temporary fix :-(
+    public $deepWhois = false;
 
-    function parse($data_str, $query)
+    public function parse($data_str, $query)
     {
-        $items = array(
+        $items = [
             'OrgName:' => 'owner.organization',
             'CustName:' => 'owner.organization',
             'OrgId:' => 'owner.handle',
@@ -63,15 +63,15 @@ class arin_handler
             'OrgAbuseHandle:' => 'abuse.handle',
             'OrgAbusePhone:' => 'abuse.phone',
             'OrgAbuseEmail:' => 'abuse.email.',
-            'ReferralServer:' => 'rwhois'
-        );
+            'ReferralServer:' => 'rwhois',
+        ];
 
-        $r = generic_parser_b($data_str, $items, 'ymd', false, true);
+        $r = \generic_parser_b($data_str, $items, 'ymd', false, true);
 
         if (@isset($r['abuse']['email'])) {
-            $r['abuse']['email'] = implode(',', $r['abuse']['email']);
+            $r['abuse']['email'] = \implode(',', $r['abuse']['email']);
         }
 
-        return array('regrinfo' => $r);
+        return ['regrinfo' => $r];
     }
 }

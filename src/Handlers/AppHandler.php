@@ -13,7 +13,7 @@ class AppHandler extends AbstractHandler
     {
         return [
             'regrinfo' => static::generic_parser_b($data_str['rawdata']),
-            'rawdata'  => $data_str['rawdata'],
+            'rawdata' => $data_str['rawdata'],
         ];
     }
 }

@@ -17,24 +17,23 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
- * @link http://phpwhois.pw
+ * @see http://phpwhois.pw
+ *
  * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
  */
-
-if (!defined('__CO_ZA_HANDLER__')) {
-    define('__CO_ZA_HANDLER__', 1);
+if (!\defined('__CO_ZA_HANDLER__')) {
+    \define('__CO_ZA_HANDLER__', 1);
 }
 
 require_once 'whois.parser.php';
 
 class co_Za_handler
 {
-
-    function parse($data_str, $query)
+    public function parse($data_str, $query)
     {
-        $items = array(
+        $items = [
             '0a. lastupdate             :' => 'domain.changed',
             '1a. domain                 :' => 'domain.name',
             '2b. registrantpostaladdress:' => 'owner.address.address.0',
@@ -61,14 +60,14 @@ class co_Za_handler
             '6e. secns1fqdn             :' => 'domain.nserver.1',
             '6i. secns2fqdn             :' => 'domain.nserver.2',
             '6m. secns3fqdn             :' => 'domain.nserver.3',
-            '6q. secns4fqdn             :' => 'domain.nserver.4'
-        );
+            '6q. secns4fqdn             :' => 'domain.nserver.4',
+        ];
 
         $r = [
             'rawdata' => $data_str['rawdata'],
         ];
 
-        $r['regrinfo'] = generic_parser_b($data_str['rawdata'], $items);
+        $r['regrinfo'] = \generic_parser_b($data_str['rawdata'], $items);
 
         $r['regyinfo']['referrer'] = 'https://www.co.za';
         $r['regyinfo']['registrar'] = 'UniForum Association';

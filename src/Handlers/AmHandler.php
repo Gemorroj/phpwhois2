@@ -15,14 +15,14 @@ class AmHandler extends AbstractHandler
     public function parse(array $data_str, string $query): array
     {
         $items = [
-            'owner'          => 'Registrant:',
-            'domain.name'    => 'Domain name:',
+            'owner' => 'Registrant:',
+            'domain.name' => 'Domain name:',
             'domain.created' => 'Registered:',
             'domain.changed' => 'Last modified:',
             'domain.nserver' => 'DNS servers:',
-            'domain.status'  => 'Status:',
-            'tech'           => 'Technical contact:',
-            'admin'          => 'Administrative contact:',
+            'domain.status' => 'Status:',
+            'tech' => 'Technical contact:',
+            'admin' => 'Administrative contact:',
         ];
 
         $rawData = $this->removeBlankLines($data_str['rawdata']);
@@ -32,15 +32,15 @@ class AmHandler extends AbstractHandler
         ];
 
         if (!empty($r['regrinfo']['domain']['name'])) {
-            $r['regrinfo']               = $this->getContacts($r['regrinfo']);
+            $r['regrinfo'] = $this->getContacts($r['regrinfo']);
             $r['regrinfo']['registered'] = 'yes';
         } else {
-            $r                           = [];
+            $r = [];
             $r['regrinfo']['registered'] = 'no';
         }
 
         $r['regyinfo'] = [
-            'referrer'  => 'http://www.isoc.am',
+            'referrer' => 'http://www.isoc.am',
             'registrar' => 'ISOCAM',
         ];
 

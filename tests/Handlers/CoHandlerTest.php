@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2
  * @license
@@ -15,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- *
  * @copyright Copyright (c) 2020 Joshua Smith
  */
 
@@ -25,49 +25,44 @@ use DMS\PHPUnitExtensions\ArraySubset\Assert;
 use phpWhois\Handlers\CoHandler;
 
 /**
- * CoHandlerTest
+ * CoHandlerTest.
  */
 class CoHandlerTest extends AbstractHandler
 {
     /**
-     * @var CoHandler $handler
+     * @var CoHandler
      */
     protected $handler;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler            = new CoHandler();
+        $this->handler = new CoHandler();
         $this->handler->deepWhois = false;
     }
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseGoogleDotCo()
+    public function testParseGoogleDotCo(): void
     {
         $query = 'google.co';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'domain'     => [
-                'name'    => 'google.co',
-				'changed' => '2024-01-28',
-				'created' => '2010-02-25',
-				'expires' => '2025-02-24',
+            'domain' => [
+                'name' => 'google.co',
+                'changed' => '2024-01-28',
+                'created' => '2010-02-25',
+                'expires' => '2025-02-24',
             ],
             'registered' => 'yes',
         ];
@@ -79,27 +74,25 @@ class CoHandlerTest extends AbstractHandler
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseNicDotCo()
+    public function testParseNicDotCo(): void
     {
         $query = 'nic.co';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'domain'     => [
-                'name'    => 'nic.co',
-				'changed' => '2024-06-07',
-				'created' => '2010-04-23',
-				'expires' => '2025-04-22',
+            'domain' => [
+                'name' => 'nic.co',
+                'changed' => '2024-06-07',
+                'created' => '2010-04-23',
+                'expires' => '2025-04-22',
             ],
             'registered' => 'yes',
         ];

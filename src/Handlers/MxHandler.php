@@ -10,7 +10,6 @@
 
 namespace phpWhois\Handlers;
 
-
 class MxHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
@@ -24,22 +23,22 @@ class MxHandler extends AbstractHandler
             'domain.created' => 'Created On:',
             'domain.expires' => 'Expiration Date:',
             'domain.changed' => 'Last Updated On:',
-            'domain.sponsor' => 'Registrar:'
+            'domain.sponsor' => 'Registrar:',
         ];
 
         $extra = [
             'city:' => 'address.city',
             'state:' => 'address.state',
-            'dns:' => '0'
+            'dns:' => '0',
         ];
 
         $r = [
             'regrinfo' => static::easyParser($data_str['rawdata'], $items, 'dmy', $extra),
             'regyinfo' => $this->parseRegistryInfo($data_str['rawdata']) ?? [
                 'registrar' => 'NIC Mexico',
-                'referrer' => 'https://www.nic.mx/'
+                'referrer' => 'https://www.nic.mx/',
             ],
-            'rawdata'  => $data_str['rawdata'],
+            'rawdata' => $data_str['rawdata'],
         ];
 
         if (empty($r['regrinfo']['domain']['created'])) {

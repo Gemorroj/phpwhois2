@@ -10,13 +10,12 @@
 
 namespace phpWhois\Handlers;
 
-
 class HuHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
     {
         $items = [
-            'domain:'         => 'domain.name',
+            'domain:' => 'domain.name',
             'record created:' => 'domain.created',
         ];
 
@@ -33,7 +32,7 @@ class HuHandler extends AbstractHandler
         }
 
         $r['regyinfo'] = [
-            'referrer'  => 'http://www.nic.hu',
+            'referrer' => 'http://www.nic.hu',
             'registrar' => 'HUNIC',
         ];
 

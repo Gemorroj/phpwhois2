@@ -10,12 +10,11 @@
 
 namespace phpWhois\Handlers;
 
-
 class ZanetHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
     {
-        $items = array(
+        $items = [
             'domain.name' => 'Domain Name            : ',
             'domain.created' => 'Record Created         :',
             'domain.changed' => 'Record	Last Updated    :',
@@ -24,19 +23,19 @@ class ZanetHandler extends AbstractHandler
             'tech' => 'Technical Contact      :',
             'domain.nserver' => 'Domain Name Servers listed in order:',
             'registered' => 'No such domain: ',
-            '' => 'The ZA NiC whois'
-        );
+            '' => 'The ZA NiC whois',
+        ];
 
         // Arrange contacts ...
 
-        $rawdata = array();
+        $rawdata = [];
         foreach ($data_str['rawdata'] as $line) {
-            if (strpos($line, ' Contact ') !== false) {
-                $pos = strpos($line, ':');
+            if (\str_contains($line, ' Contact ')) {
+                $pos = \strpos($line, ':');
 
-                if ($pos !== false) {
-                    $rawdata[] = substr($line, 0, $pos + 1);
-                    $rawdata[] = trim(substr($line, $pos + 1));
+                if (false !== $pos) {
+                    $rawdata[] = \substr($line, 0, $pos + 1);
+                    $rawdata[] = \trim(\substr($line, $pos + 1));
                     continue;
                 }
             }
@@ -47,10 +46,10 @@ class ZanetHandler extends AbstractHandler
             'regrinfo' => static::getBlocks($rawdata, $items),
             'regyinfo' => $this->parseRegistryInfo($data_str['rawdata']) ?? [
                 // Or try http://www.za.org
-                'referrer'  => 'https://www.za.net/',
+                'referrer' => 'https://www.za.net/',
                 'registrar' => 'ZA NiC',
             ],
-            'rawdata'  => $data_str['rawdata'],
+            'rawdata' => $data_str['rawdata'],
         ];
 
         if (isset($r['regrinfo']['registered'])) {

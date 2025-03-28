@@ -15,25 +15,25 @@ class BrHandler extends AbstractHandler
     public function parse(array $data_str, string $query): array
     {
         $translate = [
-            'fax-no'     => 'fax',
-            'e-mail'     => 'email',
+            'fax-no' => 'fax',
+            'e-mail' => 'email',
             'nic-hdl-br' => 'handle',
-            'person'     => 'name',
-            'netname'    => 'name',
-            'domain'     => 'name',
-            'updated'    => '',
+            'person' => 'name',
+            'netname' => 'name',
+            'domain' => 'name',
+            'updated' => '',
         ];
 
         $contacts = [
-            'owner-c'   => 'owner',
-            'tech-c'    => 'tech',
-            'admin-c'   => 'admin',
+            'owner-c' => 'owner',
+            'tech-c' => 'tech',
+            'admin-c' => 'admin',
             'billing-c' => 'billing',
         ];
 
         $r = static::generic_parser_a($data_str['rawdata'], $translate, $contacts, 'domain', 'Ymd');
 
-        if (in_array('Permission denied.', $r['disclaimer'])) {
+        if (\in_array('Permission denied.', $r['disclaimer'])) {
             $r['registered'] = 'unknown';
 
             return $r;
@@ -65,9 +65,9 @@ class BrHandler extends AbstractHandler
             'regrinfo' => $r,
             'regyinfo' => $this->parseRegistryInfo($data_str['rawdata']) ?? [
                 'registrar' => 'BR-NIC',
-                'referrer'  => 'https://www.nic.br',
+                'referrer' => 'https://www.nic.br',
             ],
-            'rawdata'  => $data_str['rawdata'],
+            'rawdata' => $data_str['rawdata'],
         ];
 
         return $a;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2
  * @license
@@ -15,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- *
  * @copyright Copyright (c) 2020 Joshua Smith
  */
 
@@ -24,38 +24,33 @@ namespace Tests\Handlers;
 use phpWhois\Handlers\TodayHandler;
 
 /**
- * TodayHandlerTest
+ * TodayHandlerTest.
  */
 class TodayHandlerTest extends AbstractHandler
 {
     /**
-     * @var TodayHandler $handler
+     * @var TodayHandler
      */
     protected $handler;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler            = new TodayHandler();
+        $this->handler = new TodayHandler();
         $this->handler->deepWhois = false;
     }
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseModxDotToday()
+    public function testParseModxDotToday(): void
     {
         $query = 'modx.today';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 

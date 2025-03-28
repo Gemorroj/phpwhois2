@@ -10,7 +10,6 @@
 
 namespace phpWhois\Handlers;
 
-
 class LyHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
@@ -24,7 +23,7 @@ class LyHandler extends AbstractHandler
             'domain.created' => 'Created:',
             'domain.changed' => 'Updated:',
             'domain.expires' => 'Expired:',
-            'domain.nserver' => 'Domain servers in listed order:'
+            'domain.nserver' => 'Domain servers in listed order:',
         ];
 
         $extra = ['zip/postal code:' => 'address.pcode'];
@@ -33,7 +32,7 @@ class LyHandler extends AbstractHandler
             'regrinfo' => static::getBlocks($data_str['rawdata'], $items),
             'regyinfo' => $this->parseRegistryInfo($data_str['rawdata']) ?? [
                 'referrer' => 'https://www.nic.ly',
-                'registrar' => 'Libya ccTLD'
+                'registrar' => 'Libya ccTLD',
             ],
         ];
 

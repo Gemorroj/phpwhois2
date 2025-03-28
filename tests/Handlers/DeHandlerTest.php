@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Copyright (c) 2020 Joshua Smith
  * @license   See LICENSE file
@@ -10,56 +11,49 @@ use DMS\PHPUnitExtensions\ArraySubset\Assert;
 use phpWhois\Handlers\DeHandler;
 
 /**
- * DeHandlerTest
+ * DeHandlerTest.
  */
 class DeHandlerTest extends AbstractHandler
 {
     /**
-     * @var DeHandler $handler
+     * @var DeHandler
      */
     protected $handler;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler            = new DeHandler();
+        $this->handler = new DeHandler();
         $this->handler->deepWhois = false;
     }
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parse4EverDotDe()
+    public function testParse4EverDotDe(): void
     {
         $query = '4ever.de';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'domain' =>
-                [
-                    'name' => '4ever.de',
-                    'nserver' =>
-                        [
-							0 => 'ns1.detebe.org',
-							1 => 'ns2.detebe.org',
-							2 => 'ns.4ever.de 193.200.137.137',
-							3 => 'ns.does.not-exist.de',
-                        ],
-                    'status' => 'connect',
+            'domain' => [
+                'name' => '4ever.de',
+                'nserver' => [
+                    0 => 'ns1.detebe.org',
+                    1 => 'ns2.detebe.org',
+                    2 => 'ns.4ever.de 193.200.137.137',
+                    3 => 'ns.does.not-exist.de',
                 ],
+                'status' => 'connect',
+            ],
             'registered' => 'yes',
         ];
 
@@ -70,16 +64,14 @@ class DeHandlerTest extends AbstractHandler
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseGoogleDotDe()
+    public function testParseGoogleDotDe(): void
     {
         $query = 'google.de';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
@@ -106,16 +98,14 @@ class DeHandlerTest extends AbstractHandler
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseDenicDotDe()
+    public function testParseDenicDotDe(): void
     {
         $query = 'denic.de';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
@@ -142,16 +132,14 @@ class DeHandlerTest extends AbstractHandler
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseDomainInConnectStatus()
+    public function testParseDomainInConnectStatus(): void
     {
         $query = 'humblebundle.de';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
@@ -176,24 +164,22 @@ class DeHandlerTest extends AbstractHandler
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseDomainInFreeStatus()
+    public function testParseDomainInFreeStatus(): void
     {
         $query = 'a2ba91bff88c6983f6af010c41236206df64001d.de';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'domain'     => [
-                'name'   => 'a2ba91bff88c6983f6af010c41236206df64001d.de',
+            'domain' => [
+                'name' => 'a2ba91bff88c6983f6af010c41236206df64001d.de',
             ],
             'registered' => 'no',
         ];

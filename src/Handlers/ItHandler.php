@@ -10,7 +10,6 @@
 
 namespace phpWhois\Handlers;
 
-
 /**
  * @TODO BUG
  * - nserver -> array
@@ -20,7 +19,7 @@ class ItHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
     {
-        $items = array(
+        $items = [
             'domain.name' => 'Domain:',
             'domain.nserver' => 'Nameservers',
             'domain.status' => 'Status:',
@@ -28,23 +27,23 @@ class ItHandler extends AbstractHandler
             'owner' => 'Registrant',
             'admin' => 'Admin Contact',
             'tech' => 'Technical Contacts',
-            'registrar' => 'Registrar'
-        );
+            'registrar' => 'Registrar',
+        ];
 
-        $extra = array(
+        $extra = [
             'address:' => 'address.',
             'contactid:' => 'handle',
             'organization:' => 'organization',
             'created:' => 'created',
             'last update:' => 'changed',
-            'web:' => 'web'
-        );
+            'web:' => 'web',
+        ];
 
         $r = [
             'regrinfo' => static::easyParser($data_str['rawdata'], $items, 'ymd', $extra),
             'regyinfo' => $this->parseRegistryInfo($data_str['rawdata']) ?? [
                 'registrar' => 'IT-Nic',
-                'referrer' => 'https://www.nic.it/'
+                'referrer' => 'https://www.nic.it/',
             ],
             'rawdata' => $data_str['rawdata'],
         ];

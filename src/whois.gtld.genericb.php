@@ -17,23 +17,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
- * @link http://phpwhois.pw
+ * @see http://phpwhois.pw
+ *
  * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
  */
-
-if (!defined('__GENERICB_HANDLER__')) {
-    define('__GENERICB_HANDLER__', 1);
+if (!\defined('__GENERICB_HANDLER__')) {
+    \define('__GENERICB_HANDLER__', 1);
 }
 
 require_once 'whois.parser.php';
 
 class genericb_handler
 {
-
-    function parse($data_str, $query)
+    public function parse($data_str, $query)
     {
-        return generic_parser_b($data_str);
+        return \generic_parser_b($data_str);
     }
 }

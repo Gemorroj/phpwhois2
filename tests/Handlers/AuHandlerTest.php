@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Copyright (c) 2020 Joshua Smith
  * @license   See LICENSE file
@@ -10,47 +11,42 @@ use DMS\PHPUnitExtensions\ArraySubset\Assert;
 use phpWhois\Handlers\AuHandler;
 
 /**
- * AuHandlerTest
+ * AuHandlerTest.
  */
 class AuHandlerTest extends AbstractHandler
 {
     /**
-     * @var AuHandler $handler
+     * @var AuHandler
      */
     protected $handler;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler            = new AuHandler();
+        $this->handler = new AuHandler();
         $this->handler->deepWhois = false;
     }
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseTelstraDotComDotAu()
+    public function testParseTelstraDotComDotAu(): void
     {
         $query = 'telstra.com.au';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'domain'     => [
-				'name' => 'telstra.com.au',
-				'changed' => '2024-09-12',
+            'domain' => [
+                'name' => 'telstra.com.au',
+                'changed' => '2024-09-12',
             ],
             'registered' => 'yes',
         ];

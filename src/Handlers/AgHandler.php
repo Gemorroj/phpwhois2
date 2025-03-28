@@ -17,10 +17,10 @@ class AgHandler extends AbstractHandler
         return [
             'regrinfo' => static::generic_parser_b($data_str['rawdata']),
             'regyinfo' => [
-                'referrer'  => 'https://www.nic.ag',
+                'referrer' => 'https://www.nic.ag',
                 'registrar' => 'Nic AG',
             ],
-            'rawdata'  => $data_str['rawdata'],
+            'rawdata' => $data_str['rawdata'],
         ];
     }
 }

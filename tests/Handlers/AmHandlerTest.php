@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license   See LICENSE file
  * @copyright Copyright (c) 2020 Joshua Smith
@@ -10,46 +11,41 @@ use DMS\PHPUnitExtensions\ArraySubset\Assert;
 use phpWhois\Handlers\AmHandler;
 
 /**
- * AmHandlerTest
+ * AmHandlerTest.
  */
 class AmHandlerTest extends AbstractHandler
 {
     /**
-     * @var AmHandler $handler
+     * @var AmHandler
      */
     protected $handler;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler            = new AmHandler();
+        $this->handler = new AmHandler();
         $this->handler->deepWhois = false;
     }
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseIsocDotAm()
+    public function testParseIsocDotAm(): void
     {
         $query = 'isoc.am';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'domain'     => [
-                'name'    => 'isoc.am',
+            'domain' => [
+                'name' => 'isoc.am',
                 'created' => '2000-01-01',
             ],
             'registered' => 'yes',

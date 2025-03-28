@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2
  * @license
@@ -15,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- *
  * @copyright Copyright (c) 2020 Joshua Smith
  */
 
@@ -25,46 +25,41 @@ use DMS\PHPUnitExtensions\ArraySubset\Assert;
 use phpWhois\Handlers\HuHandler;
 
 /**
- * HuHandlerTest
+ * HuHandlerTest.
  */
 class HuHandlerTest extends AbstractHandler
 {
     /**
-     * @var HuHandler $handler
+     * @var HuHandler
      */
     protected $handler;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler            = new HuHandler();
+        $this->handler = new HuHandler();
         $this->handler->deepWhois = false;
     }
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseGoogleDotHu()
+    public function testParseGoogleDotHu(): void
     {
         $query = 'google.hu';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'domain'     => [
-                'name'    => 'google.hu',
+            'domain' => [
+                'name' => 'google.hu',
                 // 'changed' => '2020-01-13',
                 'created' => '2000-03-25',
                 // 'expires' => '2022-03-17',
@@ -79,24 +74,22 @@ class HuHandlerTest extends AbstractHandler
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseNicDotHu()
+    public function testParseNicDotHu(): void
     {
         $query = 'nic.hu';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'domain'     => [
-                'name'    => 'nic.hu',
+            'domain' => [
+                'name' => 'nic.hu',
                 // 'changed' => '2020-08-03',
                 'created' => '1996-06-27',
                 // 'expires' => '2023-05-08',

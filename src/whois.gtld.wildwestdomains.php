@@ -17,24 +17,23 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
- * @link http://phpwhois.pw
+ * @see http://phpwhois.pw
+ *
  * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
  */
-
-if (!defined('__WILDWESTDOMAINS_HANDLER__')) {
-    define('__WILDWESTDOMAINS_HANDLER__', 1);
+if (!\defined('__WILDWESTDOMAINS_HANDLER__')) {
+    \define('__WILDWESTDOMAINS_HANDLER__', 1);
 }
 
 require_once 'whois.parser.php';
 
 class wildwestdomains_handler
 {
-
-    function parse($data_str, $query)
+    public function parse($data_str, $query)
     {
-        $items = array(
+        $items = [
             'owner' => 'Registrant:',
             'admin' => 'Administrative Contact:',
             'tech' => 'Technical Contact:',
@@ -43,9 +42,9 @@ class wildwestdomains_handler
             'domain.nserver' => 'Domain servers in listed order:',
             'domain.created' => 'Created on:',
             'domain.expires' => 'Expires on:',
-            'domain.changed' => 'Last Updated on:'
-        );
+            'domain.changed' => 'Last Updated on:',
+        ];
 
-        return easy_parser($data_str, $items, 'mdy');
+        return \easy_parser($data_str, $items, 'mdy');
     }
 }

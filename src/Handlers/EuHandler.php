@@ -10,31 +10,30 @@
 
 namespace phpWhois\Handlers;
 
-
 class EuHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
     {
         $items = [
-            'domain.name'      => 'Domain:',
-            'domain.status'    => 'Status:',
-            'domain.nserver'   => 'Name servers:',
-            'domain.created'   => 'Registered:',
+            'domain.name' => 'Domain:',
+            'domain.status' => 'Status:',
+            'domain.nserver' => 'Name servers:',
+            'domain.created' => 'Registered:',
             'domain.registrar' => 'Registrar:',
-            'tech'             => 'Registrar Technical Contacts:',
-            'owner'            => 'Registrant:',
-            ''                 => 'Please visit',
+            'tech' => 'Registrar Technical Contacts:',
+            'owner' => 'Registrant:',
+            '' => 'Please visit',
         ];
 
         $extra = [
             'organisation:' => 'organization',
-            'website:'      => 'url',
+            'website:' => 'url',
         ];
 
         $r = [
             'regrinfo' => static::getBlocks($data_str['rawdata'], $items),
             'regyinfo' => $this->parseRegistryInfo($data_str['rawdata']) ?? [
-                'referrer'  => 'https://www.eurid.eu',
+                'referrer' => 'https://www.eurid.eu',
                 'registrar' => 'EURID',
             ],
             'rawdata' => $data_str['rawdata'],

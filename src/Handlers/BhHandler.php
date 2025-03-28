@@ -16,7 +16,7 @@ class BhHandler extends AbstractHandler
     {
         $r = [
             'regrinfo' => static::generic_parser_b($data_str['rawdata']),
-            'rawdata'  => $data_str['rawdata'],
+            'rawdata' => $data_str['rawdata'],
         ];
 
         if (empty($r['regrinfo']['domain']['created'])) {
@@ -26,7 +26,7 @@ class BhHandler extends AbstractHandler
         }
 
         $r['regyinfo'] = $this->parseRegistryInfo($data_str['rawdata']) ?? [
-            'referrer'  => 'http://www.nic.bh/',
+            'referrer' => 'http://www.nic.bh/',
             'registrar' => 'NIC-BH',
         ];
 

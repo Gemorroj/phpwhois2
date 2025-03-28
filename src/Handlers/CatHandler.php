@@ -10,7 +10,6 @@
 
 namespace phpWhois\Handlers;
 
-
 class CatHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
@@ -19,7 +18,7 @@ class CatHandler extends AbstractHandler
             'regrinfo' => static::generic_parser_b($data_str['rawdata']),
             'regyinfo' => [
                 'registrar' => 'Domini punt CAT',
-                'referrer' => 'https://domini.cat/'
+                'referrer' => 'https://domini.cat/',
             ],
             'rawdata' => $data_str['rawdata'],
         ];

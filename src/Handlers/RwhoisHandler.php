@@ -10,12 +10,11 @@
 
 namespace phpWhois\Handlers;
 
-
 class RwhoisHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
     {
-        $items = array(
+        $items = [
             'network:Organization-Name:' => 'owner.name',
             'network:Organization;I:' => 'owner.organization',
             'network:Organization-City:' => 'owner.address.city',
@@ -28,8 +27,8 @@ class RwhoisHandler extends AbstractHandler
             'network:Created:' => 'network.created',
             'network:Updated:' => 'network.changed',
             'network:Tech-Contact;I:' => 'tech.email',
-            'network:Admin-Contact;I:' => 'admin.email'
-        );
+            'network:Admin-Contact;I:' => 'admin.email',
+        ];
 
         $res = static::generic_parser_b($data_str, $items, 'Ymd', false);
 

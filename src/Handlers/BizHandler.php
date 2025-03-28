@@ -17,10 +17,10 @@ class BizHandler extends AbstractHandler
         $r = [
             'regrinfo' => static::generic_parser_b($data_str['rawdata'], [], 'mdy'),
             'regyinfo' => $this->parseRegistryInfo($data_str['rawdata']) ?? [
-                'referrer'  => 'https://www.neulevel.biz',
+                'referrer' => 'https://www.neulevel.biz',
                 'registrar' => 'NEULEVEL',
             ],
-            'rawdata'  => $data_str['rawdata'],
+            'rawdata' => $data_str['rawdata'],
         ];
 
         return $r;

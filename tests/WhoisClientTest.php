@@ -4,17 +4,16 @@ namespace Tests;
 
 use phpWhois\WhoisClient;
 
-
 class WhoisClientTest extends \PHPUnit\Framework\TestCase
 {
-    public function testVersion()
+    public function testVersion(): void
     {
         $client = new WhoisClient();
 
-        if (method_exists($this, 'assertMatchesRegularExpression')) {
+        if (\method_exists($this, 'assertMatchesRegularExpression')) {
             $this->assertMatchesRegularExpression('/^(\d+)\.(\d+)\.(\d+)(-\w+)*$/', $client->codeVersion);
         } else {
-            /**
+            /*
              * Deprecated in PHPUnit 9
              * @noinspection PhpUnitDeprecatedCallsIn10VersionInspection
              * @noinspection PhpDeprecationInspection
@@ -26,7 +25,7 @@ class WhoisClientTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider serversProvider
      */
-    public function testParseServer($server, $result)
+    public function testParseServer($server, $result): void
     {
         $whoisClient = new WhoisClient();
         $this->assertEquals($result, $whoisClient->parseServer($server));

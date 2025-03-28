@@ -17,24 +17,23 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
- * @link http://phpwhois.pw
+ * @see http://phpwhois.pw
+ *
  * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
  */
-
-if (!defined('__KRNIC_HANDLER__')) {
-    define('__KRNIC_HANDLER__', 1);
+if (!\defined('__KRNIC_HANDLER__')) {
+    \define('__KRNIC_HANDLER__', 1);
 }
 
 require_once 'whois.parser.php';
 
 class krnic_handler
 {
-
-    function parse($data_str, $query)
+    public function parse($data_str, $query)
     {
-        $blocks = array(
+        $blocks = [
             'owner1' => '[ Organization Information ]',
             'tech1' => '[ Technical Contact Information ]',
             'owner2' => '[ ISP Organization Information ]',
@@ -46,10 +45,10 @@ class krnic_handler
             'network.inetnum' => 'IPv4 Address       :',
             'network.name' => 'Network Name       :',
             'network.mnt-by' => 'Connect ISP Name   :',
-            'network.created' => 'Registration Date  :'
-        );
+            'network.created' => 'Registration Date  :',
+        ];
 
-        $items = array(
+        $items = [
             'Orgnization ID     :' => 'handle',
             'Org Name      :' => 'organization',
             'Org Name           :' => 'organization',
@@ -64,42 +63,42 @@ class krnic_handler
             'Phone              :' => 'phone',
             'Fax           :' => 'fax',
             'E-Mail        :' => 'email',
-            'E-Mail             :' => 'email'
-        );
+            'E-Mail             :' => 'email',
+        ];
 
-        $b = get_blocks($data_str, $blocks);
+        $b = \get_blocks($data_str, $blocks);
 
-        $r = array();
+        $r = [];
         if (isset($b['network'])) {
             $r['network'] = $b['network'];
         }
 
         if (isset($b['owner1'])) {
-            $r['owner'] = generic_parser_b($b['owner1'], $items, 'Ymd', false);
+            $r['owner'] = \generic_parser_b($b['owner1'], $items, 'Ymd', false);
         } elseif (isset($b['owner2'])) {
-            $r['owner'] = generic_parser_b($b['owner2'], $items, 'Ymd', false);
+            $r['owner'] = \generic_parser_b($b['owner2'], $items, 'Ymd', false);
         }
 
         if (isset($b['admin2'])) {
-            $r['admin'] = generic_parser_b($b['admin2'], $items, 'Ymd', false);
+            $r['admin'] = \generic_parser_b($b['admin2'], $items, 'Ymd', false);
         } elseif (isset($b['admin3'])) {
-            $r['admin'] = generic_parser_b($b['admin3'], $items, 'Ymd', false);
+            $r['admin'] = \generic_parser_b($b['admin3'], $items, 'Ymd', false);
         }
 
         if (isset($b['tech1'])) {
-            $r['tech'] = generic_parser_b($b['tech1'], $items, 'Ymd', false);
+            $r['tech'] = \generic_parser_b($b['tech1'], $items, 'Ymd', false);
         } elseif (isset($b['tech2'])) {
-            $r['tech'] = generic_parser_b($b['tech2'], $items, 'Ymd', false);
+            $r['tech'] = \generic_parser_b($b['tech2'], $items, 'Ymd', false);
         } elseif (isset($b['tech3'])) {
-            $r['tech'] = generic_parser_b($b['tech3'], $items, 'Ymd', false);
+            $r['tech'] = \generic_parser_b($b['tech3'], $items, 'Ymd', false);
         }
         if (isset($b['abuse'])) {
-            $r['abuse'] = generic_parser_b($b['abuse'], $items, 'Ymd', false);
+            $r['abuse'] = \generic_parser_b($b['abuse'], $items, 'Ymd', false);
         }
 
-        $r = format_dates($r, 'Ymd');
+        $r = \format_dates($r, 'Ymd');
 
-        $r = array('regrinfo' => $r);
+        $r = ['regrinfo' => $r];
         $r['regyinfo']['type'] = 'ip';
         $r['regyinfo']['registrar'] = 'Korean Network Information Centre';
 

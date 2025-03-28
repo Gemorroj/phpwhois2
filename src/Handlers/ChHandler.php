@@ -10,27 +10,25 @@
 
 namespace phpWhois\Handlers;
 
-
 class ChHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
     {
-
-        $items = array(
+        $items = [
             'owner' => 'Holder of domain name:',
             'domain.name' => 'Domain name:',
             'domain.created' => 'Date of last registration:',
             'domain.changed' => 'Date of last modification:',
             'tech' => 'Technical contact:',
             'domain.nserver' => 'Name servers:',
-            'domain.dnssec' => 'DNSSEC:'
-        );
+            'domain.dnssec' => 'DNSSEC:',
+        ];
 
-        $trans = array(
-            'contractual language:' => 'language'
-        );
+        $trans = [
+            'contractual language:' => 'language',
+        ];
 
-        $r = array();
+        $r = [];
         $r['regrinfo'] = static::getBlocks($data_str['rawdata'], $items);
 
         if (!empty($r['regrinfo']['domain']['name'])) {
@@ -52,10 +50,11 @@ class ChHandler extends AbstractHandler
             $r['regrinfo']['registered'] = 'no';
         }
 
-        $r['regyinfo'] = array(
+        $r['regyinfo'] = [
             'referrer' => 'https://www.nic.ch/',
-            'registrar' => 'SWITCH Domain Name Registration'
-        );
+            'registrar' => 'SWITCH Domain Name Registration',
+        ];
+
         return $r;
     }
 }

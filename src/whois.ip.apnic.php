@@ -17,7 +17,8 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
- * @link http://phpwhois.pw
+ * @see http://phpwhois.pw
+ *
  * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
@@ -27,16 +28,15 @@ use phpWhois\Handlers\AbstractHandler;
 
 require_once 'whois.parser.php';
 
-if (!defined('__APNIC_HANDLER__')) {
-    define('__APNIC_HANDLER__', 1);
+if (!\defined('__APNIC_HANDLER__')) {
+    \define('__APNIC_HANDLER__', 1);
 }
 
 class apnic_handler
 {
-
-    function parse($data_str, $query)
+    public function parse($data_str, $query)
     {
-        $translate = array(
+        $translate = [
             'fax-no' => 'fax',
             'e-mail' => 'email',
             'nic-hdl' => 'handle',
@@ -44,24 +44,24 @@ class apnic_handler
             'netname' => 'name',
             'descr' => 'desc',
             'aut-num' => 'handle',
-            'country' => 'country'
-        );
+            'country' => 'country',
+        ];
 
-        $contacts = array(
+        $contacts = [
             'admin-c' => 'admin',
-            'tech-c' => 'tech'
-        );
+            'tech-c' => 'tech',
+        ];
 
         $disclaimer = [];
         $blocks = AbstractHandler::generic_parser_a_blocks($data_str, $translate, $disclaimer);
 
-        $r = array();
+        $r = [];
 
-        if (isset($disclaimer) && is_array($disclaimer)) {
+        if (isset($disclaimer) && \is_array($disclaimer)) {
             $r['disclaimer'] = $disclaimer;
         }
 
-        if (empty($blocks) || !is_array($blocks['main'])) {
+        if (empty($blocks) || !\is_array($blocks['main'])) {
             $r['registered'] = 'no';
         } else {
             if (isset($blocks[$query])) {
@@ -74,8 +74,8 @@ class apnic_handler
 
             foreach ($contacts as $key => $val) {
                 if (isset($rb[$key])) {
-                    if (is_array($rb[$key])) {
-                        $blk = $rb[$key][count($rb[$key]) - 1];
+                    if (\is_array($rb[$key])) {
+                        $blk = $rb[$key][\count($rb[$key]) - 1];
                     } else {
                         $blk = $rb[$key];
                     }
@@ -88,11 +88,11 @@ class apnic_handler
             }
 
             $r['network'] = $rb;
-            format_dates($r, 'Ymd');
+            \format_dates($r, 'Ymd');
 
             if (isset($r['network']['desc'])) {
-                if (is_array($r['network']['desc'])) {
-                    $r['owner']['organization'] = array_shift($r['network']['desc']);
+                if (\is_array($r['network']['desc'])) {
+                    $r['owner']['organization'] = \array_shift($r['network']['desc']);
                     $r['owner']['address'] = $r['network']['desc'];
                 } else {
                     $r['owner']['organization'] = $r['network']['desc'];
@@ -112,9 +112,10 @@ class apnic_handler
             }
         }
 
-        $r = array('regrinfo' => $r);
+        $r = ['regrinfo' => $r];
         $r['regyinfo']['type'] = 'ip';
         $r['regyinfo']['registrar'] = 'Asia Pacific Network Information Centre';
+
         return $r;
     }
 }

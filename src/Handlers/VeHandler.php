@@ -10,7 +10,6 @@
 
 namespace phpWhois\Handlers;
 
-
 class VeHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
@@ -25,26 +24,27 @@ class VeHandler extends AbstractHandler
             'domain.changed' => 'Ultima Actualizacion:',
             'domain.expires' => 'Fecha de Vencimiento:',
             'domain.status' => 'Estatus del dominio:',
-            'domain.nserver' => 'Servidor(es) de Nombres de Dominio'
+            'domain.nserver' => 'Servidor(es) de Nombres de Dominio',
         ];
 
         $r = [
             'regrinfo' => static::getBlocks($data_str['rawdata'], $items),
             'regyinfo' => $this->parseRegistryInfo($data_str['rawdata']) ?? [
                 'referrer' => 'https://registro.nic.ve',
-                'registrar' => 'NIC-Venezuela - CNTI'
+                'registrar' => 'NIC-Venezuela - CNTI',
             ],
-            'rawdata'  => $data_str['rawdata'],
+            'rawdata' => $data_str['rawdata'],
         ];
 
-        if (!isset($r['regrinfo']['domain']['created']) || is_array($r['regrinfo']['domain']['created'])) {
+        if (!isset($r['regrinfo']['domain']['created']) || \is_array($r['regrinfo']['domain']['created'])) {
             $r['regrinfo'] = ['registered' => 'no'];
+
             return $r;
         }
 
         $dns = [];
         foreach ($r['regrinfo']['domain']['nserver'] as $nserv) {
-            if ($nserv[0] === '-') {
+            if ('-' === $nserv[0]) {
                 $dns[] = $nserv;
             }
         }

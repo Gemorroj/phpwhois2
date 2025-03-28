@@ -10,14 +10,13 @@
 
 namespace phpWhois\Handlers;
 
-
 class LtHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
     {
         $translate = [
             'contact nic-hdl:' => 'handle',
-            'contact name:' => 'name'
+            'contact name:' => 'name',
         ];
 
         $items = [
@@ -30,14 +29,14 @@ class LtHandler extends AbstractHandler
             'domain.created' => 'Registered:',
             'domain.changed' => 'Last updated:',
             'domain.nserver.' => 'NS:',
-            '' => '%'
+            '' => '%',
         ];
 
         return [
             'regrinfo' => static::easyParser($data_str['rawdata'], $items, 'ymd', $translate),
             'regyinfo' => $this->parseRegistryInfo($data_str['rawdata']) ?? [
                 'registrar' => 'DOMREG.LT',
-                'referrer' => 'https://www.domreg.lt'
+                'referrer' => 'https://www.domreg.lt',
             ],
         ];
     }

@@ -10,7 +10,6 @@
 
 namespace phpWhois\Handlers;
 
-
 class NlHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
@@ -23,13 +22,13 @@ class NlHandler extends AbstractHandler
             'domain.changed' => 'Record last updated:',
             'domain.sponsor' => 'Registrar:',
             'admin' => 'Administrative contact:',
-            'tech' => 'Technical contact(s):'
+            'tech' => 'Technical contact(s):',
         ];
 
         $r = [
             'regrinfo' => static::getBlocks($data_str['rawdata'], $items),
             'regyinfo' => $this->parseRegistryInfo($data_str['rawdata']) ?? [
-                'referrer'  => 'https://www.domain-registry.nl',
+                'referrer' => 'https://www.domain-registry.nl',
                 'registrar' => 'Stichting Internet Domeinregistratie NL',
             ],
             'rawdata' => $data_str['rawdata'],
@@ -37,6 +36,7 @@ class NlHandler extends AbstractHandler
 
         if (!isset($r['regrinfo']['domain']['status'])) {
             $r['regrinfo']['registered'] = 'no';
+
             return $r;
         }
 
@@ -63,13 +63,13 @@ class NlHandler extends AbstractHandler
         return $r;
     }
 
-    public static function getContact($array, $extra_items = array(), $has_org = false): array
+    public static function getContact($array, $extra_items = [], $has_org = false): array
     {
-        $r = parent::getContact($array,$extra_items,$has_org);
+        $r = parent::getContact($array, $extra_items, $has_org);
 
-        if (isset($r['name']) && preg_match('/^[A-Z0-9]+-[A-Z0-9]+$/', $r['name'])) {
+        if (isset($r['name']) && \preg_match('/^[A-Z0-9]+-[A-Z0-9]+$/', $r['name'])) {
             $r['handle'] = $r['name'];
-            $r['name'] = array_shift($r['address']);
+            $r['name'] = \array_shift($r['address']);
         }
 
         return $r;

@@ -10,43 +10,42 @@
 
 namespace phpWhois\Handlers;
 
-
 class IlHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
     {
         $r = [
-//            'regrinfo' => [],
+            //            'regrinfo' => [],
             'regyinfo' => [
-                'referrer'  => 'https://www.isoc.org.il/',
+                'referrer' => 'https://www.isoc.org.il/',
                 'registrar' => 'ISOC-IL',
             ],
             'rawdata' => $data_str['rawdata'],
         ];
 
         $translate = [
-            'fax-no'     => 'fax',
-            'e-mail'     => 'email',
-            'nic-hdl'    => 'handle',
-            'person'     => 'name',
+            'fax-no' => 'fax',
+            'e-mail' => 'email',
+            'nic-hdl' => 'handle',
+            'person' => 'name',
             'personname' => 'name',
-            'address'    => 'address'
+            'address' => 'address',
         ];
 
         $contacts = [
             'registrant' => 'owner',
-            'admin-c'    => 'admin',
-            'tech-c'     => 'tech',
-            'billing-c'  => 'billing',
-            'zone-c'     => 'zone',
+            'admin-c' => 'admin',
+            'tech-c' => 'tech',
+            'billing-c' => 'billing',
+            'zone-c' => 'zone',
         ];
 
-        array_splice($data_str['rawdata'], 16, 1);
-        array_splice($data_str['rawdata'], 18, 1);
+        \array_splice($data_str['rawdata'], 16, 1);
+        \array_splice($data_str['rawdata'], 18, 1);
 
         $reg = static::generic_parser_a($data_str['rawdata'], $translate, $contacts, 'domain', 'Ymd');
 
-        if( $reg['disclaimer'] ){
+        if ($reg['disclaimer']) {
             unset($reg['disclaimer']);
         }
 
@@ -56,20 +55,20 @@ class IlHandler extends AbstractHandler
 
         if (isset($reg['domain']['descr:'])) {
             foreach ($reg['domain']['descr:'] as $key => $val) {
-                $v = trim(substr(strstr($val, ':'), 1));
-                if (strpos($val, '[organization]:') !== false) {
+                $v = \trim(\substr(\strstr($val, ':'), 1));
+                if (\str_contains($val, '[organization]:')) {
                     $reg['owner']['organization'] = $v;
                     continue;
                 }
-                if (strpos($val, '[phone]:') !== false) {
+                if (\str_contains($val, '[phone]:')) {
                     $reg['owner']['phone'] = $v;
                     continue;
                 }
-                if (strpos($val, '[fax-no]:') !== false) {
+                if (\str_contains($val, '[fax-no]:')) {
                     $reg['owner']['fax'] = $v;
                     continue;
                 }
-                if (strpos($val, '[e-mail]:') !== false) {
+                if (\str_contains($val, '[e-mail]:')) {
                     $reg['owner']['email'] = $v;
                     continue;
                 }

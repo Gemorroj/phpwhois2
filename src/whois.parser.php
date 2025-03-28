@@ -17,7 +17,8 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
- * @link http://phpwhois.pw
+ * @see http://phpwhois.pw
+ *
  * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
@@ -30,13 +31,13 @@ use phpWhois\Handlers\AbstractHandler;
  */
 function generic_parser_a($rawdata, $translate, $contacts, $main = 'domain', $dateformat = 'dmy')
 {
-    return AbstractHandler::generic_parser_a($rawdata,$translate,$contacts,$main,$dateformat);
+    return AbstractHandler::generic_parser_a($rawdata, $translate, $contacts, $main, $dateformat);
 }
 
 /**
  * @deprecated Use AbstractHandler::generic_parser_b
  */
-function generic_parser_b($rawdata, $items = array(), $dateformat = 'mdy', $hasreg = true, $scanall = false)
+function generic_parser_b($rawdata, $items = [], $dateformat = 'mdy', $hasreg = true, $scanall = false)
 {
     return AbstractHandler::generic_parser_b($rawdata, $items, $dateformat, $hasreg, $scanall);
 }
@@ -47,13 +48,14 @@ function generic_parser_b($rawdata, $items = array(), $dateformat = 'mdy', $hasr
  * @param mixed    $value The value to be assigned to the $vDef key
  *
  * @return array The updated array
+ *
  * @see https://github.com/sparc/phpWhois.org/compare/18849d1a98b992190612cdb2561e7b4492c505f5...8c6a18686775b25f05592dd67d7706e47167a498#diff-b8adbe1292f8abca1f943aa844db52aa Original fix by David Saez PAdros sparc
  */
 function assign_recursive(array $array, array $parts, $value)
 {
-    $key = array_shift($parts);
+    $key = \array_shift($parts);
 
-    if (count($parts) === 0) {
+    if (0 === \count($parts)) {
         if (!$key) {
             $array[] = $value;
         } else {
@@ -63,7 +65,7 @@ function assign_recursive(array $array, array $parts, $value)
         if (!isset($array[$key])) {
             $array[$key] = [];
         }
-        $array[$key] = assign_recursive($array[$key], $parts, $value);
+        $array[$key] = \assign_recursive($array[$key], $parts, $value);
     }
 
     return $array;
@@ -75,11 +77,12 @@ function assign_recursive(array $array, array $parts, $value)
  * @param mixed  $value The value to be assigned to the $vDef key
  *
  * @return array The updated array
+ *
  * @see https://github.com/sparc/phpWhois.org/compare/18849d1a98b992190612cdb2561e7b4492c505f5...8c6a18686775b25f05592dd67d7706e47167a498#diff-b8adbe1292f8abca1f943aa844db52aa Original fix by David Saez PAdros sparc
  */
 function assign(array $array, string $vDef, $value)
 {
-    return assign_recursive($array, explode('.', $vDef), $value);
+    return \assign_recursive($array, \explode('.', $vDef), $value);
 }
 
 /**
@@ -93,7 +96,7 @@ function get_blocks($rawdata, $items, $partial_match = false, $def_block = false
 /**
  * @deprecated Use AbstractHandler::easyParser
  */
-function easy_parser($data_str, $items, $date_format, $translate = array(), $has_org = false, $partial_match = false, $def_block = false)
+function easy_parser($data_str, $items, $date_format, $translate = [], $has_org = false, $partial_match = false, $def_block = false)
 {
     return AbstractHandler::easyParser($data_str, $items, $date_format, $translate, $has_org, $partial_match, $def_block);
 }
@@ -101,17 +104,17 @@ function easy_parser($data_str, $items, $date_format, $translate = array(), $has
 /**
  * @deprecated Use AbstractHandler::getContacts
  */
-function get_contacts($array, $extra_items = array(), $has_org = false)
+function get_contacts($array, $extra_items = [], $has_org = false)
 {
-    return AbstractHandler::getContacts($array,$extra_items,$has_org);
+    return AbstractHandler::getContacts($array, $extra_items, $has_org);
 }
 
 /**
  * @deprecated Use AbstractHandler::getContact
  */
-function get_contact($array, $extra_items = array(), $has_org = false)
+function get_contact($array, $extra_items = [], $has_org = false)
 {
-    return AbstractHandler::getContact($array,$extra_items,$has_org);
+    return AbstractHandler::getContact($array, $extra_items, $has_org);
 }
 
 /**
@@ -119,5 +122,5 @@ function get_contact($array, $extra_items = array(), $has_org = false)
  */
 function format_dates(&$res, $format = 'mdy')
 {
-    return AbstractHandler::formatDates($res,$format);
+    return AbstractHandler::formatDates($res, $format);
 }

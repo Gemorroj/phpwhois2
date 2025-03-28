@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Copyright (c) 2020 Joshua Smith
  * @license   See LICENSE file
@@ -8,49 +9,43 @@ namespace Tests\Handlers;
 
 use DMS\PHPUnitExtensions\ArraySubset\Assert;
 use phpWhois\Handlers\KiwiHandler;
-use phpWhois\Whois;
 
 /**
- * KiwiHandlerTest
+ * KiwiHandlerTest.
  */
 class KiwiHandlerTest extends AbstractHandler
 {
     /**
-     * @var KiwiHandler $handler
+     * @var KiwiHandler
      */
     protected $handler;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler            = new KiwiHandler();
+        $this->handler = new KiwiHandler();
         $this->handler->deepWhois = false;
     }
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseHelloDotKiwi()
+    public function testParseHelloDotKiwi(): void
     {
         $query = 'hello.kiwi';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'domain'     => [
-                'name'    => 'hello.kiwi',
+            'domain' => [
+                'name' => 'hello.kiwi',
                 'created' => '2014-02-06',
                 'changed' => '2022-04-14',
                 'expires' => '2026-10-31',
@@ -66,24 +61,22 @@ class KiwiHandlerTest extends AbstractHandler
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseGoogleDotKiwi()
+    public function testParseGoogleDotKiwi(): void
     {
         $query = 'google.kiwi';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'domain'     => [
-                'name'    => 'google.kiwi',
+            'domain' => [
+                'name' => 'google.kiwi',
                 'created' => '2014-03-25',
                 'changed' => '2023-02-26',
                 'expires' => '2024-03-25',

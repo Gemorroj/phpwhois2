@@ -10,12 +10,11 @@
 
 namespace phpWhois\Handlers;
 
-
 class LuHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
     {
-        $items = array(
+        $items = [
             'domainname:' => 'domain.name',
             'domaintype:' => 'domain.status',
             'nserver:' => 'domain.nserver.',
@@ -44,13 +43,13 @@ class LuHandler extends AbstractHandler
             'bil-zipcode:' => 'billing.address.pcode',
             'bil-city:' => 'billing.address.city',
             'bil-country:' => 'billing.address.country',
-            'bil-email:' => 'billing.email'
-        );
+            'bil-email:' => 'billing.email',
+        ];
 
         return [
             'regrinfo' => static::generic_parser_b($data_str['rawdata'], $items, 'dmy'),
             'regyinfo' => $this->parseRegistryInfo($data_str['rawdata']) ?? [
-                'referrer'  => 'https://www.dns.lu',
+                'referrer' => 'https://www.dns.lu',
                 'registrar' => 'DNS-LU',
             ],
             'rawdata' => $data_str['rawdata'],

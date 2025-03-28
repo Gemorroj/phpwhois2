@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2
  * @license
@@ -15,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- *
  * @copyright Copyright (c) 2020 Joshua Smith
  */
 
@@ -25,49 +25,44 @@ use DMS\PHPUnitExtensions\ArraySubset\Assert;
 use phpWhois\Handlers\FiHandler;
 
 /**
- * FiHandlerTest
+ * FiHandlerTest.
  */
 class FiHandlerTest extends AbstractHandler
 {
     /**
-     * @var FiHandler $handler
+     * @var FiHandler
      */
     protected $handler;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler            = new FiHandler();
+        $this->handler = new FiHandler();
         $this->handler->deepWhois = false;
     }
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseGoogleDotFi()
+    public function testParseGoogleDotFi(): void
     {
         $query = 'google.fi';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'domain'     => [
-                'name'    => 'google.fi',
+            'domain' => [
+                'name' => 'google.fi',
                 'created' => '2006-06-30',
-				'expires' => '2025-07-04',
-				'changed' => '2024-06-02',
+                'expires' => '2025-07-04',
+                'changed' => '2024-06-02',
             ],
             'registered' => 'yes',
         ];
@@ -79,24 +74,22 @@ class FiHandlerTest extends AbstractHandler
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseFicoraDotFi()
+    public function testParseFicoraDotFi(): void
     {
         $query = 'ficora.fi';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'domain'     => [
-                'name'    => 'ficora.fi',
+            'domain' => [
+                'name' => 'ficora.fi',
                 'created' => '2001-06-29',
                 'changed' => '2023-06-09',
                 'expires' => '2029-08-31',

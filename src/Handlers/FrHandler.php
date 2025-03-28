@@ -1,8 +1,8 @@
 <?php
+
 /** @noinspection PhpIllegalPsrClassPathInspection */
 
 namespace phpWhois\Handlers;
-
 
 class FrHandler extends AbstractHandler
 {
@@ -37,7 +37,7 @@ class FrHandler extends AbstractHandler
         $reg = static::generic_parser_a($data_str['rawdata'], $translate, $contacts, 'domain', 'dmY');
 
         if (isset($reg['nserver'])) {
-            $reg['domain'] = array_merge($reg['domain'], $reg['nserver']);
+            $reg['domain'] = \array_merge($reg['domain'], $reg['nserver']);
             unset($reg['nserver']);
         }
 
@@ -51,18 +51,18 @@ class FrHandler extends AbstractHandler
         ];
     }
 
-    public static function generic_parser_a_blocks(array $rawdata, array $translate, array &$disclaimer=[]): array
+    public static function generic_parser_a_blocks(array $rawdata, array $translate, array &$disclaimer = []): array
     {
         $blocks = parent::generic_parser_a_blocks($rawdata, $translate, $disclaimer);
 
-        array_walk_recursive($blocks, static function (&$v, $key) {
-            if (!in_array($key, ['expires', 'created', 'changed'])) {
+        \array_walk_recursive($blocks, static function (&$v, $key): void {
+            if (!\in_array($key, ['expires', 'created', 'changed'])) {
                 return;
             }
 
             $matches = [];
             $pattern = '/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z/';
-            if (preg_match($pattern, $v, $matches)) {
+            if (\preg_match($pattern, $v, $matches)) {
                 $v = $matches[0];
             }
         });

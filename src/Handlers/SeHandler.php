@@ -10,7 +10,6 @@
 
 namespace phpWhois\Handlers;
 
-
 class SeHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
@@ -31,9 +30,9 @@ class SeHandler extends AbstractHandler
             'regrinfo' => static::generic_parser_b($data_str['rawdata'], $items, 'ymd', false),
             'regyinfo' => $this->parseRegistryInfo($data_str['rawdata']) ?? [
                 'referrer' => 'https://www.nic-se.se',
-                'registrar' => 'NIC-SE'
+                'registrar' => 'NIC-SE',
             ],
-            'rawdata'  => $data_str['rawdata'],
+            'rawdata' => $data_str['rawdata'],
         ];
 
         $r['regrinfo']['registered'] = isset($r['regrinfo']['domain']['name']) ? 'yes' : 'no';

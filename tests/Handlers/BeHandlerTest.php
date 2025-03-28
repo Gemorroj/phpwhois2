@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Copyright (c) 2020 Joshua Smith
  * @license   See LICENSE file
@@ -10,46 +11,41 @@ use DMS\PHPUnitExtensions\ArraySubset\Assert;
 use phpWhois\Handlers\BeHandler;
 
 /**
- * BeHandlerTest
+ * BeHandlerTest.
  */
 class BeHandlerTest extends AbstractHandler
 {
     /**
-     * @var BeHandler $handler
+     * @var BeHandler
      */
     protected $handler;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler            = new BeHandler();
+        $this->handler = new BeHandler();
         $this->handler->deepWhois = false;
     }
 
     /**
      * @return void
-     *
-     * @test
      */
-    public function parseNicDotBe()
+    public function testParseNicDotBe(): void
     {
         $query = 'nic.be';
 
         $fixture = $this->loadFixture($query);
-        $data    = [
-            'rawdata'  => $fixture,
+        $data = [
+            'rawdata' => $fixture,
             'regyinfo' => [],
         ];
 
         $actual = $this->handler->parse($data, $query);
 
         $expected = [
-            'domain'     => [
-                'name'    => 'nic.be',
+            'domain' => [
+                'name' => 'nic.be',
                 // 'changed' => '2018-01-24',
                 'created' => '1998-04-01',
             ],

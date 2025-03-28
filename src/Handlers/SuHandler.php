@@ -10,7 +10,6 @@
 
 namespace phpWhois\Handlers;
 
-
 class SuHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
@@ -30,9 +29,9 @@ class SuHandler extends AbstractHandler
             'regrinfo' => static::generic_parser_b($data_str['rawdata'], $items, 'dmy'),
             'regyinfo' => $this->parseRegistryInfo($data_str['rawdata']) ?? [
                 'referrer' => 'https://www.ripn.net',
-                'registrar' => 'RUCENTER-REG-RIPN'
+                'registrar' => 'RUCENTER-REG-RIPN',
             ],
-            'rawdata'  => $data_str['rawdata'],
+            'rawdata' => $data_str['rawdata'],
         ];
     }
 }

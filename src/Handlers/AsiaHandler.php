@@ -17,10 +17,10 @@ class AsiaHandler extends AbstractHandler
         $r = [
             'regrinfo' => static::generic_parser_b($data_str['rawdata']),
             'regyinfo' => [
-                'referrer'  => 'http://www.dotasia.org/',
+                'referrer' => 'http://www.dotasia.org/',
                 'registrar' => 'DotAsia',
             ],
-            'rawdata'  => $data_str['rawdata'],
+            'rawdata' => $data_str['rawdata'],
         ];
 
         return $r;

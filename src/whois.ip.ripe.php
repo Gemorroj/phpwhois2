@@ -17,7 +17,8 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
- * @link http://phpwhois.pw
+ * @see http://phpwhois.pw
+ *
  * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
@@ -25,34 +26,33 @@
 
 require_once 'whois.parser.php';
 
-if (!defined('__RIPE_HANDLER__')) {
-    define('__RIPE_HANDLER__', 1);
+if (!\defined('__RIPE_HANDLER__')) {
+    \define('__RIPE_HANDLER__', 1);
 }
 
 class ripe_handler
 {
-
-    function parse($data_str, $query)
+    public function parse($data_str, $query)
     {
-        $translate = array(
+        $translate = [
             'fax-no' => 'fax',
             'e-mail' => 'email',
             'nic-hdl' => 'handle',
             'person' => 'name',
             'netname' => 'name',
-            'descr' => 'desc'
-        );
+            'descr' => 'desc',
+        ];
 
-        $contacts = array(
+        $contacts = [
             'admin-c' => 'admin',
-            'tech-c' => 'tech'
-        );
+            'tech-c' => 'tech',
+        ];
 
         if (!empty($data_str['rawdata'])) {
             $data_str = $data_str['rawdata'];
         }
 
-        $r = generic_parser_a($data_str, $translate, $contacts, 'network');
+        $r = \generic_parser_a($data_str, $translate, $contacts, 'network');
 
         if (isset($r['network']['desc'])) {
             $r['owner']['organization'] = $r['network']['desc'];
@@ -83,9 +83,10 @@ class ripe_handler
             unset($r['admin']['admin-c']);
         }
 
-        $r = array('regrinfo' => $r);
+        $r = ['regrinfo' => $r];
         $r['regyinfo']['type'] = 'ip';
         $r['regyinfo']['registrar'] = 'RIPE Network Coordination Centre';
+
         return $r;
     }
 }
