@@ -27,6 +27,7 @@
 namespace phpWhois\Handlers\Gtld;
 
 use phpWhois\Handlers\AbstractHandler;
+use phpWhois\QueryParams;
 use phpWhois\WhoisClient;
 
 class GtldHandler extends WhoisClient
@@ -52,7 +53,7 @@ class GtldHandler extends WhoisClient
 
     public function parse(array $data, string $query): array
     {
-        $this->query = [];
+        $this->query = new QueryParams();
         $this->result = AbstractHandler::generic_parser_b($data['rawdata'], self::REG_FIELDS, 'dmy');
 
         unset($this->result['registered']);

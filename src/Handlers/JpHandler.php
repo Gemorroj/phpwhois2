@@ -60,7 +60,7 @@ class JpHandler extends WhoisClient
             '[Last Update]' => 'changed',
         ];
 
-        $this->query['server'] = 'jp.whois-servers.net';
+        $this->query->server = 'jp.whois-servers.net';
 
         if (!empty($r['regrinfo']['admin']['handle'])) {
             $rwdata = $this->getRawData('CONTACT '.$r['regrinfo']['admin']['handle'].'/e');
@@ -78,7 +78,7 @@ class JpHandler extends WhoisClient
                 $r['regrinfo']['tech'] = $r['regrinfo']['admin'];
             } else {
                 unset($this->query);
-                $this->query['server'] = 'jp.whois-servers.net';
+                $this->query->server = 'jp.whois-servers.net';
                 $rwdata = $this->getRawData('CONTACT '.$r['regrinfo']['tech']['handle'].'/e');
                 $r['rawdata'][] = '';
                 $r['rawdata'] = \array_merge($r['rawdata'], $rwdata);

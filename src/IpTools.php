@@ -31,27 +31,27 @@ namespace phpWhois;
  */
 final class IpTools
 {
+    public const IP_TYPE_ANY = 0;
+    public const IP_TYPE_IPv4 = 1;
+    public const IP_TYPE_IPv6 = 2;
+
     /**
      * Check if ip address is valid.
      *
      * @param string $ip     IP address for validation
-     * @param string $type   Type of ip address. Possible value are: any, ipv4, ipv6
+     * @param int    $type   Type of ip address. Possible value are: IpTools::IP_TYPE_*
      * @param bool   $strict If true - fail validation on reserved and private ip ranges
      *
      * @return bool True if ip is valid. False otherwise
      */
-    public function validIp(string $ip, string $type = 'any', bool $strict = true): bool
+    public function validIp(string $ip, int $type = self::IP_TYPE_ANY, bool $strict = true): bool
     {
-        switch ($type) {
-            case 'any':
-                return $this->validIpv4($ip, $strict) || $this->validIpv6($ip, $strict);
-            case 'ipv4':
-                return $this->validIpv4($ip, $strict);
-            case 'ipv6':
-                return $this->validIpv6($ip, $strict);
-        }
-
-        return false;
+        return match ($type) {
+            self::IP_TYPE_ANY => $this->validIpv4($ip, $strict) || $this->validIpv6($ip, $strict),
+            self::IP_TYPE_IPv4 => $this->validIpv4($ip, $strict),
+            self::IP_TYPE_IPv6 => $this->validIpv6($ip, $strict),
+            default => false,
+        };
     }
 
     /**
@@ -89,10 +89,8 @@ final class IpTools
 
     /**
      * Try to get real IP from client web request.
-     *
-     * @return string
      */
-    public function getClientIp()
+    public function getClientIp(): string
     {
         if (!empty($_SERVER['HTTP_CLIENT_IP']) && $this->validIp($_SERVER['HTTP_CLIENT_IP'])) {
             return $_SERVER['HTTP_CLIENT_IP'];

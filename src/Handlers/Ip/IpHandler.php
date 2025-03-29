@@ -10,6 +10,7 @@
 
 namespace phpWhois\Handlers\Ip;
 
+use phpWhois\QueryParams;
 use phpWhois\WhoisClient;
 
 class IpHandler extends WhoisClient
@@ -61,9 +62,9 @@ class IpHandler extends WhoisClient
             return [];
         }
 
-        $this->query = [];
-        $this->query['server'] = 'whois.arin.net';
-        $this->query['query'] = $query;
+        $this->query = new QueryParams();
+        $this->query->server = 'whois.arin.net';
+        $this->query->query = $query;
 
         $rawdata = $data['rawdata'];
 
@@ -103,7 +104,7 @@ class IpHandler extends WhoisClient
                                 break 2;
                             }
 
-                            $this->query['args'] = 'n '.$net;
+                            $this->query->args = 'n '.$net;
                             $presults[] = $this->getRawData($net);
                             $done[$net] = 1;
                         }
@@ -113,23 +114,23 @@ class IpHandler extends WhoisClient
             }
 
             if (!$found) {
-                $this->query['handler'] = 'arin';
+                $this->query->handler = 'arin';
                 $result = $this->parse_results($result, $rwdata, $query, true);
             }
         }
 
-        unset($this->query['args']);
+        $this->query->args = null;
 
         while (\count($this->more_data) > 0) {
             $srv_data = \array_shift($this->more_data);
-            $this->query['server'] = $srv_data['server'];
-            unset($this->query['handler']);
+            $this->query->server = $srv_data['server'];
+            $this->query->handler = null;
             // Use original query
             $rwdata = $this->getRawData($srv_data['query']);
 
             if (!empty($rwdata)) {
                 if (!empty($srv_data['handler'])) {
-                    $this->query['handler'] = $srv_data['handler'];
+                    $this->query->handler = $srv_data['handler'];
                 }
 
                 $result = $this->parse_results($result, $rwdata, $query, $srv_data['reset']);
