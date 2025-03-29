@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\LondonHandler;
+use phpWhois\WhoisClient;
 
 /**
  * LondonHandlerTest.
@@ -37,7 +38,7 @@ class LondonHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new LondonHandler();
+        $this->handler = new LondonHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

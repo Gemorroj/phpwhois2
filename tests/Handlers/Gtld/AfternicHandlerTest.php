@@ -23,6 +23,7 @@ namespace phpWhois\Tests\Handlers\Gtld;
 
 use phpWhois\Handlers\Gtld\AfternicHandler;
 use phpWhois\Tests\Handlers\AbstractHandler;
+use phpWhois\WhoisClient;
 
 class AfternicHandlerTest extends AbstractHandler
 {
@@ -36,7 +37,7 @@ class AfternicHandlerTest extends AbstractHandler
         self::markTestSkipped('Not sure what to do with this yet');
         parent::setUp();
 
-        $this->handler = new AfternicHandler();
+        $this->handler = new AfternicHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

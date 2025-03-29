@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\CaHandler;
+use phpWhois\WhoisClient;
 
 /**
  * CaHandlerTest.
@@ -37,7 +38,7 @@ class CaHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new CaHandler();
+        $this->handler = new CaHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

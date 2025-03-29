@@ -37,6 +37,7 @@ class WhoisClient
 {
     /** @var bool Is recursion allowed? */
     public bool $gtldRecurse = false;
+    public bool $deepWhois;
 
     /** @var int Default WHOIS port */
     public int $port = 43;
@@ -52,8 +53,6 @@ class WhoisClient
 
     /** @var int Communications timeout */
     public int $stimeout = 10;
-
-    public bool $deepWhois;
 
     /** @var string[] List of servers and handlers (loaded from servers.whois) */
     public readonly array $DATA;
@@ -241,7 +240,7 @@ class WhoisClient
 
         // Create result and set 'rawdata'
         $result = ['rawdata' => $output];
-        $result = $this->setWhoisInfo($result);
+        $result = $this->makeWhoisInfo($result);
 
         // Return now on error
         if (empty($output)) {
@@ -295,7 +294,7 @@ class WhoisClient
      *
      * @return array Original result array with server query information
      */
-    public function setWhoisInfo(array $result): array
+    public function makeWhoisInfo(array $result): array
     {
         $info = [
             'server' => $this->query->server,
@@ -453,23 +452,11 @@ class WhoisClient
      */
     public function process(array &$result, bool $deep_whois = true): array
     {
-        $handlerName = $this->loadHandler();
-
         if (!$this->gtldRecurse && 'gtld' === $this->query->handler) {
             return $result;
         }
 
-        // Pass result to handler
-        /** @var AbstractHandler|WhoisClient $handler */
-        $handler = new $handlerName('');
-
-        // If handler returned an error, append it to the query errors list
-        if ($handler instanceof self && $handler->query->errstr) {
-            foreach ($handler->query->errstr as $errstr) {
-                $this->query->errstr[] = $errstr;
-            }
-        }
-
+        $handler = $this->loadHandler();
         $handler->deepWhois = $deep_whois;
 
         // Process and return the result
@@ -492,7 +479,7 @@ class WhoisClient
         $subresult = $this->getRawData($query);
 
         if (!empty($subresult)) {
-            $result = $this->setWhoisInfo($result);
+            $result = $this->makeWhoisInfo($result);
             $result['rawdata'] = $subresult;
 
             if (isset($this->WHOIS_GTLD_HANDLER[$wserver])) {
@@ -625,7 +612,7 @@ class WhoisClient
         return $result;
     }
 
-    protected function loadHandler(): string
+    protected function loadHandler(): AbstractHandler
     {
         if (!$this->query->handler) {
             throw new \RuntimeException('Unable to load handler.');
@@ -635,17 +622,17 @@ class WhoisClient
 
         $handlerName = "phpWhois\\Handlers\\{$queryHandler}Handler";
         if (\class_exists($handlerName)) {
-            return $handlerName;
+            return new $handlerName($this);
         }
 
         $handlerNameGtld = "phpWhois\\Handlers\\Gtld\\{$queryHandler}Handler";
         if (\class_exists($handlerNameGtld)) {
-            return $handlerNameGtld;
+            return new $handlerNameGtld($this);
         }
 
         $handlerNameIp = "phpWhois\\Handlers\\Ip\\{$queryHandler}Handler";
         if (\class_exists($handlerNameIp)) {
-            return $handlerNameIp;
+            return new $handlerNameIp($this);
         }
 
         throw new \RuntimeException('Cannot load handler "'.$queryHandler.'".');

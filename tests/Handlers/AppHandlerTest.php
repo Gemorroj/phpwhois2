@@ -8,6 +8,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\AppHandler;
+use phpWhois\WhoisClient;
 
 /**
  * AppHandlerTest.
@@ -23,7 +24,7 @@ class AppHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new AppHandler();
+        $this->handler = new AppHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

@@ -8,6 +8,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\BeHandler;
+use phpWhois\WhoisClient;
 
 /**
  * BeHandlerTest.
@@ -23,7 +24,7 @@ class BeHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new BeHandler();
+        $this->handler = new BeHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

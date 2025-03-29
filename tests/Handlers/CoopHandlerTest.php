@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\CoopHandler;
+use phpWhois\WhoisClient;
 
 /**
  * CoopHandlerTest.
@@ -37,7 +38,7 @@ class CoopHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new CoopHandler();
+        $this->handler = new CoopHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

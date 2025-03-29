@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\UkHandler;
+use phpWhois\WhoisClient;
 
 /**
  * UkHandlerTest.
@@ -37,7 +38,7 @@ class UkHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new UkHandler();
+        $this->handler = new UkHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

@@ -8,6 +8,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\BizHandler;
+use phpWhois\WhoisClient;
 
 /**
  * BizHandlerTest.
@@ -23,7 +24,7 @@ class BizHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new BizHandler();
+        $this->handler = new BizHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

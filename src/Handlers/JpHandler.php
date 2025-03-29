@@ -10,11 +10,11 @@
 
 namespace phpWhois\Handlers;
 
-use phpWhois\WhoisClient;
+use phpWhois\QueryParams;
 
-class JpHandler extends WhoisClient
+class JpHandler extends AbstractHandler
 {
-    public function parse($data_str, $query)
+    public function parse(array $data_str, string $query): array
     {
         $items = [
             '[State]' => 'domain.status',
@@ -37,7 +37,7 @@ class JpHandler extends WhoisClient
         ];
 
         $r = [];
-        $r['regrinfo'] = AbstractHandler::generic_parser_b($data_str['rawdata'], $items, 'ymd');
+        $r['regrinfo'] = static::generic_parser_b($data_str['rawdata'], $items, 'ymd');
 
         $r['regyinfo'] = [
             'referrer' => 'http://www.jprs.jp',
@@ -60,30 +60,27 @@ class JpHandler extends WhoisClient
             '[Last Update]' => 'changed',
         ];
 
-        $this->query->server = 'jp.whois-servers.net';
+        $this->whoisClient->query->server = 'jp.whois-servers.net';
 
         if (!empty($r['regrinfo']['admin']['handle'])) {
-            $rwdata = $this->getRawData('CONTACT '.$r['regrinfo']['admin']['handle'].'/e');
+            $rwdata = $this->whoisClient->getRawData('CONTACT '.$r['regrinfo']['admin']['handle'].'/e');
             $r['rawdata'][] = '';
             $r['rawdata'] = \array_merge($r['rawdata'], $rwdata);
-            $r['regrinfo']['admin'] = AbstractHandler::generic_parser_b($rwdata, $items, 'ymd', false);
-            $r = $this->setWhoisInfo($r);
+            $r['regrinfo']['admin'] = static::generic_parser_b($rwdata, $items, 'ymd', false);
+            $r = $this->whoisClient->makeWhoisInfo($r);
         }
 
         if (!empty($r['regrinfo']['tech']['handle'])) {
-            if (
-                !empty($r['regrinfo']['admin']['handle'])
-                    && $r['regrinfo']['admin']['handle'] == $r['regrinfo']['tech']['handle']
-            ) {
+            if (!empty($r['regrinfo']['admin']['handle']) && $r['regrinfo']['admin']['handle'] == $r['regrinfo']['tech']['handle']) {
                 $r['regrinfo']['tech'] = $r['regrinfo']['admin'];
             } else {
-                unset($this->query);
-                $this->query->server = 'jp.whois-servers.net';
-                $rwdata = $this->getRawData('CONTACT '.$r['regrinfo']['tech']['handle'].'/e');
+                $this->whoisClient->query = new QueryParams();
+                $this->whoisClient->query->server = 'jp.whois-servers.net';
+                $rwdata = $this->whoisClient->getRawData('CONTACT '.$r['regrinfo']['tech']['handle'].'/e');
                 $r['rawdata'][] = '';
                 $r['rawdata'] = \array_merge($r['rawdata'], $rwdata);
-                $r['regrinfo']['tech'] = AbstractHandler::generic_parser_b($rwdata, $items, 'ymd', false);
-                $r = $this->setWhoisInfo($r);
+                $r['regrinfo']['tech'] = static::generic_parser_b($rwdata, $items, 'ymd', false);
+                $r = $this->whoisClient->makeWhoisInfo($r);
             }
         }
 

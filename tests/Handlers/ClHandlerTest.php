@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\ClHandler;
+use phpWhois\WhoisClient;
 
 /**
  * ClHandlerTest.
@@ -37,7 +38,7 @@ class ClHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new ClHandler();
+        $this->handler = new ClHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

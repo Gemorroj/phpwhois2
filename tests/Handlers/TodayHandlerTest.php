@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\TodayHandler;
+use phpWhois\WhoisClient;
 
 /**
  * TodayHandlerTest.
@@ -37,7 +38,7 @@ class TodayHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new TodayHandler();
+        $this->handler = new TodayHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

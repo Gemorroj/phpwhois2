@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\FiHandler;
+use phpWhois\WhoisClient;
 
 /**
  * FiHandlerTest.
@@ -37,7 +38,7 @@ class FiHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new FiHandler();
+        $this->handler = new FiHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

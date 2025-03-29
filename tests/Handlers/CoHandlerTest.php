@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\CoHandler;
+use phpWhois\WhoisClient;
 
 /**
  * CoHandlerTest.
@@ -37,7 +38,7 @@ class CoHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new CoHandler();
+        $this->handler = new CoHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

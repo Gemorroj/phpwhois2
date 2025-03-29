@@ -10,14 +10,9 @@
 
 namespace phpWhois\Handlers;
 
-use phpWhois\WhoisClient;
-
-/**
- * TODO: Check WhoisClient class.
- */
-class WsHandler extends WhoisClient
+class WsHandler extends AbstractHandler
 {
-    public function parse($data_str, $query)
+    public function parse(array $data_str, string $query): array
     {
         $items = [
             'Domain Name:' => 'domain.name',
@@ -71,7 +66,7 @@ class WsHandler extends WhoisClient
             'rawdata' => $data_str['rawdata'],
         ];
 
-        $r['regrinfo'] = AbstractHandler::generic_parser_b($data_str['rawdata'], $items, 'ymd');
+        $r['regrinfo'] = static::generic_parser_b($data_str['rawdata'], $items, 'ymd');
 
         $r['regyinfo']['referrer'] = 'https://www.samoanic.ws';
         $r['regyinfo']['registrar'] = 'Samoa Nic';

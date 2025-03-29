@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\Gtld\GtldHandler;
+use phpWhois\WhoisClient;
 
 final class GtldHandlerTest extends AbstractHandler
 {
@@ -31,7 +32,7 @@ final class GtldHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new GtldHandler();
+        $this->handler = new GtldHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

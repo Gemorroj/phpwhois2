@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\CoZaHandler;
+use phpWhois\WhoisClient;
 
 /**
  * CoZaHandlerTest.
@@ -37,7 +38,7 @@ class CoZaHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new CoZaHandler();
+        $this->handler = new CoZaHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

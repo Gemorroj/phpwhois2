@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\FmHandler;
+use phpWhois\WhoisClient;
 
 /**
  * FmHandlerTest.
@@ -37,7 +38,7 @@ class FmHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new FmHandler();
+        $this->handler = new FmHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

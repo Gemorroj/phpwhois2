@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\NoHandler;
+use phpWhois\WhoisClient;
 
 /**
  * SeHandlerTest.
@@ -37,7 +38,7 @@ class NoHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new NoHandler();
+        $this->handler = new NoHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

@@ -8,6 +8,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\KiwiHandler;
+use phpWhois\WhoisClient;
 
 /**
  * KiwiHandlerTest.
@@ -23,7 +24,7 @@ class KiwiHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new KiwiHandler();
+        $this->handler = new KiwiHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

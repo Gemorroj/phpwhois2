@@ -8,6 +8,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\AeroHandler;
+use phpWhois\WhoisClient;
 
 /**
  * AeroHandlerTest.
@@ -23,7 +24,7 @@ class AeroHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new AeroHandler();
+        $this->handler = new AeroHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\HuHandler;
+use phpWhois\WhoisClient;
 
 /**
  * HuHandlerTest.
@@ -37,7 +38,7 @@ class HuHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new HuHandler();
+        $this->handler = new HuHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

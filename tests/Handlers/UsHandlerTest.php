@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\UsHandler;
+use phpWhois\WhoisClient;
 
 /**
  * UsHandlerTest.
@@ -37,7 +38,7 @@ class UsHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new UsHandler();
+        $this->handler = new UsHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

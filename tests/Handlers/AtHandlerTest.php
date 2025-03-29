@@ -8,6 +8,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\AtHandler;
+use phpWhois\WhoisClient;
 
 /**
  * AtHandlerTest.
@@ -23,7 +24,7 @@ class AtHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new AtHandler();
+        $this->handler = new AtHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

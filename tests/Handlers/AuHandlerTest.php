@@ -8,6 +8,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\AuHandler;
+use phpWhois\WhoisClient;
 
 /**
  * AuHandlerTest.
@@ -23,7 +24,7 @@ class AuHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new AuHandler();
+        $this->handler = new AuHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

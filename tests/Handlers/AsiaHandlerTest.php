@@ -8,6 +8,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\AsiaHandler;
+use phpWhois\WhoisClient;
 
 /**
  * AsiaHandlerTest.
@@ -23,7 +24,7 @@ class AsiaHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new AsiaHandler();
+        $this->handler = new AsiaHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

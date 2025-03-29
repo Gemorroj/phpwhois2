@@ -8,6 +8,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\AgHandler;
+use phpWhois\WhoisClient;
 
 /**
  * AgHandlerTest.
@@ -23,7 +24,7 @@ class AgHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new AgHandler();
+        $this->handler = new AgHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

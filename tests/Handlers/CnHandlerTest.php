@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\CnHandler;
+use phpWhois\WhoisClient;
 
 /**
  * CnHandlerTest.
@@ -37,7 +38,7 @@ class CnHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new CnHandler();
+        $this->handler = new CnHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

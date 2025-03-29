@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\AeHandler;
+use phpWhois\WhoisClient;
 
 /**
  * AeHandlerTest.
@@ -37,7 +38,7 @@ class AeHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new AeHandler();
+        $this->handler = new AeHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

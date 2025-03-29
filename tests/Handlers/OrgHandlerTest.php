@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\OrgHandler;
+use phpWhois\WhoisClient;
 
 /**
  * OrgHandlerTest.
@@ -37,7 +38,7 @@ class OrgHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new OrgHandler();
+        $this->handler = new OrgHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

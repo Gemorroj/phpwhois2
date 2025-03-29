@@ -28,9 +28,8 @@ namespace phpWhois\Handlers\Gtld;
 
 use phpWhois\Handlers\AbstractHandler;
 use phpWhois\QueryParams;
-use phpWhois\WhoisClient;
 
-class GtldHandler extends WhoisClient
+class GtldHandler extends AbstractHandler
 {
     protected array $result = [];
 
@@ -51,10 +50,10 @@ class GtldHandler extends WhoisClient
         'No match for ' => 'nodomain',
     ];
 
-    public function parse(array $data, string $query): array
+    public function parse(array $data_str, string $query): array
     {
-        $this->query = new QueryParams();
-        $this->result = AbstractHandler::generic_parser_b($data['rawdata'], self::REG_FIELDS, 'dmy');
+        $this->whoisClient->query = new QueryParams();
+        $this->result = static::generic_parser_b($data_str['rawdata'], self::REG_FIELDS, 'dmy');
 
         unset($this->result['registered']);
 
@@ -66,12 +65,12 @@ class GtldHandler extends WhoisClient
         }
 
         if ($this->deepWhois) {
-            $this->result = $this->deepWhois($query, $this->result);
+            $this->result = $this->whoisClient->deepWhois($query, $this->result);
         }
 
         // Next server could fail to return data
         if (empty($this->result['rawdata']) || \count($this->result['rawdata']) < 3) {
-            $this->result['rawdata'] = $data['rawdata'];
+            $this->result['rawdata'] = $data_str['rawdata'];
         }
 
         // Domain is registered no matter what next server says

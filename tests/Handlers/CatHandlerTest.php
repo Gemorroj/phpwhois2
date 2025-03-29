@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\CatHandler;
+use phpWhois\WhoisClient;
 
 /**
  * CatHandlerTest.
@@ -37,7 +38,7 @@ class CatHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new CatHandler();
+        $this->handler = new CatHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

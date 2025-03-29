@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\IlHandler;
+use phpWhois\WhoisClient;
 
 /**
  * IlHandlerTest.
@@ -37,7 +38,7 @@ class IlHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new IlHandler();
+        $this->handler = new IlHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

@@ -7,12 +7,20 @@
 
 namespace phpWhois\Handlers;
 
+use phpWhois\WhoisClient;
+
 /**
  * AbstractHandler.
  */
-abstract class AbstractHandler implements HandlerInterface
+abstract class AbstractHandler
 {
     public bool $deepWhois;
+
+    public function __construct(protected readonly WhoisClient $whoisClient)
+    {
+    }
+
+    abstract public function parse(array $data_str, string $query): array;
 
     /**
      * @param string[] $lines

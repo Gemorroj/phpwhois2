@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\RuHandler;
+use phpWhois\WhoisClient;
 
 /**
  * RuHandlerTest.
@@ -37,7 +38,7 @@ class RuHandlerTest extends AbstractHandler
     {
         parent::setUp();
 
-        $this->handler = new RuHandler();
+        $this->handler = new RuHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 

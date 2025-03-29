@@ -22,6 +22,7 @@
 namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\FjHandler;
+use phpWhois\WhoisClient;
 
 /**
  * FjHandlerTest.
@@ -42,7 +43,7 @@ class FjHandlerTest extends AbstractHandler
 
         parent::setUp();
 
-        $this->handler = new FjHandler();
+        $this->handler = new FjHandler(new WhoisClient());
         $this->handler->deepWhois = false;
     }
 
