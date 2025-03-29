@@ -511,17 +511,10 @@ class WhoisClient
 
             if (isset($this->WHOIS_GTLD_HANDLER[$wserver])) {
                 $this->query['handler'] = $this->WHOIS_GTLD_HANDLER[$wserver];
-            } else {
-                $parts = \explode('.', $wserver);
-                $hname = \strtolower($parts[1]);
-
-                if (($fp = @\fopen('whois.gtld.'.$hname.'.php', 'r', 1)) && \fclose($fp)) {
-                    $this->query['handler'] = $hname;
-                }
             }
 
             if (!empty($this->query['handler'])) {
-                $this->query['file'] = \sprintf('whois.gtld.%s.php', $this->query['handler']);
+                // $this->query['file'] = \sprintf('whois.gtld.%s.php', $this->query['handler']);
                 $regrinfo = $this->process($subresult); // $result['rawdata']);
                 $result['regrinfo'] = $this->mergeResults($result['regrinfo'], $regrinfo);
             }
@@ -653,6 +646,10 @@ class WhoisClient
         $handlerName = "phpWhois\\Handlers\\{$queryHandler}Handler";
         if (\class_exists($handlerName)) {
             return $handlerName;
+        }
+        $handlerNameGtld = "phpWhois\\Handlers\\Gtld\{$queryHandler}Handler";
+        if (\class_exists($handlerNameGtld)) {
+            return $handlerNameGtld;
         }
 
         return null;

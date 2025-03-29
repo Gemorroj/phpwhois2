@@ -21,21 +21,17 @@
 
 namespace Tests\Handlers;
 
-/**
- * GtldHandlerTest.
- */
-class GtldHandlerTest extends AbstractHandler
+use phpWhois\Handlers\Gtld\GtldHandler;
+
+final class GtldHandlerTest extends AbstractHandler
 {
-    /**
-     * @var \gtld_handler
-     */
-    protected $handler;
+    protected GtldHandler $handler;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new \gtld_handler();
+        $this->handler = new GtldHandler();
         $this->handler->deepWhois = false;
     }
 
