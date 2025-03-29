@@ -3,7 +3,7 @@
 /**
  * Whois servers list.
  *
- * This class supposed to be instantiated for using the phpWhois library
+ * This class supposed to be instantiated for using the PHPWhois2 library
  *
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2
  * @license

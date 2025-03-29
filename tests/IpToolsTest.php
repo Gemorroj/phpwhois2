@@ -1,10 +1,10 @@
 <?php
 
-namespace phpWhois\Tests;
+namespace PHPWhois2\Tests;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use phpWhois\IpTools;
+use PHPWhois2\IpTools;
 
 class IpToolsTest extends TestCase
 {

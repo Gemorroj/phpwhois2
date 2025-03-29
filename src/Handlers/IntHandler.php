@@ -1,16 +1,8 @@
 <?php
 
-/**
- * @license   See LICENSE file
- * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
- * @copyright Maintained by David Saez
- * @copyright Copyright (c) 2014 Dmitry Lukashin
- * @copyright Copyright (c) 2023 Kevin Lucich
- */
+namespace PHPWhois2\Handlers;
 
-namespace phpWhois\Handlers;
-
-use phpWhois\Handlers\Gtld\IanaHandler;
+use PHPWhois2\Handlers\Gtld\IanaHandler;
 
 class IntHandler extends AbstractHandler
 {

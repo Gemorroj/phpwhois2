@@ -1,16 +1,6 @@
 <?php
 
-/**
- * @license   See LICENSE file
- * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
- * @copyright Maintained by David Saez
- * @copyright Copyright (c) 2014 Dmitry Lukashin
- * @copyright Copyright (c) 2023 Kevin Lucich
- */
-
-namespace phpWhois\Handlers;
-
-use phpWhois\QueryParams;
+namespace PHPWhois2\Handlers;
 
 class JpHandler extends AbstractHandler
 {
@@ -74,7 +64,7 @@ class JpHandler extends AbstractHandler
             if (!empty($r['regrinfo']['admin']['handle']) && $r['regrinfo']['admin']['handle'] == $r['regrinfo']['tech']['handle']) {
                 $r['regrinfo']['tech'] = $r['regrinfo']['admin'];
             } else {
-                $this->whoisClient->query = new QueryParams();
+                $this->whoisClient->query->clear();
                 $this->whoisClient->query->server = 'jp.whois-servers.net';
                 $rwdata = $this->whoisClient->getRawData('CONTACT '.$r['regrinfo']['tech']['handle'].'/e');
                 $r['rawdata'][] = '';

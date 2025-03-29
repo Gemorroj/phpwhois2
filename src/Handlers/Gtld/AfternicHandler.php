@@ -1,16 +1,8 @@
 <?php
 
-/**
- * @license   See LICENSE file
- * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
- * @copyright Maintained by David Saez
- * @copyright Copyright (c) 2014 Dmitry Lukashin
- * @copyright Copyright (c) 2023 Kevin Lucich
- */
+namespace PHPWhois2\Handlers\Gtld;
 
-namespace phpWhois\Handlers\Gtld;
-
-use phpWhois\Handlers\AbstractHandler;
+use PHPWhois2\Handlers\AbstractHandler;
 
 class AfternicHandler extends AbstractHandler
 {

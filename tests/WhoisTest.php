@@ -1,11 +1,11 @@
 <?php
 
-namespace phpWhois\Tests;
+namespace PHPWhois2\Tests;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\TestCase;
-use phpWhois\Whois;
+use PHPWhois2\Whois;
 
 class WhoisTest extends TestCase
 {
@@ -30,14 +30,22 @@ class WhoisTest extends TestCase
 
     public static function domainsProvider(): array
     {
+        $whois = new Whois();
+        $reflectionObj = new \ReflectionObject($whois);
+        $reflectionConstantDomain = $reflectionObj->getReflectionConstant('QTYPE_DOMAIN');
+        $reflectionConstantIpv4 = $reflectionObj->getReflectionConstant('QTYPE_IPV4');
+        $reflectionConstantIpv6 = $reflectionObj->getReflectionConstant('QTYPE_IPV6');
+        $reflectionConstantUnknown = $reflectionObj->getReflectionConstant('QTYPE_UNKNOWN');
+        $reflectionConstantAs = $reflectionObj->getReflectionConstant('QTYPE_AS');
+
         return [
-            [Whois::QTYPE_DOMAIN,  'www.google.com'],
-            [Whois::QTYPE_DOMAIN,  'президент.рф'],
-            [Whois::QTYPE_IPV4,    '212.212.12.12'],
-            [Whois::QTYPE_UNKNOWN, '127.0.0.1'],
-            [Whois::QTYPE_IPV6,    '1a80:1f45::ebb:12'],
-            [Whois::QTYPE_UNKNOWN, 'fc80:19c::1'],
-            [Whois::QTYPE_AS,      'ABCD_EF-GH:IJK'],
+            [$reflectionConstantDomain->getValue(),  'www.google.com'],
+            [$reflectionConstantDomain->getValue(),  'президент.рф'],
+            [$reflectionConstantIpv4->getValue(),    '212.212.12.12'],
+            [$reflectionConstantUnknown->getValue(), '127.0.0.1'],
+            [$reflectionConstantIpv6->getValue(),    '1a80:1f45::ebb:12'],
+            [$reflectionConstantUnknown->getValue(), 'fc80:19c::1'],
+            [$reflectionConstantAs->getValue(),      'ABCD_EF-GH:IJK'],
         ];
     }
 

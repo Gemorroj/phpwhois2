@@ -1,14 +1,9 @@
 <?php
 
-/**
- * @license   See LICENSE file
- * @copyright Copyright (c) 2020 Joshua Smith
- */
+namespace PHPWhois2\Tests\Handlers;
 
-namespace phpWhois\Tests\Handlers;
-
-use phpWhois\Handlers\AeroHandler;
-use phpWhois\WhoisClient;
+use PHPWhois2\Handlers\AeroHandler;
+use PHPWhois2\WhoisClient;
 
 final class AeroHandlerTest extends AbstractHandler
 {

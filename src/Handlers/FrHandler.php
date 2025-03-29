@@ -1,8 +1,6 @@
 <?php
 
-/** @noinspection PhpIllegalPsrClassPathInspection */
-
-namespace phpWhois\Handlers;
+namespace PHPWhois2\Handlers;
 
 class FrHandler extends AbstractHandler
 {

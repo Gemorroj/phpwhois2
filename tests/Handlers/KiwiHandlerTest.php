@@ -1,14 +1,9 @@
 <?php
 
-/**
- * @copyright Copyright (c) 2020 Joshua Smith
- * @license   See LICENSE file
- */
+namespace PHPWhois2\Tests\Handlers;
 
-namespace phpWhois\Tests\Handlers;
-
-use phpWhois\Handlers\KiwiHandler;
-use phpWhois\WhoisClient;
+use PHPWhois2\Handlers\KiwiHandler;
+use PHPWhois2\WhoisClient;
 
 final class KiwiHandlerTest extends AbstractHandler
 {

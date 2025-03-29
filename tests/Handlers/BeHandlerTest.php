@@ -1,14 +1,9 @@
 <?php
 
-/**
- * @copyright Copyright (c) 2020 Joshua Smith
- * @license   See LICENSE file
- */
+namespace PHPWhois2\Tests\Handlers;
 
-namespace phpWhois\Tests\Handlers;
-
-use phpWhois\Handlers\BeHandler;
-use phpWhois\WhoisClient;
+use PHPWhois2\Handlers\BeHandler;
+use PHPWhois2\WhoisClient;
 
 final class BeHandlerTest extends AbstractHandler
 {

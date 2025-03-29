@@ -1,14 +1,6 @@
 <?php
 
-/**
- * @license   See LICENSE file
- * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
- * @copyright Maintained by David Saez
- * @copyright Copyright (c) 2014 Dmitry Lukashin
- * @copyright Copyright (c) 2023 Kevin Lucich
- */
-
-namespace phpWhois\Handlers;
+namespace PHPWhois2\Handlers;
 
 /**
  * @TODO BUG
@@ -47,14 +39,14 @@ class RoHandler extends AbstractHandler
         $reg = static::generic_parser_a($data_str['rawdata'], $translate, $contacts, 'domain', 'Ymd');
 
         if (isset($reg['domain']['description'])) {
-            $reg['owner'] = AbstractHandler::getContact($reg['domain']['description'], $extra);
+            $reg['owner'] = static::getContact($reg['domain']['description'], $extra);
             unset($reg['domain']['description']);
 
             foreach ($reg as $key => $item) {
                 if (isset($item['address'])) {
                     $data = $item['address'];
                     unset($reg[$key]['address']);
-                    $reg[$key] = \array_merge($reg[$key], AbstractHandler::getContact($data, $extra));
+                    $reg[$key] = \array_merge($reg[$key], static::getContact($data, $extra));
                 }
             }
 

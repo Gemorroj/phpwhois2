@@ -1,32 +1,8 @@
 <?php
 
-/**
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2
- * @license
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- *
- * @see http://phpwhois.pw
- *
- * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
- * @copyright Maintained by David Saez
- * @copyright Copyright (c) 2014 Dmitry Lukashin
- */
+namespace PHPWhois2;
 
-namespace phpWhois;
-
-use phpWhois\Handlers\AbstractHandler;
+use PHPWhois2\Handlers\AbstractHandler;
 
 class WhoisClient
 {
@@ -60,14 +36,8 @@ class WhoisClient
     /** @var string[] Handled gTLD whois servers */
     public readonly array $WHOIS_GTLD_HANDLER;
 
-    public QueryParams $query;
-
-    /**
-     * Constructor function.
-     */
-    public function __construct()
+    public function __construct(public readonly QueryParams $query = new QueryParams())
     {
-        $this->query = new QueryParams();
         // Load DATA array
         $servers = require __DIR__.'/../whois.servers.php';
 
@@ -124,28 +94,28 @@ class WhoisClient
             if (\strpos($this->query->server, '?')) {
                 $parts = \explode('?', $this->query->server);
                 $this->query->server = \trim($parts[0]);
-                $query_args = \trim($parts[1]);
+                $queryArgs = \trim($parts[1]);
 
                 // replace substitution parameters
-                $query_args = \str_replace(['{query}', '{version}'], [$query, 'phpWhois'], $query_args);
+                $queryArgs = \str_replace(['{query}', '{version}'], [$query, 'PHPWhois2'], $queryArgs);
 
                 $iptools = new IpTools();
-                if (\str_contains($query_args, '{ip}')) {
-                    $query_args = \str_replace('{ip}', $iptools->getClientIp(), $query_args);
+                if (\str_contains($queryArgs, '{ip}')) {
+                    $queryArgs = \str_replace('{ip}', $iptools->getClientIp(), $queryArgs);
                 }
 
-                if (\str_contains($query_args, '{hname}')) {
-                    $query_args = \str_replace('{hname}', \gethostbyaddr($iptools->getClientIp()), $query_args);
+                if (\str_contains($queryArgs, '{hname}')) {
+                    $queryArgs = \str_replace('{hname}', \gethostbyaddr($iptools->getClientIp()), $queryArgs);
                 }
             } else {
                 if (empty($this->query->args)) {
-                    $query_args = $query;
+                    $queryArgs = $query;
                 } else {
-                    $query_args = $this->query->args;
+                    $queryArgs = $this->query->args;
                 }
             }
 
-            $this->query->args = $query_args;
+            $this->query->args = $queryArgs;
 
             if (\str_starts_with($this->query->server, 'rwhois://')) {
                 $this->query->server = \substr($this->query->server, 9);
@@ -178,7 +148,7 @@ class WhoisClient
             \stream_set_blocking($ptr, 0);
 
             // Send query
-            \fwrite($ptr, \trim($query_args)."\r\n");
+            \fwrite($ptr, \trim($queryArgs)."\r\n");
 
             // Prepare to receive result
             $raw = '';
@@ -342,7 +312,7 @@ class WhoisClient
      *
      * @return array Rawdata
      */
-    private function httpQuery(): array
+    protected function httpQuery(): array
     {
         $lines = @\file($this->query->server);
 
@@ -405,7 +375,7 @@ class WhoisClient
      *
      * @return resource|false Returns a socket connection pointer on success, or -1 on failure
      */
-    private function connect()
+    protected function connect()
     {
         $server = $this->query->server;
 
@@ -495,14 +465,14 @@ class WhoisClient
 
             if (!empty($this->query->handler)) {
                 $regrinfo = $this->process($subresult); // $result['rawdata']);
-                $result['regrinfo'] = $this->mergeResults($result['regrinfo'], $regrinfo);
+                $result['regrinfo'] = self::mergeResults($result['regrinfo'], $regrinfo);
             }
         }
 
         return $result;
     }
 
-    private function mergeResults(array $a1, array $a2): array
+    protected static function mergeResults(array $a1, array $a2): array
     {
         \reset($a2);
 
@@ -510,7 +480,7 @@ class WhoisClient
             if (isset($a1[$key])) {
                 if (\is_array($val)) {
                     if ('nserver' !== $key) {
-                        $a1[$key] = $this->mergeResults($a1[$key], $val);
+                        $a1[$key] = self::mergeResults($a1[$key], $val);
                     }
                 } else {
                     $val = \trim($val);
@@ -590,7 +560,7 @@ class WhoisClient
      *
      * @return array Array containing 'host' key with server host and 'port' if defined in original $server string
      */
-    private function parseServer(string $server): array
+    protected function parseServer(string $server): array
     {
         $server = \trim($server);
 
@@ -625,17 +595,17 @@ class WhoisClient
 
         $queryHandler = \ucfirst($this->query->handler);
 
-        $handlerName = "phpWhois\\Handlers\\{$queryHandler}Handler";
+        $handlerName = "PHPWhois2\\Handlers\\{$queryHandler}Handler";
         if (\class_exists($handlerName)) {
             return new $handlerName($this, $deepWhois);
         }
 
-        $handlerNameGtld = "phpWhois\\Handlers\\Gtld\\{$queryHandler}Handler";
+        $handlerNameGtld = "PHPWhois2\\Handlers\\Gtld\\{$queryHandler}Handler";
         if (\class_exists($handlerNameGtld)) {
             return new $handlerNameGtld($this, $deepWhois);
         }
 
-        $handlerNameIp = "phpWhois\\Handlers\\Ip\\{$queryHandler}Handler";
+        $handlerNameIp = "PHPWhois2\\Handlers\\Ip\\{$queryHandler}Handler";
         if (\class_exists($handlerNameIp)) {
             return new $handlerNameIp($this, $deepWhois);
         }

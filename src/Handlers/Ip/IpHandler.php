@@ -1,18 +1,9 @@
 <?php
 
-/**
- * @license   See LICENSE file
- * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
- * @copyright Maintained by David Saez
- * @copyright Copyright (c) 2014 Dmitry Lukashin
- * @copyright Copyright (c) 2023 Kevin Lucich
- */
+namespace PHPWhois2\Handlers\Ip;
 
-namespace phpWhois\Handlers\Ip;
-
-use phpWhois\Handlers\AbstractHandler;
-use phpWhois\QueryParams;
-use phpWhois\WhoisClient;
+use PHPWhois2\Handlers\AbstractHandler;
+use PHPWhois2\WhoisClient;
 
 class IpHandler extends AbstractHandler
 {
@@ -56,7 +47,7 @@ class IpHandler extends AbstractHandler
             return [];
         }
 
-        $this->whoisClient->query = new QueryParams();
+        $this->whoisClient->query->clear();
         $this->whoisClient->query->server = 'whois.arin.net';
         $this->whoisClient->query->query = $query;
 

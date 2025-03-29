@@ -1,9 +1,9 @@
 <?php
 
-namespace phpWhois\Tests;
+namespace PHPWhois2\Tests;
 
 use PHPUnit\Framework\TestCase;
-use phpWhois\Whois;
+use PHPWhois2\Whois;
 
 class IpTest extends TestCase
 {

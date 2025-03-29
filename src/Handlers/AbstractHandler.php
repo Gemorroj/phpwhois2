@@ -1,13 +1,8 @@
 <?php
 
-/**
- * @copyright Copyright (c) 2020 Joshua Smith
- * @license   See LICENSE file
- */
+namespace PHPWhois2\Handlers;
 
-namespace phpWhois\Handlers;
-
-use phpWhois\WhoisClient;
+use PHPWhois2\WhoisClient;
 
 abstract class AbstractHandler
 {

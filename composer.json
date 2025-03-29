@@ -1,12 +1,11 @@
 {
-    "name": "kevinoo/phpwhois",
-    "description": "phpWhois - library for querying whois services and parsing results.",
+    "name": "gemorroj/phpwhois2",
+    "description": "PHPWhois2 - library for querying whois services and parsing results.",
     "keywords": [
         "PHP",
         "Whois",
         "phpWhois"
     ],
-    "homepage": "https://www.lucichkevin.it/phpWhois/",
     "type": "library",
     "license": "GPL-2.0-or-later",
     "authors": [
@@ -54,12 +53,12 @@
     },
     "autoload": {
         "psr-4": {
-            "phpWhois\\": "src/"
+            "PHPWhois2\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "phpWhois\\Tests\\": "tests/"
+            "PHPWhois2\\Tests\\": "tests/"
         }
     },
     "config": {

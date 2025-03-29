@@ -23,7 +23,7 @@
  * @copyright Copyright (c) 2014 Dmitry Lukashin
  */
 
-use phpWhois\Whois;
+use PHPWhois2\Whois;
 
 if (!\is_dir(\dirname(__DIR__) . '/vendor')) {
     throw new \LogicException('Dependencies are missing. Try running "composer install".');
@@ -55,7 +55,8 @@ foreach ($rows as $key => $domains) {
         try {
             ++$index;
             echo "[$index/$domainCount] Creating fixture for $domain \n";
-            $result = $whois->whois($domain);
+            $lookup = $whois->lookup($domain);
+            $result = \implode(\PHP_EOL, $lookup['rawdata']);
 
             $safeDomain = \makePathSafe($domain);
             $write = \file_put_contents("{$fixturePath}/{$safeDomain}.txt", $result);

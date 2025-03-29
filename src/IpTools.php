@@ -1,54 +1,20 @@
 <?php
 
-/**
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2
- * @license
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- *
- * @see http://phpwhois.pw
- *
- * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
- * @copyright Maintained by David Saez
- * @copyright Copyright (c) 2014 Dmitry Lukashin
- */
-
-namespace phpWhois;
+namespace PHPWhois2;
 
 final class IpTools
 {
-    public const IP_TYPE_ANY = 0;
-    public const IP_TYPE_IPv4 = 1;
-    public const IP_TYPE_IPv6 = 2;
-
     /**
      * Check if ip address is valid.
      *
      * @param string $ip     IP address for validation
-     * @param int    $type   Type of ip address. Possible value are: IpTools::IP_TYPE_*
      * @param bool   $strict If true - fail validation on reserved and private ip ranges
      *
      * @return bool True if ip is valid. False otherwise
      */
-    public function validIp(string $ip, int $type = self::IP_TYPE_ANY, bool $strict = true): bool
+    public function validIp(string $ip, bool $strict = true): bool
     {
-        return match ($type) {
-            self::IP_TYPE_ANY => $this->validIpv4($ip, $strict) || $this->validIpv6($ip, $strict),
-            self::IP_TYPE_IPv4 => $this->validIpv4($ip, $strict),
-            self::IP_TYPE_IPv6 => $this->validIpv6($ip, $strict),
-            default => false,
-        };
+        return $this->validIpv4($ip, $strict) || $this->validIpv6($ip, $strict);
     }
 
     /**

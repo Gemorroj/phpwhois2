@@ -1,14 +1,6 @@
 <?php
 
-/**
- * @license   See LICENSE file
- * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
- * @copyright Maintained by David Saez
- * @copyright Copyright (c) 2014 Dmitry Lukashin
- * @copyright Copyright (c) 2023 Kevin Lucich
- */
-
-namespace phpWhois\Handlers;
+namespace PHPWhois2\Handlers;
 
 class CoopHandler extends AbstractHandler
 {
@@ -45,7 +37,7 @@ class CoopHandler extends AbstractHandler
             'Email:' => 'email',
         ];
 
-        $blocks = AbstractHandler::getBlocks($data_str['rawdata'], $items);
+        $blocks = static::getBlocks($data_str['rawdata'], $items);
 
         $r = [
             'regrinfo' => [],
@@ -57,25 +49,25 @@ class CoopHandler extends AbstractHandler
         ];
 
         if (isset($blocks['domain'])) {
-            $r['regrinfo']['domain'] = AbstractHandler::formatDates($blocks['domain'], 'dmy');
+            $r['regrinfo']['domain'] = static::formatDates($blocks['domain'], 'dmy');
             $r['regrinfo']['registered'] = 'yes';
 
             if (isset($blocks['owner'])) {
-                $r['regrinfo']['owner'] = AbstractHandler::generic_parser_b($blocks['owner'], $translate, 'dmy', false);
+                $r['regrinfo']['owner'] = static::generic_parser_b($blocks['owner'], $translate, 'dmy', false);
 
                 if (isset($blocks['tech'])) {
-                    $r['regrinfo']['tech'] = AbstractHandler::generic_parser_b($blocks['tech'], $translate, 'dmy', false);
+                    $r['regrinfo']['tech'] = static::generic_parser_b($blocks['tech'], $translate, 'dmy', false);
                 }
 
                 if (isset($blocks['admin'])) {
-                    $r['regrinfo']['admin'] = AbstractHandler::generic_parser_b($blocks['admin'], $translate, 'dmy', false);
+                    $r['regrinfo']['admin'] = static::generic_parser_b($blocks['admin'], $translate, 'dmy', false);
                 }
 
                 if (isset($blocks['billing'])) {
-                    $r['regrinfo']['billing'] = AbstractHandler::generic_parser_b($blocks['billing'], $translate, 'dmy', false);
+                    $r['regrinfo']['billing'] = static::generic_parser_b($blocks['billing'], $translate, 'dmy', false);
                 }
             } else {
-                $r['regrinfo']['owner'] = AbstractHandler::generic_parser_b($data_str['rawdata'], $translate, 'dmy', false);
+                $r['regrinfo']['owner'] = static::generic_parser_b($data_str['rawdata'], $translate, 'dmy', false);
             }
         } else {
             $r['regrinfo']['registered'] = 'no';

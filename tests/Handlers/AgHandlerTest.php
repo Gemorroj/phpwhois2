@@ -1,14 +1,9 @@
 <?php
 
-/**
- * @license   See LICENSE file
- * @copyright Copyright (c) 2020 Joshua Smith
- */
+namespace PHPWhois2\Tests\Handlers;
 
-namespace phpWhois\Tests\Handlers;
-
-use phpWhois\Handlers\AgHandler;
-use phpWhois\WhoisClient;
+use PHPWhois2\Handlers\AgHandler;
+use PHPWhois2\WhoisClient;
 
 final class AgHandlerTest extends AbstractHandler
 {

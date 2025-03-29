@@ -1,16 +1,11 @@
 <?php
 
-/**
- * @copyright Copyright (c)2017 Joshua Smith
- * @license   GPL-2.0
- */
-
-namespace phpWhois\Tests;
+namespace PHPWhois2\Tests;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
-use phpWhois\Handlers\AbstractHandler;
+use PHPWhois2\Handlers\AbstractHandler;
 
 class ParserTest extends TestCase
 {

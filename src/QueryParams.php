@@ -1,6 +1,6 @@
 <?php
 
-namespace phpWhois;
+namespace PHPWhois2;
 
 final class QueryParams
 {
@@ -15,4 +15,18 @@ final class QueryParams
     public ?string $status = null; // error | ready | ok
     /** @var string[] */
     public array $errstr = [];
+
+    public function clear(): void
+    {
+        $this->server = null;
+        $this->query = null;
+        $this->args = null;
+        $this->handler = null;
+        $this->hostIp = null;
+        $this->hostName = null;
+        $this->serverPort = null;
+        $this->tld = null;
+        $this->status = null;
+        $this->errstr = [];
+    }
 }

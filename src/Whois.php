@@ -1,30 +1,6 @@
 <?php
 
-/**
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2
- * @license
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- *
- * @see http://phpwhois.pw
- *
- * @copyright Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
- * @copyright Maintained by David Saez
- * @copyright Copyright (c) 2014 Dmitry Lukashin
- */
-
-namespace phpWhois;
+namespace PHPWhois2;
 
 use Algo26\IdnaConvert\Exception\AlreadyPunycodeException;
 use Algo26\IdnaConvert\Exception\InvalidCharacterException;
@@ -32,13 +8,13 @@ use Algo26\IdnaConvert\ToIdn;
 
 class Whois
 {
-    public const QTYPE_UNKNOWN = 0;
-    public const QTYPE_DOMAIN = 1;
-    public const QTYPE_IPV4 = 2;
-    public const QTYPE_IPV6 = 3;
-    public const QTYPE_AS = 4;
+    private const QTYPE_UNKNOWN = 0;
+    private const QTYPE_DOMAIN = 1;
+    private const QTYPE_IPV4 = 2;
+    private const QTYPE_IPV6 = 3;
+    private const QTYPE_AS = 4;
 
-    public function __construct(private readonly bool $deepWhois = true, private readonly ?WhoisClient $whoisClient = new WhoisClient())
+    public function __construct(private readonly bool $deepWhois = true, private readonly WhoisClient $whoisClient = new WhoisClient())
     {
     }
 
@@ -54,18 +30,6 @@ class Whois
     }
 
     /**
-     *  Lookup query and return raw whois data.
-     *
-     * @param bool $isUtf True if domain name encoding is UTF-8 already, otherwise convert it to UTF-8
-     */
-    public function whois(string $domain, bool $isUtf = true): string
-    {
-        $lookup = $this->lookup($domain, $isUtf);
-
-        return \implode(\PHP_EOL, $lookup['rawdata']);
-    }
-
-    /**
      *  Lookup query.
      *
      * @param string $query Domain name or other entity
@@ -73,10 +37,10 @@ class Whois
      *
      * @throws InvalidCharacterException
      */
-    public function lookup(string $query = '', bool $isUtf = true): array
+    public function lookup(string $query, bool $isUtf = true): array
     {
         // start clean
-        $this->whoisClient->query = new QueryParams();
+        $this->whoisClient->query->clear();
 
         $query = \trim($query);
         if (!$isUtf) {
@@ -242,7 +206,7 @@ class Whois
     /**
      * Unsupported domains.
      */
-    public function unknown(): array
+    private function unknown(): array
     {
         $this->whoisClient->query->server = null;
         $this->whoisClient->query->status = 'error';
@@ -257,7 +221,7 @@ class Whois
     /**
      * Get nameservers if missing.
      */
-    public function checkDns(array &$result): void
+    private function checkDns(array &$result): void
     {
         if ($this->deepWhois && empty($result['regrinfo']['domain']['nserver'])) {
             $ns = @\dns_get_record($this->whoisClient->query->query, \DNS_NS);
@@ -270,33 +234,6 @@ class Whois
             }
             if (\count($nserver) > 0) {
                 $result['regrinfo']['domain']['nserver'] = WhoisClient::fixNameServer($nserver);
-            }
-        }
-    }
-
-    /**
-     *  Fix and/or add name server information.
-     */
-    public function fixResult(array &$result, string $domain): void
-    {
-        // Add usual fields
-        $result['regrinfo']['domain']['name'] = $domain;
-
-        // Check if nameservers exist
-        if (!isset($result['regrinfo']['registered'])) {
-            if (\checkdnsrr($domain, 'NS')) {
-                $result['regrinfo']['registered'] = 'yes';
-            } else {
-                $result['regrinfo']['registered'] = 'unknown';
-            }
-        }
-
-        // Normalize nameserver fields
-        if (isset($result['regrinfo']['domain']['nserver'])) {
-            if (!\is_array($result['regrinfo']['domain']['nserver'])) {
-                unset($result['regrinfo']['domain']['nserver']);
-            } else {
-                $result['regrinfo']['domain']['nserver'] = WhoisClient::fixNameServer($result['regrinfo']['domain']['nserver']);
             }
         }
     }

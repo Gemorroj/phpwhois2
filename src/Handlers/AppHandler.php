@@ -1,11 +1,6 @@
 <?php
 
-/**
- * @license   See LICENSE file
- * @copyright Copyright (c) 2020 Joshua Smith
- */
-
-namespace phpWhois\Handlers;
+namespace PHPWhois2\Handlers;
 
 class AppHandler extends AbstractHandler
 {
