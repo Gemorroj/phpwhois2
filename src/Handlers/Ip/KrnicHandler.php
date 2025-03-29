@@ -23,16 +23,13 @@
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
  */
-if (!\defined('__KRNIC_HANDLER__')) {
-    \define('__KRNIC_HANDLER__', 1);
-}
+namespace phpWhois\Handlers\Ip;
 
-class krnic_handler
+use phpWhois\Handlers\AbstractHandler;
+
+class KrnicHandler extends AbstractHandler
 {
-    // FIXME. This is a temporary fix :-(
-    public $deepWhois = false;
-
-    public function parse($data_str, $query)
+    public function parse(array $data_str, string $query): array
     {
         $blocks = [
             'owner1' => '[ Organization Information ]',
@@ -67,7 +64,7 @@ class krnic_handler
             'E-Mail             :' => 'email',
         ];
 
-        $b = phpWhois\Handlers\AbstractHandler::getBlocks($data_str, $blocks);
+        $b = static::getBlocks($data_str, $blocks);
 
         $r = [];
         if (isset($b['network'])) {
@@ -75,29 +72,29 @@ class krnic_handler
         }
 
         if (isset($b['owner1'])) {
-            $r['owner'] = phpWhois\Handlers\AbstractHandler::generic_parser_b($b['owner1'], $items, 'Ymd', false);
+            $r['owner'] = static::generic_parser_b($b['owner1'], $items, 'Ymd', false);
         } elseif (isset($b['owner2'])) {
-            $r['owner'] = phpWhois\Handlers\AbstractHandler::generic_parser_b($b['owner2'], $items, 'Ymd', false);
+            $r['owner'] = static::generic_parser_b($b['owner2'], $items, 'Ymd', false);
         }
 
         if (isset($b['admin2'])) {
-            $r['admin'] = phpWhois\Handlers\AbstractHandler::generic_parser_b($b['admin2'], $items, 'Ymd', false);
+            $r['admin'] = static::generic_parser_b($b['admin2'], $items, 'Ymd', false);
         } elseif (isset($b['admin3'])) {
-            $r['admin'] = phpWhois\Handlers\AbstractHandler::generic_parser_b($b['admin3'], $items, 'Ymd', false);
+            $r['admin'] = static::generic_parser_b($b['admin3'], $items, 'Ymd', false);
         }
 
         if (isset($b['tech1'])) {
-            $r['tech'] = phpWhois\Handlers\AbstractHandler::generic_parser_b($b['tech1'], $items, 'Ymd', false);
+            $r['tech'] = static::generic_parser_b($b['tech1'], $items, 'Ymd', false);
         } elseif (isset($b['tech2'])) {
-            $r['tech'] = phpWhois\Handlers\AbstractHandler::generic_parser_b($b['tech2'], $items, 'Ymd', false);
+            $r['tech'] = static::generic_parser_b($b['tech2'], $items, 'Ymd', false);
         } elseif (isset($b['tech3'])) {
-            $r['tech'] = phpWhois\Handlers\AbstractHandler::generic_parser_b($b['tech3'], $items, 'Ymd', false);
+            $r['tech'] = static::generic_parser_b($b['tech3'], $items, 'Ymd', false);
         }
         if (isset($b['abuse'])) {
-            $r['abuse'] = phpWhois\Handlers\AbstractHandler::generic_parser_b($b['abuse'], $items, 'Ymd', false);
+            $r['abuse'] = static::generic_parser_b($b['abuse'], $items, 'Ymd', false);
         }
 
-        phpWhois\Handlers\AbstractHandler::formatDates($r, 'Ymd');
+        static::formatDates($r, 'Ymd');
 
         $r = ['regrinfo' => $r];
         $r['regyinfo']['type'] = 'ip';

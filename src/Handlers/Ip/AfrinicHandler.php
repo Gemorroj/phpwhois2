@@ -23,16 +23,13 @@
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
  */
-if (!\defined('__AFRINIC_HANDLER__')) {
-    \define('__AFRINIC_HANDLER__', 1);
-}
+namespace phpWhois\Handlers\Ip;
 
-class afrinic_handler
+use phpWhois\Handlers\AbstractHandler;
+
+class AfrinicHandler extends AbstractHandler
 {
-    // FIXME. This is a temporary fix :-(
-    public $deepWhois = false;
-
-    public function parse($data_str, $query)
+    public function parse(array $data_str, string $query): array
     {
         $translate = [
             'fax-no' => 'fax',
@@ -51,7 +48,7 @@ class afrinic_handler
             'org' => 'owner',
         ];
 
-        $r = phpWhois\Handlers\AbstractHandler::generic_parser_a($data_str, $translate, $contacts, 'network', 'Ymd');
+        $r = static::generic_parser_a($data_str, $translate, $contacts, 'network', 'Ymd');
 
         if (isset($r['network']['descr'])) {
             $r['owner']['organization'] = $r['network']['descr'];

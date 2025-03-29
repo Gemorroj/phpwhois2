@@ -84,7 +84,7 @@ class WhoisClient
     public function __construct()
     {
         // Load DATA array
-        $servers = require __DIR__.'/whois.servers.php';
+        $servers = require __DIR__.'/../whois.servers.php';
 
         $this->DATA = $servers['DATA'];
         $this->NON_UTF8 = $servers['NON_UTF8'];
@@ -463,10 +463,6 @@ class WhoisClient
         $handlerName = $this->loadHandler($this->query['handler']);
 
         if (null === $handlerName) {
-            $handlerName = $this->loadLegacyHandler($this->query['handler'], $this->query['file']);
-        }
-
-        if (null === $handlerName) {
             $this->query['errstr'][] = "Can't find {$this->query['handler']} handler: ".$this->query['file'];
 
             return $result;
@@ -647,30 +643,17 @@ class WhoisClient
         if (\class_exists($handlerName)) {
             return $handlerName;
         }
-        $handlerNameGtld = "phpWhois\\Handlers\\Gtld\{$queryHandler}Handler";
+
+        $handlerNameGtld = "phpWhois\\Handlers\\Gtld\\{$queryHandler}Handler";
         if (\class_exists($handlerNameGtld)) {
             return $handlerNameGtld;
         }
 
+        $handlerNameIp = "phpWhois\\Handlers\\Ip\\{$queryHandler}Handler";
+        if (\class_exists($handlerNameIp)) {
+            return $handlerNameIp;
+        }
+
         return null;
-    }
-
-    protected function loadLegacyHandler(string $queryHandler, string $queryFile): ?string
-    {
-        $handler_name = \str_replace('.', '_', $queryHandler);
-
-        // If the handler has not already been included somehow, include it now
-        $HANDLER_FLAG = \sprintf('__%s_HANDLER__', \strtoupper($handler_name));
-
-        if (!\defined($HANDLER_FLAG)) {
-            include $queryFile;
-        }
-
-        // If the handler has still not been included, append to query errors list and return
-        if (!\defined($HANDLER_FLAG)) {
-            return null;
-        }
-
-        return $handler_name.'_handler';
     }
 }

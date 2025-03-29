@@ -5,7 +5,7 @@
  * @license   See LICENSE file
  */
 
-namespace Tests;
+namespace phpWhois\Tests;
 
 use PHPUnit\Framework\TestCase;
 

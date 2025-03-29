@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2023 Kevin Lucich
  */
 
-namespace phpWhois\Handlers;
+namespace phpWhois\Handlers\Ip;
 
 use phpWhois\WhoisClient;
 

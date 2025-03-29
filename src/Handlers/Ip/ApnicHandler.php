@@ -23,19 +23,13 @@
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
  */
+namespace phpWhois\Handlers\Ip;
 
 use phpWhois\Handlers\AbstractHandler;
 
-if (!\defined('__APNIC_HANDLER__')) {
-    \define('__APNIC_HANDLER__', 1);
-}
-
-class apnic_handler
+class ApnicHandler extends AbstractHandler
 {
-    // FIXME. This is a temporary fix :-(
-    public $deepWhois = false;
-
-    public function parse($data_str, $query)
+    public function parse(array $data_str, string $query): array
     {
         $translate = [
             'fax-no' => 'fax',
@@ -54,7 +48,7 @@ class apnic_handler
         ];
 
         $disclaimer = [];
-        $blocks = AbstractHandler::generic_parser_a_blocks($data_str, $translate, $disclaimer);
+        $blocks = static::generic_parser_a_blocks($data_str, $translate, $disclaimer);
 
         $r = [];
 
@@ -89,7 +83,7 @@ class apnic_handler
             }
 
             $r['network'] = $rb;
-            AbstractHandler::formatDates($r, 'Ymd');
+            static::formatDates($r, 'Ymd');
 
             if (isset($r['network']['desc'])) {
                 if (\is_array($r['network']['desc'])) {

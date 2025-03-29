@@ -5,7 +5,7 @@
  * @license   See LICENSE file
  */
 
-namespace Tests\Handlers;
+namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\BrHandler;
 

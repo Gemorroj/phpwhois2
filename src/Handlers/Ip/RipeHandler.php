@@ -23,50 +23,66 @@
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
  */
-if (!\defined('__LACNIC_HANDLER__')) {
-    \define('__LACNIC_HANDLER__', 1);
-}
+namespace phpWhois\Handlers\Ip;
 
-class lacnic_handler
+use phpWhois\Handlers\AbstractHandler;
+
+class RipeHandler extends AbstractHandler
 {
-    // FIXME. This is a temporary fix :-(
-    public $deepWhois = false;
-
-    public function parse($data_str, $query)
+    public function parse(array $data_str, string $query): array
     {
         $translate = [
             'fax-no' => 'fax',
             'e-mail' => 'email',
-            'nic-hdl-br' => 'handle',
             'nic-hdl' => 'handle',
             'person' => 'name',
             'netname' => 'name',
             'descr' => 'desc',
-            'country' => 'address.country',
         ];
 
         $contacts = [
-            'owner-c' => 'owner',
-            'tech-c' => 'tech',
-            'abuse-c' => 'abuse',
             'admin-c' => 'admin',
+            'tech-c' => 'tech',
         ];
 
-        $r = phpWhois\Handlers\AbstractHandler::generic_parser_a($data_str, $translate, $contacts, 'network');
-
-        unset($r['network']['owner'], $r['network']['ownerid'], $r['network']['responsible'], $r['network']['address'], $r['network']['phone'], $r['network']['aut-num'], $r['network']['nsstat'], $r['network']['nslastaa'], $r['network']['inetrev']);
-
-        if (!empty($r['network']['aut-num'])) {
-            $r['network']['handle'] = $r['network']['aut-num'];
+        if (!empty($data_str['rawdata'])) {
+            $data_str = $data_str['rawdata'];
         }
 
-        if (isset($r['network']['nserver'])) {
-            $r['network']['nserver'] = \array_unique($r['network']['nserver']);
+        $r = static::generic_parser_a($data_str, $translate, $contacts, 'network');
+
+        if (isset($r['network']['desc'])) {
+            $r['owner']['organization'] = $r['network']['desc'];
+            unset($r['network']['desc']);
+        }
+
+        if (isset($r['admin']['abuse-mailbox'])) {
+            $r['abuse']['email'] = $r['admin']['abuse-mailbox'];
+            unset($r['admin']['abuse-mailbox']);
+        }
+
+        if (isset($r['tech']['abuse-mailbox'])) {
+            $r['abuse']['email'] = $r['tech']['abuse-mailbox'];
+            unset($r['tech']['abuse-mailbox']);
+        }
+
+        // Clean mess
+        if (isset($r['tech']['tech-c'])) {
+            unset($r['tech']['tech-c']);
+        }
+        if (isset($r['tech']['admin-c'])) {
+            unset($r['tech']['admin-c']);
+        }
+        if (isset($r['admin']['tech-c'])) {
+            unset($r['admin']['tech-c']);
+        }
+        if (isset($r['admin']['admin-c'])) {
+            unset($r['admin']['admin-c']);
         }
 
         $r = ['regrinfo' => $r];
         $r['regyinfo']['type'] = 'ip';
-        $r['regyinfo']['registrar'] = 'Latin American and Caribbean IP address Regional Registry';
+        $r['regyinfo']['registrar'] = 'RIPE Network Coordination Centre';
 
         return $r;
     }

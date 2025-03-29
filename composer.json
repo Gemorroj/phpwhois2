@@ -59,12 +59,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
-        },
-        "classmap": [
-            "src/",
-            "tests/"
-        ]
+            "phpWhois\\Tests\\": "tests/"
+        }
     },
     "config": {
         "sort-packages": false

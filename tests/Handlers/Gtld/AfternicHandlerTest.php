@@ -19,14 +19,14 @@
  * @copyright Copyright (c) 2020 Joshua Smith
  */
 
-namespace Tests\Handlers;
+namespace phpWhois\Tests\Handlers\Gtld;
+
+use phpWhois\Handlers\Gtld\AfternicHandler;
+use phpWhois\Tests\Handlers\AbstractHandler;
 
 class AfternicHandlerTest extends AbstractHandler
 {
-    /**
-     * @var \afternic_handler
-     */
-    protected $handler;
+    protected AfternicHandler $handler;
 
     /**
      * @noinspection PhpUnreachableStatementInspection
@@ -36,7 +36,7 @@ class AfternicHandlerTest extends AbstractHandler
         self::markTestSkipped('Not sure what to do with this yet');
         parent::setUp();
 
-        $this->handler = new \afternic_handler();
+        $this->handler = new AfternicHandler();
         $this->handler->deepWhois = false;
     }
 

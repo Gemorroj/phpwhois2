@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace phpWhois\Tests;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use phpWhois\Whois;

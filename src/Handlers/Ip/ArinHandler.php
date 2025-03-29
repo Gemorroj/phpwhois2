@@ -23,16 +23,13 @@
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
  */
-if (!\defined('__ARIN_HANDLER__')) {
-    \define('__ARIN_HANDLER__', 1);
-}
+namespace phpWhois\Handlers\Ip;
 
-class arin_handler
+use phpWhois\Handlers\AbstractHandler;
+
+class ArinHandler extends AbstractHandler
 {
-    // FIXME. This is a temporary fix :-(
-    public $deepWhois = false;
-
-    public function parse($data_str, $query)
+    public function parse(array $data_str, string $query): array
     {
         $items = [
             'OrgName:' => 'owner.organization',
@@ -64,9 +61,9 @@ class arin_handler
             'ReferralServer:' => 'rwhois',
         ];
 
-        $r = phpWhois\Handlers\AbstractHandler::generic_parser_b($data_str, $items, 'ymd', false, true);
+        $r = static::generic_parser_b($data_str, $items, 'ymd', false, true);
 
-        if (@isset($r['abuse']['email'])) {
+        if (isset($r['abuse']['email'])) {
             $r['abuse']['email'] = \implode(',', $r['abuse']['email']);
         }
 

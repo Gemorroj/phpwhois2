@@ -19,9 +19,9 @@
  * @copyright Copyright (c) 2018 Joshua Smith
  */
 
-namespace Tests\Handlers;
+namespace phpWhois\Tests\Handlers;
 
-use Tests\BaseTestCase;
+use phpWhois\Tests\BaseTestCase;
 
 /**
  * HandlerTest.

@@ -19,7 +19,7 @@
  * @copyright Copyright (c) 2020 Joshua Smith
  */
 
-namespace Tests\Handlers;
+namespace phpWhois\Tests\Handlers;
 
 use phpWhois\Handlers\CoZaHandler;
 

@@ -10,11 +10,13 @@
 
 namespace phpWhois\Handlers;
 
+use phpWhois\Handlers\Gtld\IanaHandler;
+
 class IntHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
     {
-        $iana = new \iana_handler();
+        $iana = new IanaHandler();
         $r = [];
         $r['regrinfo'] = $iana->parse($data_str['rawdata'], $query);
         $r['regyinfo']['referrer'] = 'http://www.iana.org/int-dom/int.htm';

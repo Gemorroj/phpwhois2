@@ -5,7 +5,7 @@
  * @license   GPL-2.0
  */
 
-namespace Tests;
+namespace phpWhois\Tests;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
