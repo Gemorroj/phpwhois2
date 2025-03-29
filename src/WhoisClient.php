@@ -35,8 +35,6 @@ use phpWhois\Handlers\AbstractHandler;
  */
 class WhoisClient
 {
-    /** @var bool Is recursion allowed? */
-    public bool $gtldRecurse = false;
     public bool $deepWhois;
 
     /** @var int Default WHOIS port */
@@ -231,12 +229,9 @@ class WhoisClient
      *               handler class was found for the domain, other elements will have been
      *               populated too.
      */
-    public function getData(string $query = '', bool $deep_whois = true): array
+    public function getData(bool $deepWhois = true): array
     {
-        // If domain to query passed in, use it, otherwise use domain from initialisation
-        $query = !empty($query) ? $query : $this->query->query;
-
-        $output = $this->getRawData($query);
+        $output = $this->getRawData($this->query->query);
 
         // Create result and set 'rawdata'
         $result = ['rawdata' => $output];
@@ -254,7 +249,7 @@ class WhoisClient
             unset($result['regyinfo']['servers']);
 
             // Process data
-            $result = $this->process($result, $deep_whois);
+            $result = $this->process($result, $deepWhois);
 
             // Add new servers to the server list
             if (isset($result['regyinfo']['servers'])) {
@@ -280,11 +275,35 @@ class WhoisClient
         }
 
         // Fix/add nameserver information
-        if ('ip' !== $this->query->tld && \method_exists($this, 'fixResult')) {
-            $this->fixResult($result, $query);
+        if ('ip' !== $this->query->tld) {
+            self::fixResult($result, $this->query->query);
         }
 
         return $result;
+    }
+
+    public static function fixResult(array &$result, string $domain): void
+    {
+        // Add usual fields
+        $result['regrinfo']['domain']['name'] = $domain;
+
+        // Check if nameservers exist
+        if (!isset($result['regrinfo']['registered'])) {
+            if (\checkdnsrr($domain, 'NS')) {
+                $result['regrinfo']['registered'] = 'yes';
+            } else {
+                $result['regrinfo']['registered'] = 'unknown';
+            }
+        }
+
+        // Normalize nameserver fields
+        if (isset($result['regrinfo']['domain']['nserver'])) {
+            if (!\is_array($result['regrinfo']['domain']['nserver'])) {
+                unset($result['regrinfo']['domain']['nserver']);
+            } else {
+                $result['regrinfo']['domain']['nserver'] = self::fixNameServer($result['regrinfo']['domain']['nserver']);
+            }
+        }
     }
 
     /**
@@ -391,15 +410,11 @@ class WhoisClient
     /**
      * Open a socket to the whois server.
      *
-     * @param string|null $server Server address to connect. If null, $this->query->server will be used
-     *
      * @return resource|false Returns a socket connection pointer on success, or -1 on failure
      */
-    public function connect(?string $server = null)
+    private function connect()
     {
-        if (empty($server)) {
-            $server = $this->query->server;
-        }
+        $server = $this->query->server;
 
         /* @TODO Throw an exception here */
         if (empty($server)) {
@@ -450,14 +465,14 @@ class WhoisClient
      * @return array On success, returns the result from the handler.
      *               On failure, returns passed result unaltered.
      */
-    public function process(array &$result, bool $deep_whois = true): array
+    public function process(array $result, bool $deepWhois = true): array
     {
-        if (!$this->gtldRecurse && 'gtld' === $this->query->handler) {
+        if ('gtld' === $this->query->handler) {
             return $result;
         }
 
         $handler = $this->loadHandler();
-        $handler->deepWhois = $deep_whois;
+        $handler->deepWhois = $deepWhois;
 
         // Process and return the result
         return $handler->parse($result, $this->query->query);
@@ -495,10 +510,7 @@ class WhoisClient
         return $result;
     }
 
-    /**
-     * Merge results.
-     */
-    public function mergeResults(array $a1, array $a2): array
+    private function mergeResults(array $a1, array $a2): array
     {
         \reset($a2);
 
@@ -529,7 +541,7 @@ class WhoisClient
      *
      * @return string[]
      */
-    public function fixNameServer(array $nserver): array
+    public static function fixNameServer(array $nserver): array
     {
         $dns = [];
 
@@ -540,11 +552,12 @@ class WhoisClient
             $ip = '';
 
             foreach ($parts as $p) {
-                if ('.' === \substr($p, -1)) {
+                if (\str_ends_with($p, '.')) {
                     $p = \substr($p, 0, -1);
                 }
 
-                if ((-1 == \ip2long($p)) || (false === \ip2long($p))) {
+                $ip2long = \ip2long($p);
+                if (-1 === $ip2long || false === $ip2long) {
                     // Hostname ?
                     if ('' == $host && \preg_match('/^[\w\-]+(\.[\w\-]+)+$/', $p)) {
                         $host = $p;
@@ -568,7 +581,7 @@ class WhoisClient
                 }
             }
 
-            if ('.' === $host[\strlen($host) - 1]) {
+            if (\str_ends_with($host, '.')) {
                 $host = \substr($host, 0, -1);
             }
 
@@ -585,7 +598,7 @@ class WhoisClient
      *
      * @return array Array containing 'host' key with server host and 'port' if defined in original $server string
      */
-    public function parseServer(string $server): array
+    private function parseServer(string $server): array
     {
         $server = \trim($server);
 

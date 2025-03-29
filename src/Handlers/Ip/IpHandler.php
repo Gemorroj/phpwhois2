@@ -12,6 +12,7 @@ namespace phpWhois\Handlers\Ip;
 
 use phpWhois\Handlers\AbstractHandler;
 use phpWhois\QueryParams;
+use phpWhois\WhoisClient;
 
 class IpHandler extends AbstractHandler
 {
@@ -144,7 +145,7 @@ class IpHandler extends AbstractHandler
             if (!\is_array($result['regrinfo']['network']['nserver'])) {
                 unset($result['regrinfo']['network']['nserver']);
             } else {
-                $result['regrinfo']['network']['nserver'] = $this->whoisClient->fixNameServer($result['regrinfo']['network']['nserver']);
+                $result['regrinfo']['network']['nserver'] = WhoisClient::fixNameServer($result['regrinfo']['network']['nserver']);
             }
         }
 

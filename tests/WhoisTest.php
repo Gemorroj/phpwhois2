@@ -18,7 +18,10 @@ class WhoisTest extends \PHPUnit\Framework\TestCase
     public function testQueryType($type, $domain): void
     {
         $whois = new Whois();
-        $this->assertEquals($type, $whois->getQueryType($domain));
+        $reflectionObj = new \ReflectionObject($whois);
+        $reflectionMethod = $reflectionObj->getMethod('getQueryType');
+        $actual = $reflectionMethod->invoke($whois, $domain);
+        $this->assertEquals($type, $actual);
     }
 
     public static function domainsProvider(): array

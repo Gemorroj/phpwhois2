@@ -11,7 +11,10 @@ class WhoisClientTest extends \PHPUnit\Framework\TestCase
     public function testParseServer($server, $result): void
     {
         $whoisClient = new WhoisClient();
-        $this->assertEquals($result, $whoisClient->parseServer($server));
+        $reflectionObj = new \ReflectionObject($whoisClient);
+        $reflectionMethod = $reflectionObj->getMethod('parseServer');
+        $actual = $reflectionMethod->invoke($whoisClient, $server);
+        $this->assertEquals($result, $actual);
     }
 
     public static function serversProvider(): array
