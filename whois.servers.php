@@ -29,6 +29,7 @@
  */
 
 return [
+    // value = handler name
     'DATA' => [
         'bz' => 'gtld',
         'com' => 'gtld',
@@ -649,7 +650,7 @@ return [
     ],
 
     /* handled gTLD whois servers */
-
+    // value = handler name
     'WHOIS_GTLD_HANDLER' => [
         'whois.bulkregister.com' => 'enom',
         'whois.dotregistrar.com' => 'dotster',

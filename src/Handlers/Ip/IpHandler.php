@@ -113,7 +113,6 @@ class IpHandler extends WhoisClient
             }
 
             if (!$found) {
-                $this->query['file'] = 'whois.ip.arin.php';
                 $this->query['handler'] = 'arin';
                 $result = $this->parse_results($result, $rwdata, $query, true);
             }
@@ -131,12 +130,6 @@ class IpHandler extends WhoisClient
             if (!empty($rwdata)) {
                 if (!empty($srv_data['handler'])) {
                     $this->query['handler'] = $srv_data['handler'];
-
-                    if (!empty($srv_data['file'])) {
-                        $this->query['file'] = $srv_data['file'];
-                    } else {
-                        $this->query['file'] = 'whois.'.$this->query['handler'].'.php';
-                    }
                 }
 
                 $result = $this->parse_results($result, $rwdata, $query, $srv_data['reset']);

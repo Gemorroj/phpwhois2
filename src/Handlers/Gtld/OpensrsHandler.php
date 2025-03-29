@@ -23,6 +23,7 @@
  * @copyright Maintained by David Saez
  * @copyright Copyright (c) 2014 Dmitry Lukashin
  */
+
 namespace phpWhois\Handlers\Gtld;
 
 use phpWhois\Handlers\AbstractHandler;

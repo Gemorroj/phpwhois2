@@ -125,7 +125,6 @@ class Whois extends WhoisClient
                 } else {
                     $this->query['server'] = 'whois.arin.net';
                     $this->query['args'] = "n $ip";
-                    $this->query['file'] = 'whois.ip.php';
                     $this->query['handler'] = 'ip';
                 }
                 $this->query['host_ip'] = $ip;
@@ -143,7 +142,6 @@ class Whois extends WhoisClient
                     $this->query['server'] = $this->WHOIS_SPECIAL['ip'];
                 } else {
                     $this->query['server'] = 'whois.ripe.net';
-                    $this->query['file'] = 'whois.ip.ripe.php';
                     $this->query['handler'] = 'ripe';
                 }
                 $this->query['query'] = $ip;
@@ -161,7 +159,6 @@ class Whois extends WhoisClient
                     $as = $ip;
                 }
                 $this->query['args'] = "a $as";
-                $this->query['file'] = 'whois.ip.php';
                 $this->query['handler'] = 'ip';
                 $this->query['query'] = $ip;
                 $this->query['tld'] = 'as';
@@ -239,7 +236,6 @@ class Whois extends WhoisClient
 
             // If there is a handler set it
             if ('' != $handler) {
-                $this->query['file'] = "whois.$handler.php";
                 $this->query['handler'] = $handler;
             }
 

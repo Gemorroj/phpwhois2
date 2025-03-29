@@ -463,12 +463,12 @@ class WhoisClient
         $handlerName = $this->loadHandler($this->query['handler']);
 
         if (null === $handlerName) {
-            $this->query['errstr'][] = "Can't find {$this->query['handler']} handler: ".$this->query['file'];
+            $this->query['errstr'][] = "Can't find {$this->query['handler']} handler.";
 
             return $result;
         }
 
-        if (!$this->gtldRecurse && 'whois.gtld.php' === $this->query['file']) {
+        if (!$this->gtldRecurse && 'gtld' === $this->query['handler']) {
             return $result;
         }
 
@@ -510,7 +510,6 @@ class WhoisClient
             }
 
             if (!empty($this->query['handler'])) {
-                // $this->query['file'] = \sprintf('whois.gtld.%s.php', $this->query['handler']);
                 $regrinfo = $this->process($subresult); // $result['rawdata']);
                 $result['regrinfo'] = $this->mergeResults($result['regrinfo'], $regrinfo);
             }
