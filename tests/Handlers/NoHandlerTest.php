@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\NoHandler;
 use phpWhois\WhoisClient;
 
-/**
- * SeHandlerTest.
- */
-class NoHandlerTest extends AbstractHandler
+final class NoHandlerTest extends AbstractHandler
 {
-    /**
-     * @var NoHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new NoHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new NoHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotNo(): void

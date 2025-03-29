@@ -10,22 +10,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\BeHandler;
 use phpWhois\WhoisClient;
 
-/**
- * BeHandlerTest.
- */
-class BeHandlerTest extends AbstractHandler
+final class BeHandlerTest extends AbstractHandler
 {
-    /**
-     * @var BeHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new BeHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new BeHandler(new WhoisClient(), false);
     }
 
     public function testParseNicDotBe(): void

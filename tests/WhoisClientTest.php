@@ -3,9 +3,10 @@
 namespace phpWhois\Tests;
 
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 use phpWhois\WhoisClient;
 
-class WhoisClientTest extends \PHPUnit\Framework\TestCase
+class WhoisClientTest extends TestCase
 {
     #[DataProvider('serversProvider')]
     public function testParseServer($server, $result): void
@@ -14,7 +15,7 @@ class WhoisClientTest extends \PHPUnit\Framework\TestCase
         $reflectionObj = new \ReflectionObject($whoisClient);
         $reflectionMethod = $reflectionObj->getMethod('parseServer');
         $actual = $reflectionMethod->invoke($whoisClient, $server);
-        $this->assertEquals($result, $actual);
+        self::assertEquals($result, $actual);
     }
 
     public static function serversProvider(): array

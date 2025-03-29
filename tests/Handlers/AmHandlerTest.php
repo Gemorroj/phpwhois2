@@ -10,22 +10,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\AmHandler;
 use phpWhois\WhoisClient;
 
-/**
- * AmHandlerTest.
- */
-class AmHandlerTest extends AbstractHandler
+final class AmHandlerTest extends AbstractHandler
 {
-    /**
-     * @var AmHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new AmHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new AmHandler(new WhoisClient(), false);
     }
 
     public function testParseIsocDotAm(): void

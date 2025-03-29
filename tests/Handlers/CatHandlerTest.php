@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\CatHandler;
 use phpWhois\WhoisClient;
 
-/**
- * CatHandlerTest.
- */
-class CatHandlerTest extends AbstractHandler
+final class CatHandlerTest extends AbstractHandler
 {
-    /**
-     * @var CatHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new CatHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new CatHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotCat(): void

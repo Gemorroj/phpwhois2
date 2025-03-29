@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\EuHandler;
 use phpWhois\WhoisClient;
 
-/**
- * EuHandlerTest.
- */
-class EuHandlerTest extends AbstractHandler
+final class EuHandlerTest extends AbstractHandler
 {
-    /**
-     * @var EuHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new EuHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new EuHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotEu(): void

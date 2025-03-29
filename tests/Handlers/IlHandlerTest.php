@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\IlHandler;
 use phpWhois\WhoisClient;
 
-/**
- * IlHandlerTest.
- */
-class IlHandlerTest extends AbstractHandler
+final class IlHandlerTest extends AbstractHandler
 {
-    /**
-     * @var IlHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new IlHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new IlHandler(new WhoisClient(), false);
     }
 
     public function testParseTapuzDotCoDotIl(): void

@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\EduHandler;
 use phpWhois\WhoisClient;
 
-/**
- * EduHandlerTest.
- */
-class EduHandlerTest extends AbstractHandler
+final class EduHandlerTest extends AbstractHandler
 {
-    /**
-     * @var EduHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new EduHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new EduHandler(new WhoisClient(), false);
     }
 
     public function testParseBerkeleyDotEdu(): void

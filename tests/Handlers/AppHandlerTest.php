@@ -10,27 +10,15 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\AppHandler;
 use phpWhois\WhoisClient;
 
-/**
- * AppHandlerTest.
- */
-class AppHandlerTest extends AbstractHandler
+final class AppHandlerTest extends AbstractHandler
 {
-    /**
-     * @var AppHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new AppHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new AppHandler(new WhoisClient(), false);
     }
 
-    /**
-     * @throws \Exception
-     */
     public function testParseGoogleDotApp(): void
     {
         $query = 'google.app';
@@ -59,9 +47,6 @@ class AppHandlerTest extends AbstractHandler
         self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($fixture, $actual['rawdata'], $fixture, 'Fixture data may be out of date');
     }
 
-    /**
-     * @throws \Exception
-     */
     public function testParseGodaddyDotApp(): void
     {
         $query = 'google.app';

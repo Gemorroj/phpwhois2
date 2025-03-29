@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\PhHandler;
 use phpWhois\WhoisClient;
 
-/**
- * PhHandlerTest.
- */
-class PhHandlerTest extends AbstractHandler
+final class PhHandlerTest extends AbstractHandler
 {
-    /**
-     * @var PhHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new PhHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new PhHandler(new WhoisClient(), false);
     }
 
     public function testParseCityEscapeDotPh(): void
@@ -54,14 +45,14 @@ class PhHandlerTest extends AbstractHandler
 
         $actual = $this->handler->parse($data, $query);
 
-        $this->assertEquals('cityescape.ph', $actual['regrinfo']['domain']['name']);
-        $this->assertEquals('2024-01-30', $actual['regrinfo']['domain']['changed']);
-        $this->assertEquals('1990-09-14', $actual['regrinfo']['domain']['created']);
-        // $this->assertEquals('2021-02-25', $actual['regrinfo']['domain']['expires']);
-        $this->assertEquals('yes', $actual['regrinfo']['registered']);
+        self::assertEquals('cityescape.ph', $actual['regrinfo']['domain']['name']);
+        self::assertEquals('2024-01-30', $actual['regrinfo']['domain']['changed']);
+        self::assertEquals('1990-09-14', $actual['regrinfo']['domain']['created']);
+        // self::assertEquals('2021-02-25', $actual['regrinfo']['domain']['expires']);
+        self::assertEquals('yes', $actual['regrinfo']['registered']);
 
-        $this->assertArrayHasKey('rawdata', $actual);
-        $this->assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
     public function parseDotDotPh(): void
@@ -76,13 +67,13 @@ class PhHandlerTest extends AbstractHandler
 
         $actual = $this->handler->parse($data, $query);
 
-        $this->assertEquals('dot.ph', $actual['regrinfo']['domain']['name']);
-        $this->assertEquals('2016-07-25', $actual['regrinfo']['domain']['changed']);
-        $this->assertEquals('2000-08-09', $actual['regrinfo']['domain']['created']);
-        $this->assertEquals('2025-08-09', $actual['regrinfo']['domain']['expires']);
-        $this->assertEquals('yes', $actual['regrinfo']['registered']);
+        self::assertEquals('dot.ph', $actual['regrinfo']['domain']['name']);
+        self::assertEquals('2016-07-25', $actual['regrinfo']['domain']['changed']);
+        self::assertEquals('2000-08-09', $actual['regrinfo']['domain']['created']);
+        self::assertEquals('2025-08-09', $actual['regrinfo']['domain']['expires']);
+        self::assertEquals('yes', $actual['regrinfo']['registered']);
 
-        $this->assertArrayHasKey('rawdata', $actual);
-        $this->assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 }

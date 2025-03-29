@@ -26,14 +26,11 @@ use phpWhois\WhoisClient;
 
 final class GtldHandlerTest extends AbstractHandler
 {
-    protected GtldHandler $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new GtldHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new GtldHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotCom(): void

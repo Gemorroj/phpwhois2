@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\CzHandler;
 use phpWhois\WhoisClient;
 
-/**
- * CzHandlerTest.
- */
-class CzHandlerTest extends AbstractHandler
+final class CzHandlerTest extends AbstractHandler
 {
-    /**
-     * @var CzHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new CzHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new CzHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotCz(): void

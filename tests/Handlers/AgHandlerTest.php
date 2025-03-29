@@ -10,22 +10,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\AgHandler;
 use phpWhois\WhoisClient;
 
-/**
- * AgHandlerTest.
- */
-class AgHandlerTest extends AbstractHandler
+final class AgHandlerTest extends AbstractHandler
 {
-    /**
-     * @var AgHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new AgHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new AgHandler(new WhoisClient(), false);
     }
 
     public function testParseNicDotAg(): void

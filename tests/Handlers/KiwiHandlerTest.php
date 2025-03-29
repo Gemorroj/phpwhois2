@@ -10,22 +10,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\KiwiHandler;
 use phpWhois\WhoisClient;
 
-/**
- * KiwiHandlerTest.
- */
-class KiwiHandlerTest extends AbstractHandler
+final class KiwiHandlerTest extends AbstractHandler
 {
-    /**
-     * @var KiwiHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new KiwiHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new KiwiHandler(new WhoisClient(), false);
     }
 
     public function testParseHelloDotKiwi(): void

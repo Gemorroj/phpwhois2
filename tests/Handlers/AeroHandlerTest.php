@@ -10,22 +10,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\AeroHandler;
 use phpWhois\WhoisClient;
 
-/**
- * AeroHandlerTest.
- */
-class AeroHandlerTest extends AbstractHandler
+final class AeroHandlerTest extends AbstractHandler
 {
-    /**
-     * @var AeroHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new AeroHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new AeroHandler(new WhoisClient(), false);
     }
 
     public function testParseNicDotAero(): void

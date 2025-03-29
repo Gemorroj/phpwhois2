@@ -16,13 +16,6 @@ use phpWhois\WhoisClient;
 
 class IpHandler extends AbstractHandler
 {
-    /**
-     * @var bool
-     *           Lukashin: whois?
-     *           Lucich: I ask me the same question... :-D
-     */
-    public bool $deepWhois = true;
-
     public array $REGISTRARS = [
         'European Regional Internet Registry/RIPE NCC' => 'whois.ripe.net',
         'RIPE Network Coordination Centre' => 'whois.ripe.net',

@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\SeHandler;
 use phpWhois\WhoisClient;
 
-/**
- * SeHandlerTest.
- */
-class SeHandlerTest extends AbstractHandler
+final class SeHandlerTest extends AbstractHandler
 {
-    /**
-     * @var SeHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new SeHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new SeHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotDk(): void

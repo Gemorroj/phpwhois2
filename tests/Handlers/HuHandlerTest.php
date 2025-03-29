@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\HuHandler;
 use phpWhois\WhoisClient;
 
-/**
- * HuHandlerTest.
- */
-class HuHandlerTest extends AbstractHandler
+final class HuHandlerTest extends AbstractHandler
 {
-    /**
-     * @var HuHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new HuHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new HuHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotHu(): void

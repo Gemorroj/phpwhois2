@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\FiHandler;
 use phpWhois\WhoisClient;
 
-/**
- * FiHandlerTest.
- */
-class FiHandlerTest extends AbstractHandler
+final class FiHandlerTest extends AbstractHandler
 {
-    /**
-     * @var FiHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new FiHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new FiHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotFi(): void

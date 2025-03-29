@@ -24,27 +24,15 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\FjHandler;
 use phpWhois\WhoisClient;
 
-/**
- * FjHandlerTest.
- */
-class FjHandlerTest extends AbstractHandler
+final class FjHandlerTest extends AbstractHandler
 {
-    /**
-     * @var FjHandler
-     */
-    protected $handler;
-
-    /**
-     * @noinspection PhpUnreachableStatementInspection
-     */
     protected function setUp(): void
     {
         self::markTestSkipped('.fj domain parsing broken');
 
         parent::setUp();
 
-        $this->handler = new FjHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new FjHandler(new WhoisClient(), false);
     }
 
     public function testParseFijiDotGovDotFj(): void

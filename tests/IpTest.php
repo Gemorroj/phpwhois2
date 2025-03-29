@@ -2,11 +2,14 @@
 
 namespace phpWhois\Tests;
 
-class IpTest extends \PHPUnit\Framework\TestCase
+use PHPUnit\Framework\TestCase;
+use phpWhois\Whois;
+
+class IpTest extends TestCase
 {
     public function testParseIp(): void
     {
-        $whois = new \phpWhois\Whois();
+        $whois = new Whois();
         $result = $whois->lookup('216.58.209.195');
         self::assertIsArray($result);
         self::assertArrayHasKey('regrinfo', $result);

@@ -10,22 +10,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\BrHandler;
 use phpWhois\WhoisClient;
 
-/**
- * BrHandlerTest.
- */
-class BrHandlerTest extends AbstractHandler
+final class BrHandlerTest extends AbstractHandler
 {
-    /**
-     * @var BrHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new BrHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new BrHandler(new WhoisClient(), false);
     }
 
     public function testParseRegistroDotBr(): void

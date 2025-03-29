@@ -9,14 +9,9 @@ namespace phpWhois\Handlers;
 
 use phpWhois\WhoisClient;
 
-/**
- * AbstractHandler.
- */
 abstract class AbstractHandler
 {
-    public bool $deepWhois;
-
-    public function __construct(protected readonly WhoisClient $whoisClient)
+    public function __construct(protected readonly WhoisClient $whoisClient, protected readonly bool $deepWhois)
     {
     }
 

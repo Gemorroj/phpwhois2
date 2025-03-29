@@ -24,27 +24,15 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\CoopHandler;
 use phpWhois\WhoisClient;
 
-/**
- * CoopHandlerTest.
- */
-class CoopHandlerTest extends AbstractHandler
+final class CoopHandlerTest extends AbstractHandler
 {
-    /**
-     * @var CoopHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new CoopHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new CoopHandler(new WhoisClient(), false);
     }
 
-    /**
-     * @throws \Exception
-     */
     public function testParseSmileDotCoop(): void
     {
         $query = 'smile.coop';
@@ -74,9 +62,6 @@ class CoopHandlerTest extends AbstractHandler
         self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($fixture, $actual['rawdata'], $fixture, 'Fixture data may be out of date');
     }
 
-    /**
-     * @throws \Exception
-     */
     public function testParseNicDotCoop(): void
     {
         $query = 'nic.coop';
@@ -106,9 +91,6 @@ class CoopHandlerTest extends AbstractHandler
         self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($fixture, $actual['rawdata'], $fixture, 'Fixture data may be out of date');
     }
 
-    /**
-     * @throws \Exception
-     */
     public function testParseDomainsDotCoop(): void
     {
         $query = 'domains.coop';

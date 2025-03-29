@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\RuHandler;
 use phpWhois\WhoisClient;
 
-/**
- * RuHandlerTest.
- */
-class RuHandlerTest extends AbstractHandler
+final class RuHandlerTest extends AbstractHandler
 {
-    /**
-     * @var RuHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new RuHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new RuHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotRu(): void

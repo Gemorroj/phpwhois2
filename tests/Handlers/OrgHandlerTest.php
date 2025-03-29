@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\OrgHandler;
 use phpWhois\WhoisClient;
 
-/**
- * OrgHandlerTest.
- */
-class OrgHandlerTest extends AbstractHandler
+final class OrgHandlerTest extends AbstractHandler
 {
-    /**
-     * @var OrgHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new OrgHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new OrgHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotOrg(): void
@@ -94,8 +85,8 @@ class OrgHandlerTest extends AbstractHandler
         self::assertArrayHasKey('rawdata', $actual);
         self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($fixture, $actual['rawdata'], $fixture, 'Fixture data may be out of date');
 
-        $this->assertEquals('2020-01-13', $actual['regrinfo']['domain']['changed'], 'Incorrect change date');
-        $this->assertEquals('2012-10-01', $actual['regrinfo']['domain']['created'], 'Incorrect created date');
-        $this->assertEquals('2020-10-01', $actual['regrinfo']['domain']['expires'], 'Incorrect expiration date');
+        self::assertEquals('2020-01-13', $actual['regrinfo']['domain']['changed'], 'Incorrect change date');
+        self::assertEquals('2012-10-01', $actual['regrinfo']['domain']['created'], 'Incorrect created date');
+        self::assertEquals('2020-10-01', $actual['regrinfo']['domain']['expires'], 'Incorrect expiration date');
     }
 }

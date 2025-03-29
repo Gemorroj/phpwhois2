@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\WsHandler;
 use phpWhois\WhoisClient;
 
-/**
- * WsHandlerTest.
- */
-class WsHandlerTest extends AbstractHandler
+final class WsHandlerTest extends AbstractHandler
 {
-    /**
-     * @var WsHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new WsHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new WsHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotWs(): void

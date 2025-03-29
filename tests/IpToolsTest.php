@@ -3,15 +3,16 @@
 namespace phpWhois\Tests;
 
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 use phpWhois\IpTools;
 
-class IpToolsTest extends \PHPUnit\Framework\TestCase
+class IpToolsTest extends TestCase
 {
     #[DataProvider('validIpsProvider')]
     public function testValidIp($ip): void
     {
         $ipTools = new IpTools();
-        $this->assertTrue($ipTools->validIp($ip));
+        self::assertTrue($ipTools->validIp($ip));
     }
 
     public static function validIpsProvider(): array
@@ -26,7 +27,7 @@ class IpToolsTest extends \PHPUnit\Framework\TestCase
     public function testInvalidIp($ip): void
     {
         $ipTools = new IpTools();
-        $this->assertFalse($ipTools->validIp($ip));
+        self::assertFalse($ipTools->validIp($ip));
     }
 
     public static function invalidIpsProvider(): array

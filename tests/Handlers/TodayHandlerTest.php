@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\TodayHandler;
 use phpWhois\WhoisClient;
 
-/**
- * TodayHandlerTest.
- */
-class TodayHandlerTest extends AbstractHandler
+final class TodayHandlerTest extends AbstractHandler
 {
-    /**
-     * @var TodayHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new TodayHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new TodayHandler(new WhoisClient(), false);
     }
 
     public function testParseModxDotToday(): void
@@ -54,13 +45,13 @@ class TodayHandlerTest extends AbstractHandler
 
         $actual = $this->handler->parse($data, $query);
 
-        $this->assertEquals('modx.today', $actual['regrinfo']['domain']['name']);
-        $this->assertEquals('2024-06-23', $actual['regrinfo']['domain']['changed']);
-        $this->assertEquals('2014-05-09', $actual['regrinfo']['domain']['created']);
-        $this->assertEquals('2025-05-09', $actual['regrinfo']['domain']['expires']);
-        $this->assertEquals('yes', $actual['regrinfo']['registered']);
+        self::assertEquals('modx.today', $actual['regrinfo']['domain']['name']);
+        self::assertEquals('2024-06-23', $actual['regrinfo']['domain']['changed']);
+        self::assertEquals('2014-05-09', $actual['regrinfo']['domain']['created']);
+        self::assertEquals('2025-05-09', $actual['regrinfo']['domain']['expires']);
+        self::assertEquals('yes', $actual['regrinfo']['registered']);
 
-        $this->assertArrayHasKey('rawdata', $actual);
-        $this->assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 }

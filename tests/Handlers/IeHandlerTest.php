@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\IeHandler;
 use phpWhois\WhoisClient;
 
-/**
- * IeHandlerTest.
- */
-class IeHandlerTest extends AbstractHandler
+final class IeHandlerTest extends AbstractHandler
 {
-    /**
-     * @var IeHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new IeHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new IeHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotIe(): void

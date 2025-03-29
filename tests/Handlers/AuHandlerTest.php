@@ -10,22 +10,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\AuHandler;
 use phpWhois\WhoisClient;
 
-/**
- * AuHandlerTest.
- */
-class AuHandlerTest extends AbstractHandler
+final class AuHandlerTest extends AbstractHandler
 {
-    /**
-     * @var AuHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new AuHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new AuHandler(new WhoisClient(), false);
     }
 
     public function testParseTelstraDotComDotAu(): void

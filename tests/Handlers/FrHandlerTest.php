@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\FrHandler;
 use phpWhois\WhoisClient;
 
-/**
- * FrHandlerTest.
- */
-class FrHandlerTest extends AbstractHandler
+final class FrHandlerTest extends AbstractHandler
 {
-    /**
-     * @var FrHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new FrHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new FrHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotFr(): void

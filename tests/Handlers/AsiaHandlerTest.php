@@ -10,22 +10,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\AsiaHandler;
 use phpWhois\WhoisClient;
 
-/**
- * AsiaHandlerTest.
- */
-class AsiaHandlerTest extends AbstractHandler
+final class AsiaHandlerTest extends AbstractHandler
 {
-    /**
-     * @var AsiaHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new AsiaHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new AsiaHandler(new WhoisClient(), false);
     }
 
     public function testParseNicDotAsia(): void

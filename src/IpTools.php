@@ -26,9 +26,6 @@
 
 namespace phpWhois;
 
-/**
- * Utilities for parsing ip addresses.
- */
 final class IpTools
 {
     public const IP_TYPE_ANY = 0;

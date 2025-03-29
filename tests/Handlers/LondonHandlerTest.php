@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\LondonHandler;
 use phpWhois\WhoisClient;
 
-/**
- * LondonHandlerTest.
- */
-class LondonHandlerTest extends AbstractHandler
+final class LondonHandlerTest extends AbstractHandler
 {
-    /**
-     * @var LondonHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new LondonHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new LondonHandler(new WhoisClient(), false);
     }
 
     public function testParseNicDotLondon(): void
@@ -54,14 +45,14 @@ class LondonHandlerTest extends AbstractHandler
 
         $actual = $this->handler->parse($data, $query);
 
-        $this->assertEquals('nic.london', $actual['regrinfo']['domain']['name']);
-        $this->assertEquals('2020-02-25', $actual['regrinfo']['domain']['changed']);
-        $this->assertEquals('2014-02-25', $actual['regrinfo']['domain']['created']);
-        $this->assertEquals('2021-02-25', $actual['regrinfo']['domain']['expires']);
-        $this->assertEquals('yes', $actual['regrinfo']['registered']);
+        self::assertEquals('nic.london', $actual['regrinfo']['domain']['name']);
+        self::assertEquals('2020-02-25', $actual['regrinfo']['domain']['changed']);
+        self::assertEquals('2014-02-25', $actual['regrinfo']['domain']['created']);
+        self::assertEquals('2021-02-25', $actual['regrinfo']['domain']['expires']);
+        self::assertEquals('yes', $actual['regrinfo']['registered']);
 
-        $this->assertArrayHasKey('rawdata', $actual);
-        $this->assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
     public function testParseDomainsDotLondon(): void
@@ -76,13 +67,13 @@ class LondonHandlerTest extends AbstractHandler
 
         $actual = $this->handler->parse($data, $query);
 
-        $this->assertEquals('domains.london', $actual['regrinfo']['domain']['name']);
-        $this->assertEquals('2020-02-16', $actual['regrinfo']['domain']['changed']);
-        $this->assertEquals('2015-02-23', $actual['regrinfo']['domain']['created']);
-        $this->assertEquals('2021-02-23', $actual['regrinfo']['domain']['expires']);
-        $this->assertEquals('yes', $actual['regrinfo']['registered']);
+        self::assertEquals('domains.london', $actual['regrinfo']['domain']['name']);
+        self::assertEquals('2020-02-16', $actual['regrinfo']['domain']['changed']);
+        self::assertEquals('2015-02-23', $actual['regrinfo']['domain']['created']);
+        self::assertEquals('2021-02-23', $actual['regrinfo']['domain']['expires']);
+        self::assertEquals('yes', $actual['regrinfo']['registered']);
 
-        $this->assertArrayHasKey('rawdata', $actual);
-        $this->assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 }

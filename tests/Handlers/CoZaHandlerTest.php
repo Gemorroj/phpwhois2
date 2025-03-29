@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\CoZaHandler;
 use phpWhois\WhoisClient;
 
-/**
- * CoZaHandlerTest.
- */
-class CoZaHandlerTest extends AbstractHandler
+final class CoZaHandlerTest extends AbstractHandler
 {
-    /**
-     * @var CoZaHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new CoZaHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new CoZaHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotCoDotZa(): void

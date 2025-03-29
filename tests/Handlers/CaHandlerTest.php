@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\CaHandler;
 use phpWhois\WhoisClient;
 
-/**
- * CaHandlerTest.
- */
-class CaHandlerTest extends AbstractHandler
+final class CaHandlerTest extends AbstractHandler
 {
-    /**
-     * @var CaHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new CaHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new CaHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotCa(): void
@@ -54,14 +45,14 @@ class CaHandlerTest extends AbstractHandler
 
         $actual = $this->handler->parse($data, $query);
 
-        $this->assertEquals('google.ca', $actual['regrinfo']['domain']['name']);
-        $this->assertEquals('2020-04-28', $actual['regrinfo']['domain']['changed']);
-        $this->assertEquals('2000-10-04', $actual['regrinfo']['domain']['created']);
-        $this->assertEquals('2021-04-28', $actual['regrinfo']['domain']['expires']);
-        $this->assertEquals('yes', $actual['regrinfo']['registered']);
+        self::assertEquals('google.ca', $actual['regrinfo']['domain']['name']);
+        self::assertEquals('2020-04-28', $actual['regrinfo']['domain']['changed']);
+        self::assertEquals('2000-10-04', $actual['regrinfo']['domain']['created']);
+        self::assertEquals('2021-04-28', $actual['regrinfo']['domain']['expires']);
+        self::assertEquals('yes', $actual['regrinfo']['registered']);
 
-        $this->assertArrayHasKey('rawdata', $actual);
-        $this->assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 
     public function testParseCiraDotCa(): void
@@ -76,11 +67,11 @@ class CaHandlerTest extends AbstractHandler
 
         $actual = $this->handler->parse($data, $query);
 
-        $this->assertEquals('CIRA', $actual['regyinfo']['registrar']);
-        $this->assertEquals('https://www.cira.ca/', $actual['regyinfo']['referrer']);
-        $this->assertEquals('no', $actual['regrinfo']['registered']);
+        self::assertEquals('CIRA', $actual['regyinfo']['registrar']);
+        self::assertEquals('https://www.cira.ca/', $actual['regyinfo']['referrer']);
+        self::assertEquals('no', $actual['regrinfo']['registered']);
 
-        $this->assertArrayHasKey('rawdata', $actual);
-        $this->assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 }

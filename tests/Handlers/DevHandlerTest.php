@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\DevHandler;
 use phpWhois\WhoisClient;
 
-/**
- * DevHandlerTest.
- */
-class DevHandlerTest extends AbstractHandler
+final class DevHandlerTest extends AbstractHandler
 {
-    /**
-     * @var DevHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new DevHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new DevHandler(new WhoisClient(), false);
     }
 
     public function testParseOstapDotDev(): void
@@ -54,13 +45,13 @@ class DevHandlerTest extends AbstractHandler
 
         $actual = $this->handler->parse($data, $query);
 
-        $this->assertEquals('ostap.dev', $actual['regrinfo']['domain']['name']);
-        $this->assertEquals('2025-03-02', $actual['regrinfo']['domain']['changed']);
-        $this->assertEquals('2019-02-28', $actual['regrinfo']['domain']['created']);
-        $this->assertEquals('2026-02-28', $actual['regrinfo']['domain']['expires']);
-        $this->assertEquals('yes', $actual['regrinfo']['registered']);
+        self::assertEquals('ostap.dev', $actual['regrinfo']['domain']['name']);
+        self::assertEquals('2025-03-02', $actual['regrinfo']['domain']['changed']);
+        self::assertEquals('2019-02-28', $actual['regrinfo']['domain']['created']);
+        self::assertEquals('2026-02-28', $actual['regrinfo']['domain']['expires']);
+        self::assertEquals('yes', $actual['regrinfo']['registered']);
 
-        $this->assertArrayHasKey('rawdata', $actual);
-        $this->assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
+        self::assertArrayHasKey('rawdata', $actual);
+        self::assertEquals($fixture, $actual['rawdata'], 'Fixture data may be out of date');
     }
 }

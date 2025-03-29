@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\FmHandler;
 use phpWhois\WhoisClient;
 
-/**
- * FmHandlerTest.
- */
-class FmHandlerTest extends AbstractHandler
+final class FmHandlerTest extends AbstractHandler
 {
-    /**
-     * @var FmHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new FmHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new FmHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotFm(): void

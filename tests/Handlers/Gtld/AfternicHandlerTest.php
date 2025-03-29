@@ -25,20 +25,14 @@ use phpWhois\Handlers\Gtld\AfternicHandler;
 use phpWhois\Tests\Handlers\AbstractHandler;
 use phpWhois\WhoisClient;
 
-class AfternicHandlerTest extends AbstractHandler
+final class AfternicHandlerTest extends AbstractHandler
 {
-    protected AfternicHandler $handler;
-
-    /**
-     * @noinspection PhpUnreachableStatementInspection
-     */
     protected function setUp(): void
     {
         self::markTestSkipped('Not sure what to do with this yet');
         parent::setUp();
 
-        $this->handler = new AfternicHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new AfternicHandler(new WhoisClient(), false);
     }
 
     public function testParseBuydomainsDotCom(): void

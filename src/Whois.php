@@ -32,19 +32,14 @@ use Algo26\IdnaConvert\ToIdn;
 
 class Whois
 {
-    /** @var bool Deep whois? */
-    public bool $deepWhois = true;
-
     public const QTYPE_UNKNOWN = 0;
     public const QTYPE_DOMAIN = 1;
     public const QTYPE_IPV4 = 2;
     public const QTYPE_IPV6 = 3;
     public const QTYPE_AS = 4;
-    private WhoisClient $whoisClient;
 
-    public function __construct(?WhoisClient $whoisClient = null)
+    public function __construct(private readonly bool $deepWhois = true, private readonly ?WhoisClient $whoisClient = new WhoisClient())
     {
-        $this->whoisClient = $whoisClient ?? new WhoisClient();
     }
 
     /**

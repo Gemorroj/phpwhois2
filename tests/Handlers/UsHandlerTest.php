@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\UsHandler;
 use phpWhois\WhoisClient;
 
-/**
- * UsHandlerTest.
- */
-class UsHandlerTest extends AbstractHandler
+final class UsHandlerTest extends AbstractHandler
 {
-    /**
-     * @var UsHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new UsHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new UsHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotUs(): void

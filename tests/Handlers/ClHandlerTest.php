@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\ClHandler;
 use phpWhois\WhoisClient;
 
-/**
- * ClHandlerTest.
- */
-class ClHandlerTest extends AbstractHandler
+final class ClHandlerTest extends AbstractHandler
 {
-    /**
-     * @var ClHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new ClHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new ClHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotCl(): void

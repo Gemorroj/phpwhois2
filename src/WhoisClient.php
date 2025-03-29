@@ -28,15 +28,8 @@ namespace phpWhois;
 
 use phpWhois\Handlers\AbstractHandler;
 
-/**
- * phpWhois basic class.
- *
- * This is the basic client class
- */
 class WhoisClient
 {
-    public bool $deepWhois;
-
     /** @var int Default WHOIS port */
     public int $port = 43;
 
@@ -471,8 +464,7 @@ class WhoisClient
             return $result;
         }
 
-        $handler = $this->loadHandler();
-        $handler->deepWhois = $deepWhois;
+        $handler = $this->loadHandler($deepWhois);
 
         // Process and return the result
         return $handler->parse($result, $this->query->query);
@@ -625,7 +617,7 @@ class WhoisClient
         return $result;
     }
 
-    protected function loadHandler(): AbstractHandler
+    protected function loadHandler(bool $deepWhois = true): AbstractHandler
     {
         if (!$this->query->handler) {
             throw new \RuntimeException('Unable to load handler.');
@@ -635,17 +627,17 @@ class WhoisClient
 
         $handlerName = "phpWhois\\Handlers\\{$queryHandler}Handler";
         if (\class_exists($handlerName)) {
-            return new $handlerName($this);
+            return new $handlerName($this, $deepWhois);
         }
 
         $handlerNameGtld = "phpWhois\\Handlers\\Gtld\\{$queryHandler}Handler";
         if (\class_exists($handlerNameGtld)) {
-            return new $handlerNameGtld($this);
+            return new $handlerNameGtld($this, $deepWhois);
         }
 
         $handlerNameIp = "phpWhois\\Handlers\\Ip\\{$queryHandler}Handler";
         if (\class_exists($handlerNameIp)) {
-            return new $handlerNameIp($this);
+            return new $handlerNameIp($this, $deepWhois);
         }
 
         throw new \RuntimeException('Cannot load handler "'.$queryHandler.'".');

@@ -10,22 +10,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\BhHandler;
 use phpWhois\WhoisClient;
 
-/**
- * BhHandlerTest.
- */
-class BhHandlerTest extends AbstractHandler
+final class BhHandlerTest extends AbstractHandler
 {
-    /**
-     * @var BhHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new BhHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new BhHandler(new WhoisClient(), false);
     }
 
     public function testParseNicDotBh(): void

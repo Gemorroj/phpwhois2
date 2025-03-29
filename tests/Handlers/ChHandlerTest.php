@@ -24,27 +24,15 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\ChHandler;
 use phpWhois\WhoisClient;
 
-/**
- * ChHandlerTest.
- */
-class ChHandlerTest extends AbstractHandler
+final class ChHandlerTest extends AbstractHandler
 {
-    /**
-     * @var ChHandler
-     */
-    protected $handler;
-
-    /**
-     * @noinspection PhpUnreachableStatementInspection
-     */
     protected function setUp(): void
     {
         self::markTestSkipped('.ch domains do not work; seems to be HTTP request only and requires a CAPTCHA');
 
         parent::setUp();
 
-        $this->handler = new ChHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new ChHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotCh(): void

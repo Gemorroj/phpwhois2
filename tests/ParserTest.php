@@ -9,12 +9,10 @@ namespace phpWhois\Tests;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\TestCase;
 use phpWhois\Handlers\AbstractHandler;
 
-/**
- * ParserTest.
- */
-class ParserTest extends BaseTestCase
+class ParserTest extends TestCase
 {
     protected const RAW_DATA = [
         "Domain: \${field}\n",
@@ -124,7 +122,7 @@ class ParserTest extends BaseTestCase
     public function testGetDate(string $date, string $format, string $expected): void
     {
         $actual = AbstractHandler::getDate($date, $format);
-        $this->assertEquals($expected, $actual);
+        self::assertEquals($expected, $actual);
     }
 
     #[Group('CVE-2015-5243')]
@@ -136,14 +134,14 @@ class ParserTest extends BaseTestCase
 
         $disclaimer = [];
         $output = AbstractHandler::generic_parser_a_blocks(static::RAW_DATA, $translate, $disclaimer);
-        $this->assertEquals('${k}', $output['main']['owner']['name']);
+        self::assertEquals('${k}', $output['main']['owner']['name']);
     }
 
     #[Group('CVE-2015-5243')]
     public function testGenericParserB(): void
     {
         $output = AbstractHandler::generic_parser_b(static::RAW_DATA);
-        $this->assertEquals('${k}', $output['owner']['name']);
+        self::assertEquals('${k}', $output['owner']['name']);
     }
 
     #[Group('CVE-2015-5243')]
@@ -154,7 +152,7 @@ class ParserTest extends BaseTestCase
         ];
 
         $output = AbstractHandler::getBlocks(static::RAW_DATA, $items);
-        $this->assertEquals('${field}', $output['domain']['name']);
+        self::assertEquals('${field}', $output['domain']['name']);
     }
 
     #[Group('CVE-2015-5243')]
@@ -165,13 +163,13 @@ class ParserTest extends BaseTestCase
         ];
 
         $output = AbstractHandler::getBlocks(static::RAW_DATA, $items);
-        $this->assertEquals("Name:\t \${field}", $output['agent'][0]);
+        self::assertEquals("Name:\t \${field}", $output['agent'][0]);
     }
 
     #[Group('CVE-2015-5243')]
     public function testGetContact(): void
     {
         $output = AbstractHandler::getContact(static::RAW_DATA);
-        $this->assertEquals('${field}', $output['fax']);
+        self::assertEquals('${field}', $output['fax']);
     }
 }

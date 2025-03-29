@@ -10,22 +10,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\AtHandler;
 use phpWhois\WhoisClient;
 
-/**
- * AtHandlerTest.
- */
-class AtHandlerTest extends AbstractHandler
+final class AtHandlerTest extends AbstractHandler
 {
-    /**
-     * @var AtHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new AtHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new AtHandler(new WhoisClient(), false);
     }
 
     public function testNicDotAt(): void

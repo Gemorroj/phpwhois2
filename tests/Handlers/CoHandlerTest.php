@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\CoHandler;
 use phpWhois\WhoisClient;
 
-/**
- * CoHandlerTest.
- */
-class CoHandlerTest extends AbstractHandler
+final class CoHandlerTest extends AbstractHandler
 {
-    /**
-     * @var CoHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new CoHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new CoHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotCo(): void

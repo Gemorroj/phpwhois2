@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\UkHandler;
 use phpWhois\WhoisClient;
 
-/**
- * UkHandlerTest.
- */
-class UkHandlerTest extends AbstractHandler
+final class UkHandlerTest extends AbstractHandler
 {
-    /**
-     * @var UkHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new UkHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new UkHandler(new WhoisClient(), false);
     }
 
     public function testParseVibrantDigitalFutureDotUk(): void

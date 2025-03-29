@@ -3,15 +3,19 @@
 namespace phpWhois\Tests;
 
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\TestCase;
 use phpWhois\Whois;
 
-class WhoisTest extends \PHPUnit\Framework\TestCase
+class WhoisTest extends TestCase
 {
-    public function testWhois(): void
+    public function testWhois(): array
     {
         $whois = new Whois();
         $result = $whois->lookup('google.com');
-        $this->assertEquals('yes', $result['regrinfo']['registered']);
+        self::assertEquals('yes', $result['regrinfo']['registered']);
+
+        return $result;
     }
 
     #[DataProvider('domainsProvider')]
@@ -21,7 +25,7 @@ class WhoisTest extends \PHPUnit\Framework\TestCase
         $reflectionObj = new \ReflectionObject($whois);
         $reflectionMethod = $reflectionObj->getMethod('getQueryType');
         $actual = $reflectionMethod->invoke($whois, $domain);
-        $this->assertEquals($type, $actual);
+        self::assertEquals($type, $actual);
     }
 
     public static function domainsProvider(): array
@@ -35,5 +39,12 @@ class WhoisTest extends \PHPUnit\Framework\TestCase
             [Whois::QTYPE_UNKNOWN, 'fc80:19c::1'],
             [Whois::QTYPE_AS,      'ABCD_EF-GH:IJK'],
         ];
+    }
+
+    #[Depends('testWhois')]
+    public function testShowHTML(array $data): void
+    {
+        $html = Whois::showHTML($data);
+        self::assertStringStartsWith('<b>Domain Name: </b>GOOGLE.COM<br />', $html);
     }
 }

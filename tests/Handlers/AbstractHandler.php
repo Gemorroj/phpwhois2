@@ -21,13 +21,13 @@
 
 namespace phpWhois\Tests\Handlers;
 
-use phpWhois\Tests\BaseTestCase;
+use PHPUnit\Framework\TestCase;
+use phpWhois\Handlers\AbstractHandler as CommonAbstractHandler;
 
-/**
- * HandlerTest.
- */
-abstract class AbstractHandler extends BaseTestCase
+abstract class AbstractHandler extends TestCase
 {
+    protected CommonAbstractHandler $handler;
+
     protected function setUp(): void
     {
         parent::setUp();

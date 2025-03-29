@@ -24,22 +24,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\CnHandler;
 use phpWhois\WhoisClient;
 
-/**
- * CnHandlerTest.
- */
-class CnHandlerTest extends AbstractHandler
+final class CnHandlerTest extends AbstractHandler
 {
-    /**
-     * @var CnHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new CnHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new CnHandler(new WhoisClient(), false);
     }
 
     public function testParseGoogleDotCn(): void

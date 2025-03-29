@@ -16,7 +16,7 @@ class IntHandler extends AbstractHandler
 {
     public function parse(array $data_str, string $query): array
     {
-        $iana = new IanaHandler();
+        $iana = new IanaHandler($this->whoisClient, $this->deepWhois);
         $r = [];
         $r['regrinfo'] = $iana->parse($data_str['rawdata'], $query);
         $r['regyinfo']['referrer'] = 'http://www.iana.org/int-dom/int.htm';

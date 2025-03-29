@@ -10,22 +10,13 @@ namespace phpWhois\Tests\Handlers;
 use phpWhois\Handlers\DeHandler;
 use phpWhois\WhoisClient;
 
-/**
- * DeHandlerTest.
- */
-class DeHandlerTest extends AbstractHandler
+final class DeHandlerTest extends AbstractHandler
 {
-    /**
-     * @var DeHandler
-     */
-    protected $handler;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->handler = new DeHandler(new WhoisClient());
-        $this->handler->deepWhois = false;
+        $this->handler = new DeHandler(new WhoisClient(), false);
     }
 
     public function testParse4EverDotDe(): void
