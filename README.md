@@ -36,16 +36,10 @@ Example usage
 use PHPWhois2\Whois;
 
 $whois = new Whois();
-$result = $whois->lookup('example.com', false);
+$result = $whois->lookup('example.com');
 print_r($result);
 echo Whois::showHTML($result);
 ```
-If you provide the domain name to query in UTF8, then you must use:
-```php
-$result = $whois->lookup($query);
-```
-If the query string is not in UTF8 then it must be in ISO-8859-1 or IDNA support
-will not work.
 
 What you can query
 ------------------

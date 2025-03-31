@@ -143,7 +143,7 @@ class WhoisClient
                 }
             }
 
-            if (isset($this->queryParams->nonUtf8Servers[$this->queryParams->server])) {
+            if (\in_array($this->queryParams->server, $this->queryParams->nonUtf8Servers, true)) {
                 $raw = \mb_convert_encoding($raw, 'UTF-8', 'ISO-8859-1');
             }
 

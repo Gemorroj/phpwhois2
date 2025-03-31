@@ -22,19 +22,15 @@ class Whois
      *  Lookup query.
      *
      * @param string $query Domain name or other entity
-     * @param bool   $isUtf True if domain name encoding is UTF-8 already, otherwise convert it to UTF-8
      *
      * @throws InvalidCharacterException
      */
-    public function lookup(string $query, bool $isUtf = true): Data
+    public function lookup(string $query): Data
     {
         // start clean
         $this->whoisClient->queryParams->clear();
 
         $query = \trim($query);
-        if (!$isUtf) {
-            $query = \mb_convert_encoding($query, 'UTF-8', 'ISO-8859-1');
-        }
         try {
             $query = (new ToIdn())->convert($query);
         } catch (AlreadyPunycodeException $e) {
