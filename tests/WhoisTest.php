@@ -5,17 +5,68 @@ namespace PHPWhois2\Tests;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\TestCase;
+use PHPWhois2\Data;
 use PHPWhois2\Whois;
 
-class WhoisTest extends TestCase
+final class WhoisTest extends TestCase
 {
-    public function testWhois(): array
+    public function testDomainLookup(): Data
     {
         $whois = new Whois();
         $result = $whois->lookup('google.com');
-        self::assertEquals('yes', $result['regrinfo']['registered']);
+        self::assertNotEmpty($result->rawData);
+        self::assertEquals('yes', $result->regrinfo['registered']);
 
         return $result;
+    }
+
+    public function testDomainLookupFail(): void
+    {
+        $whois = new Whois();
+        $result = $whois->lookup('google.comqwerty');
+
+        self::assertEmpty($result->regyinfo);
+        self::assertEmpty($result->rawData);
+        self::assertEquals('google.comqwerty', $result->regrinfo['domain']['name']);
+        self::assertEquals('unknown', $result->regrinfo['registered']);
+        self::assertEquals('google.comqwerty domain is not supported', $result->errstr[0]);
+    }
+
+    public function testIpLookup(): void
+    {
+        $whois = new Whois();
+        $result = $whois->lookup('AS12345');
+        self::assertEquals('yes', $result->regrinfo['registered']);
+        self::assertEquals('RIPE NCC ASN block', $result->regrinfo['owner']['organization']);
+    }
+
+    public function testIpLookupFail(): void
+    {
+        $whois = new Whois();
+        $result = $whois->lookup('AS123456789');
+
+        self::assertEquals('as123456789', $result->regrinfo['domain']['name']);
+        self::assertEquals('unknown', $result->regrinfo['registered']);
+    }
+
+    public function testAsLookup(): void
+    {
+        $whois = new Whois();
+        $result = $whois->lookup('216.58.209.195');
+        self::assertEquals('GOOGLE', $result->regrinfo['network']['name']);
+        self::assertEquals('American Registry for Internet Numbers (ARIN)', $result->regyinfo['registrar']);
+    }
+
+    public function testAsLookupFail(): void
+    {
+        $whois = new Whois();
+        $result = $whois->lookup('256.256.256.256');
+
+        self::assertEmpty($result->regyinfo);
+        self::assertEmpty($result->rawData);
+        self::assertEquals('256.256.256.256', $result->regrinfo['domain']['name']);
+        self::assertEquals('unknown', $result->regrinfo['registered']);
+        self::assertEquals('256.256.256.256 domain is not supported', $result->errstr[0]);
     }
 
     #[DataProvider('domainsProvider')]
@@ -49,8 +100,8 @@ class WhoisTest extends TestCase
         ];
     }
 
-    #[Depends('testWhois')]
-    public function testShowHTML(array $data): void
+    #[Depends('testDomainLookup')]
+    public function testShowHTML(Data $data): void
     {
         $html = Whois::showHTML($data);
         self::assertStringStartsWith('<b>Domain Name: </b>GOOGLE.COM<br />', $html);

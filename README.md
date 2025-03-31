@@ -5,13 +5,8 @@ This package contains a Whois (RFC954) library for PHP. It allows a PHP program
 to create a Whois object, and obtain the output of a whois query with the
 `lookup` function.
 
-The response is an array containing, at least, an element 'rawdata', containing
+The response is an array containing, at least, an element 'rawData', containing
 the raw output from the whois request.
-
-In addition, if the domain belongs to a registrar for which a special handler
-exists, the special handler will parse the output and make additional elements
-available in the response. The keys of these additional elements are described
-in the file HANDLERS.md.
 
 It fully supports IDNA (internationalized) domains names as defined in RFC3490,
 RFC3491, RFC3492 and RFC3454.
@@ -31,12 +26,8 @@ whois server but that have a https based whois.
 
 Installation
 ------------
-
-### Via composer
-
-#### Stable version
-```shell
-composer require "gemorroj/phpwhois2"
+```bash
+composer require gemorroj/phpwhois2
 ```
 
 Example usage
@@ -90,9 +81,13 @@ this service when querying ripe ip addresses that way:
 
 ```php
 use PHPWhois2\Whois;
+use PHPWhois2\WhoisClient;
+use PHPWhois2\QueryParams;
 
-$whois = new Whois();
-$whois->useServer('uk', 'whois.ripe.net?-V{version},{ip} {query}');
+$queryParams = new QueryParams();
+$queryParams->tldWhoisServer['uk'] = 'whois.ripe.net?-V{version},{ip} {query}';
+
+$whois = new Whois(new WhoisClient($queryParams));
 $result = $whois->lookup('62.97.102.115');
 ```
 
@@ -103,9 +98,13 @@ when querying `.il` domains that way:
 
 ```php
 use PHPWhois2\Whois;
+use PHPWhois2\WhoisClient;
+use PHPWhois2\QueryParams;
 
-$whois = new Whois();
-$whois->useServer('uk', 'whois.isoc.org.il?-V{version},{ip} {query}');
+$queryParams = new QueryParams();
+$queryParams->tldWhoisServer['uk'] = 'whois.isoc.org.il?-V{version},{ip} {query}';
+
+$whois = new Whois(new WhoisClient($queryParams));
 $result = $whois->lookup('example.co.uk');
 ```
 
@@ -118,102 +117,48 @@ when querying .uk domains that way:
 
 ```php
 use PHPWhois2\Whois;
+use PHPWhois2\WhoisClient;
+use PHPWhois2\QueryParams;
 
-$whois = new Whois();
-$whois->useServer('uk', 'whois.nic.uk:1043?{hname} {ip} {query}');
+$queryParams = new QueryParams();
+$queryParams->tldWhoisServer['uk'] = 'whois.nic.uk:1043?{hname} {ip} {query}';
+
+$whois = new Whois(new WhoisClient($queryParams));
 $result = $whois->lookup('example.co.uk');
 ```
 
 This new feature also allows you to use a different whois server than
-the preconfigured or discovered one by just calling whois->useServer
+the preconfigured or discovered one by just calling whois->useWhoisServer
 and passing the tld and the server and args to use for the named tld.
 For example, you could use another whois server for `.au` domains that
 does not limit the number of requests (but provides no owner 
 information) using this:
 ```php
 use PHPWhois2\Whois;
+use PHPWhois2\WhoisClient;
+use PHPWhois2\QueryParams;
 
-$whois = new Whois();
-$whois->useServer('au', 'whois-check.ausregistry.net.au');
-
+$queryParams = new QueryParams();
+$queryParams->tldWhoisServer['au'] = 'whois-check.ausregistry.net.au';
 // to avoid the restrictions imposed by the `.be` whois server
-$whois = new Whois();
-$whois->useServer('be', 'whois.tucows.com');
+$queryParams->tldWhoisServer['be'] = 'whois.tucows.com';
 
-// or
-$whois = new Whois();
-$whois->useServer('ip', 'whois.apnic.net');
+$whois = new Whois(new WhoisClient($queryParams));
 ```
-
-to lookup an ip address at specific whois server (but loosing the
-ability to get the results parsed by the appropiate handler)
-
-`useServer` can be called as many times as necessary. Please note that
-if there is a handler for that domain it will also be called but
-returned data from the whois server may be different than the data
-expected by the handler, and thus results could be different.
-
-Getting results faster
-----------------------
-
-If you just want to know if a domain is registered or not but do not
-care about getting the real owner information you can set:
-
-```php
-use PHPWhois2\Whois;
-
-$whois = new Whois(false);
-```
-
-this will tell PHPWhois2 to just query one whois server. For `.com`, `.net` and
-`.tv` domains and ip addresses this will prevent PHPWhois2 to ask more than one
-whois server, you will just know if the domain is registered or not and which is
-the registrar but not the owner information.
 
 UTF-8
 -----
 
 PHPWhois2 will assume that all whois servers return UTF-8 encoded output,
-if some whois server does not return UTF-8 data, you can include it in
-the `NON_UTF8` array in `whois.servers.php`
+if some whois server does not return UTF-8 data, you can pass it in
+the `nonUtf8Servers` array in `QueryParams`:
+```php
+use PHPWhois2\Whois;
+use PHPWhois2\WhoisClient;
+use PHPWhois2\QueryParams;
 
-Workflow of getting domain info
--------------------------------
+$queryParams = new QueryParams();
+$queryParams->nonUtf8Servers[] = 'br.whois-servers.net';
 
-1.  Call method `PHPWhois2\Whois::lookup()` with domain name as parameter
-2.  If second parameter of method is **true** (default), PHPWhois2 will try to
-    convert the domain name to punycode
-3.  If domain is not listed in predefined handlers (`WHOIS_SPECIAL` at
-    `src/whois.servers.php`), try to query **[tld].whois-servers.net**. If it
-    has ip address, assume that it is valid whois server
-4.  Try to query found whois server or fill response array with `unknown()`
-    method
-
-Notes 
------
-The latest version of the package and a demo script resides at 
-https://github.com/gemorroj/phpwhois2
-
-Contributing
----------------
-
-If you want to add support for new TLD, extend functionality or
-correct a bug, feel free to create a new pull request at Github's
-repository https://github.com/gemorroj/phpwhois2
-
-
-Special Thanks
--------
-Joshua Smith [@jsmitty12](https://github.com/jsmitty12)
-
-Thanks to original Authors
--------
-Kevin Lucich <info@lucichkevin.it>
-
-Mark Jeftovic <markjr@easydns.com>
-
-David Saez Padros <david@ols.es>
-
-Ross Golder <ross@golder.org>
-
-Dmitry Lukashin <dmitry@lukashin.ru>
+$whois = new Whois(new WhoisClient($queryParams));
+```

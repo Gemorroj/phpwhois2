@@ -5,11 +5,13 @@ namespace PHPWhois2\Tests;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
-use PHPWhois2\Handlers\AbstractHandler;
+use PHPWhois2\Data;
+use PHPWhois2\Handler\AbstractHandler;
+use PHPWhois2\WhoisClient;
 
-class ParserTest extends TestCase
+final class ParserTest extends TestCase
 {
-    protected const RAW_DATA = [
+    private const RAW_DATA = [
         "Domain: \${field}\n",
         "Registrar:\n",
         "\tName:\t \${field}\n",
@@ -17,7 +19,7 @@ class ParserTest extends TestCase
         "Registrant Name: \${k}\n",
     ];
 
-    public static function get_dateProvider(): array
+    public static function dateProvider(): array
     {
         return [
             'nic.ag' => [
@@ -113,10 +115,24 @@ class ParserTest extends TestCase
         ];
     }
 
-    #[DataProvider('get_dateProvider')]
+    private function makeAbstractHandler(): AbstractHandler
+    {
+        return new class(new WhoisClient()) extends AbstractHandler {
+            public function parse(array $rawData, string $query): Data
+            {
+                throw new \LogicException('Mock');
+            }
+        };
+    }
+
+    #[DataProvider('dateProvider')]
     public function testGetDate(string $date, string $format, string $expected): void
     {
-        $actual = AbstractHandler::getDate($date, $format);
+        $obj = $this->makeAbstractHandler();
+        $reflectionObj = new \ReflectionObject($obj);
+        $reflectionMethod = $reflectionObj->getMethod('getDate');
+        $actual = $reflectionMethod->invoke($obj, $date, $format);
+
         self::assertEquals($expected, $actual);
     }
 
@@ -126,17 +142,25 @@ class ParserTest extends TestCase
         $translate = [
             'Registrant Name' => 'owner.name',
         ];
-
         $disclaimer = [];
-        $output = AbstractHandler::generic_parser_a_blocks(static::RAW_DATA, $translate, $disclaimer);
-        self::assertEquals('${k}', $output['main']['owner']['name']);
+
+        $obj = $this->makeAbstractHandler();
+        $reflectionObj = new \ReflectionObject($obj);
+        $reflectionMethod = $reflectionObj->getMethod('generic_parser_a_blocks');
+        $actual = $reflectionMethod->invoke($obj, static::RAW_DATA, $translate, $disclaimer);
+
+        self::assertEquals('${k}', $actual['main']['owner']['name']);
     }
 
     #[Group('CVE-2015-5243')]
     public function testGenericParserB(): void
     {
-        $output = AbstractHandler::generic_parser_b(static::RAW_DATA);
-        self::assertEquals('${k}', $output['owner']['name']);
+        $obj = $this->makeAbstractHandler();
+        $reflectionObj = new \ReflectionObject($obj);
+        $reflectionMethod = $reflectionObj->getMethod('generic_parser_b');
+        $actual = $reflectionMethod->invoke($obj, static::RAW_DATA);
+
+        self::assertEquals('${k}', $actual['owner']['name']);
     }
 
     #[Group('CVE-2015-5243')]
@@ -146,8 +170,12 @@ class ParserTest extends TestCase
             'domain.name' => 'Domain:',
         ];
 
-        $output = AbstractHandler::getBlocks(static::RAW_DATA, $items);
-        self::assertEquals('${field}', $output['domain']['name']);
+        $obj = $this->makeAbstractHandler();
+        $reflectionObj = new \ReflectionObject($obj);
+        $reflectionMethod = $reflectionObj->getMethod('getBlocks');
+        $actual = $reflectionMethod->invoke($obj, static::RAW_DATA, $items);
+
+        self::assertEquals('${field}', $actual['domain']['name']);
     }
 
     #[Group('CVE-2015-5243')]
@@ -157,14 +185,22 @@ class ParserTest extends TestCase
             'agent' => 'Registrar:',
         ];
 
-        $output = AbstractHandler::getBlocks(static::RAW_DATA, $items);
-        self::assertEquals("Name:\t \${field}", $output['agent'][0]);
+        $obj = $this->makeAbstractHandler();
+        $reflectionObj = new \ReflectionObject($obj);
+        $reflectionMethod = $reflectionObj->getMethod('getBlocks');
+        $actual = $reflectionMethod->invoke($obj, static::RAW_DATA, $items);
+
+        self::assertEquals("Name:\t \${field}", $actual['agent'][0]);
     }
 
     #[Group('CVE-2015-5243')]
     public function testGetContact(): void
     {
-        $output = AbstractHandler::getContact(static::RAW_DATA);
-        self::assertEquals('${field}', $output['fax']);
+        $obj = $this->makeAbstractHandler();
+        $reflectionObj = new \ReflectionObject($obj);
+        $reflectionMethod = $reflectionObj->getMethod('getContact');
+        $actual = $reflectionMethod->invoke($obj, static::RAW_DATA);
+
+        self::assertEquals('${field}', $actual['fax']);
     }
 }

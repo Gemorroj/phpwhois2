@@ -6,7 +6,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use PHPWhois2\IpTools;
 
-class IpToolsTest extends TestCase
+final class IpToolsTest extends TestCase
 {
     #[DataProvider('validIpsProvider')]
     public function testValidIp($ip): void
