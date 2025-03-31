@@ -122,7 +122,7 @@ class Whois
             }
         }
 
-        if ($server) {
+        if (!$server) {
             foreach ($tldTests as $tld) {
                 // Determine the top level domain, and it's whois server using
                 // DNS lookups on 'whois-servers.net'.

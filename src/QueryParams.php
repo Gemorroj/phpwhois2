@@ -93,6 +93,12 @@ final class QueryParams
         'whois.lacnic.net',
         'whois.nicline.com',
         'whois.ripe.net',
+        'whois.registro.br',
+        'whois.cira.ca',
+        'whois.nic.cl',
+        'whois.nic.hu',
+        'whois.isnic.is',
+        'whois.dns.pt',
     ];
 
     /**
